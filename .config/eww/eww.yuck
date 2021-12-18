@@ -1,0 +1,252 @@
+(defwindow example
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "3px"
+                        :width "100%"
+                        :height "30px"
+                        :anchor "top center")
+  :stacking "bottom"
+  :exclusive "true"
+  (main-bar))
+(include "./test.yuck")
+;; Main-bar body    
+(defwidget main-bar []
+  (centerbox :orientation "horizontal"
+    :class "main-bar"
+    :space-evenly "true"
+    (mpd)
+    (workspaces)
+    (right-side)))
+
+;; Widgets
+(defwidget mpd []
+   (box :class "mpd"
+        :halign "start"
+        :valign "center"
+      (eventbox :onhover "eww update media_toggle=true"
+                :onhoverlost "eww update media_toggle=false"  
+           (box :class "mpd-hover"
+                :spacing 10
+                :space-evenly "false"
+              (label :text " ${mpd}"
+                     :limit-width "35"
+                     :class "mpd-name")
+                 (revealer :duration "400ms"
+                           :reveal "${media_toggle}"
+                           :transition "slideright"
+                      (box :class "controls"
+                           :spacing 15
+                           :space-evenly "false"    
+                   (button :onclick "mpc prev"
+                    "玲")
+                   (button :onclick "mpc toggle"
+                     "")
+                   (button :onclick "mpc next" 
+                    "怜")
+                    "|"
+                   (button :onclick "playerctl play-pause"
+                    "金")))))))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :halign "center"
+       :valign "center"
+       :orientation "horizontal"
+       :spacing 22
+       :space-evenly "false"
+   (button ;:class "${ws1} ?1"
+           :onclick "swaymsg workspace number 1"
+    "I")
+   (button ;:class "${ws2} ?2"
+           :onclick "swaymsg workspace number 2"
+    "II")
+   (button ;:class "${ws3} ?3"
+           :onclick "swaymsg workspace number 3"
+    "III")
+   (button ;:class "${ws4} ?4"
+     :onclick "swaymsg workspace number 4"
+    "IV")
+   (button ;:class "${ws5} ?5"
+     :onclick "swaymsg workspace number 5"
+    "V")
+   (button ;:class "${ws6} ?6"
+     :onclick "swaymsg workspace number 6"
+    "VI")))
+
+(defwidget right-side []
+  (box :class "right-side"
+      :halign "end"
+      :valign "center"
+      :spacing 11
+      :space-evenly "false"
+    (gammastep)
+    (volume)
+    (battery)
+    (light)
+    (network)
+    (date)
+    (temp)))
+
+(defwidget volume []
+      (box  :class "volume"
+        :spacing 0
+        :space-evenly "false"
+        (button :onrightclick "pamixer -t"
+                :onmiddleclick "pavucontrol &"
+        (label :text "${vol-icon}"
+            :class "vol-icon"))
+          (scale :value "${volume}"
+            :min 0
+            :max 101
+            :class "volume-bar"
+            :onchange "pamixer --set-volume {}"
+            :valign "center"
+            :halign "center"
+            :tooltip "${volume}")))
+
+    
+(defwidget light []
+  (eventbox :onhover "eww update light_toggle=true"
+            :onhoverlost "eww update light_toggle=false"
+        (box :class "light"
+             :spacing 4
+             :space-evenly "false"
+            ""
+      (revealer :duration "200ms"
+                :transition "slideleft"
+                :reveal "${light_toggle}"
+        (label :text "${light}%")))))
+
+(defwidget battery []
+  (box :class "battery"
+    :spacing 1
+    :space-evenly "false"
+    (label :text "${battery-state}"
+      :class "battery-icon")
+    (scale :value "${battery}"
+      :min 0
+      :max 101
+      :class "battery-bar"
+      :onchange "${battery}"
+      :valign "center"
+      :halign "center"
+      :tooltip "${battery}")))
+
+(defwidget network []
+  (eventbox :onhover "eww update network_toggle=true"
+            :onhoverlost "eww update network_toggle=false"
+      (box :class "network"
+           :spacing 10
+           :space-evenly "false"
+        :halign "center"
+        (button :onrightclick "nm-connection-editor &"
+       "")
+        (revealer :duration "300ms"
+                  :reveal "${network_toggle}"
+                  :transition "slideleft"
+             (label :text "${network}"
+                    :class "network-ssid")))))
+
+(defwidget date []  
+  (eventbox :onhover "eww update date_toggle=true"
+            :onhoverlost "eww update date_toggle=false"
+     (box :class "date"
+           :spacing 10
+           :space-evenly "false"
+    (label :text " ${date}"
+           :class "time")
+       (revealer :duration "300ms"
+                 :transition "slideright"
+                 :reveal "${date_toggle}"
+         (label :text "${date_alt}"
+                :class "date_alt")))))
+
+(defwidget gammastep []
+  (eventbox :onhover "eww update gamma_toggle=true"
+            :onhoverlost "eww update gamma_toggle=false"
+      (box :class "gammastep"
+           :spacing 10
+           :space-evenly "false"
+       ""
+        (revealer :duration "300ms"
+                  :reveal "${gamma_toggle}"
+                  :transition "slideleft"
+            (button :onclick "${gamma-toggle}"
+               (label :text "${gamma-temp}"))))))
+
+(defwidget temp []
+  (button :onclick "eww open test"
+            :onrightclick "eww close test"
+      (label :text "")))
+
+
+;; Variables
+
+(defvar media_toggle false)
+
+(defvar network_toggle false)
+
+(defvar light_toggle false)
+
+(defvar date_toggle false)
+
+(defvar gamma_toggle false)
+
+(defvar gamma-toggle
+  "source $HOME/.config/eww/scripts/env.sh && $HOME/.config/eww/scripts/gammastep.sh toggle")
+
+;(defpoll ws1 :interval "100ms"
+; "$HOME/.scripts/sway/ws1.sh")
+;
+;(defpoll ws2 :interval "100ms"
+; "$HOME/.scripts/sway/ws2.sh")
+;
+;(defpoll ws3 :interval "100ms"
+; "$HOME/.scripts/sway/ws3.sh")
+;
+;(defpoll ws4 :interval "100ms"
+; "$HOME/.scripts/sway/ws4.sh")
+;
+;(defpoll ws5 :interval "100ms"
+; "$HOME/.scripts/sway/ws5.sh")
+;
+;(defpoll ws6 :interval "100ms"
+; "$HOME/.scripts/sway/ws6.sh")
+
+
+;; Polling variables
+
+(defpoll mpd :interval "2s"
+  "$HOME/.config/eww/scripts/mpd.sh")
+
+(defpoll vol-icon :interval "100ms"
+  "$HOME/.config/eww/scripts/volume.sh")
+
+(defpoll volume :interval "50ms"
+  "pamixer --get-volume")
+
+(defpoll light :interval "500ms"
+  "echo $(light | cut -d. -f1)")
+
+(defpoll battery-state :interval "30m"
+  "$HOME/.config/eww/scripts/battery.sh")
+
+(defpoll battery :interval "5s"
+  "acpi -b | awk '{print $4}' | sed 's/%//;s/,//'")
+
+(defpoll network :interval "15s"
+  "$HOME/.config/eww/scripts/network.sh")
+
+(defpoll date :interval "30s"
+    "date +%H:%M")
+
+(defpoll date_alt :interval "9h"
+  "date +'%b %e'")
+
+(defpoll gamma-temp :interval "1s"
+  "source $HOME/.config/eww/scripts/env.sh && $HOME/.config/eww/scripts/gammastep.sh temperature")
+
+
+
+
+

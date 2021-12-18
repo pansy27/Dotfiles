@@ -1,0 +1,202 @@
+* {	
+	all: unset;
+	font-size: 13px;
+	font-family: Iosevka Fixed;
+  font-weight: 400;
+}
+
+/* Variables */
+$highlight: #e0cefe;
+$highlight-ws: #babbed;
+
+.main-bar {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.main-bar {
+	background: rgba(56,53,51,1.00);
+}
+
+.mpd {
+	margin-left: 30px;
+}
+
+.right-side {
+	margin-right: 15px;
+}
+
+scale trough {
+  all: unset;
+  background-color: #7e718c;
+  border-radius: 50px;
+  min-height: 7px;
+  min-width: 70px;
+  margin: 0 5px 0 20px;
+}
+
+scale trough highlight {
+  all: unset;
+  background: #e5d0fd;
+  border-radius: 10px;
+}
+
+.mpd {
+  background: $highlight;
+  color: #242118;
+  padding: 2px 10px 2px 17px;
+  border-radius: 3;
+}
+
+.workspaces {
+  background: $highlight;
+  color: #242118;
+  padding: 2px 10px;
+  border-radius: 3;
+}
+
+.volume {
+  padding: 2px 0px 2px 10px;
+  border-radius: 3;
+}
+
+.battery {
+  padding: 2px 0px 2px 0px;
+  border-radius: 3;
+}
+
+.battery-icon {
+  padding-left: 5px;
+}
+
+.network {
+  background: $highlight;
+  color: #242118;
+  padding: 2px 1px 2px 11px;
+  border-radius: 3;
+}
+
+.network-ssid {
+  padding-right: 10px;
+}
+
+.light {
+  background: $highlight;
+  color: #242118;
+  padding: 2px 5px 2px 9px;
+  border-radius: 3;
+  font-family: Material\-Design\-Iconic\-Font;
+}
+
+.date {
+  background: $highlight;
+  color: #242118;
+  padding: 2px 10px;
+  padding-right: 0px;
+  border-radius: 3;
+}
+.date_alt {
+  padding-right: 6px;
+}
+/*
+.1 {
+  background: $highlight-ws;
+}
+
+.2 {
+  background: $highlight-ws;
+}
+
+.3 {
+  background: $highlight-ws;
+}
+
+.4 {
+  background: $highlight-ws;
+}
+
+.5 {
+  background: $highlight-ws;
+}
+
+.6 {
+  background: $highlight-ws;
+}*/
+
+/* Calenddar widget */
+.sidebar {
+  all: unset;
+}
+
+.calendar {
+  padding: 2px 0px 5px 0px;
+  background: rgba(40,40,40,1.00);
+  color: $highlight;
+  border-radius: 5px;
+  margin-bottom: 0px;
+  color: $highlight
+}
+.media {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+}
+
+.image {
+  border: 2px $highlight solid;
+}
+
+.metadata {
+  font-weight: 600;
+}
+
+.power-menu {
+  margin-top: 00px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.power-icon {
+  font-size: 25px;
+  padding: 0px 13px 0px 13px;
+  background: rgba(40,40,40,1.00); 
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.power-poweroff {
+  font-size: 45px;
+  margin-top: 2px;
+  margin-left: 10px;
+  padding: 2px 6px 3px 6px;
+  margin-bottom: 10px;
+  background: rgba(40,40,40,1.00); 
+  border-radius: 9px;
+}
+
+.power-hibernation {
+  margin-right: 10px;
+}
+
+.todo-list {
+ font-weight: 500; 
+ font-size: 1.1em;
+ padding: 10px;
+ padding-left: 40px;
+ padding-top: 4px;
+}
+
+.todo-header {
+  font-size: 2.0em;
+  padding: 10px;
+  padding-left: 30px;
+  padding-bottom: 0px;
+}
+
+.sidebar  {
+  color: $highlight-ws;
+  background:  rgba(56,53,51,1.00);
+  border: 2px $highlight-ws solid;
+}
