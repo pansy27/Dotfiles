@@ -83,6 +83,7 @@ alias rm='ptRm'
 alias cc='ptCp'
 alias touch='ptTouch'
 alias nrf='neofetch --sixel ~/Pictures/Wallpaper/butterflies.png'
+alias bunny='bunnyfetch'
 #alias weeb="~/Github/weebsay/weebsay"
 alias temproot='xhost si:localuser:root'
 alias temproot!='xhost -si:localuser:root'

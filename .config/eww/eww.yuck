@@ -26,9 +26,10 @@
       (eventbox :onhover "eww update media_toggle=true"
                 :onhoverlost "eww update media_toggle=false"  
            (box :class "mpd-hover"
-                :spacing 10
+                :spacing 5
                 :space-evenly "false"
-              (label :text " ${mpd}"
+             (label :text "" )
+              (label :text "${mpd}"
                      :limit-width "35"
                      :class "mpd-name")
                  (revealer :duration "400ms"
@@ -45,6 +46,7 @@
                     "怜")
                     "|"
                    (button :onclick "playerctl play-pause"
+                           :class "playerctl-icon"
                     "金")))))))
 
 (defwidget workspaces []
@@ -111,7 +113,7 @@
         (box :class "light"
              :spacing 4
              :space-evenly "false"
-            ""
+            ""
       (revealer :duration "200ms"
                 :transition "slideleft"
                 :reveal "${light_toggle}"
@@ -219,7 +221,7 @@
 (defpoll mpd :interval "2s"
   "$HOME/.config/eww/scripts/mpd.sh")
 
-(defpoll vol-icon :interval "100ms"
+(defpoll vol-icon :interval "300ms"
   "$HOME/.config/eww/scripts/volume.sh")
 
 (defpoll volume :interval "50ms"

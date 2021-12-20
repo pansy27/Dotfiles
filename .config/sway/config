@@ -228,6 +228,10 @@ mode "resize" {
 #    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bar {
+#    swaybar_command waybar
+}
+
 # Options floating enable/disable, resize set x y, move position x y
 for_window [title="Picture-in-Picture"] floating enable, border pixel 2
 for_window [title="Library"] floating enable
@@ -285,4 +289,4 @@ exec "wl-paste --watch cliphist store &"
 exec "libinput-gestures-setup restart"
 exec "eww open example"
 exec_always "swaybg -i ~/Pictures/Wallpaper/path_of_miranda_alone.png"
-exec "persway -ao 0.84"
+exec "persway -ao 0.94"
