@@ -354,9 +354,9 @@ for_window [app_id="transmission-gtk"] floating enable
 for_window [title="Customise Look and Feel"] floating enable
 for_window [class="xdman-Main"] floating enable
 for_window [title="foot-network"] floating enable
-for_window [app_id="firefox"] opacity 0.3
+for_window [class="firefox"] opacity 0.3
 
-for_window [class="Thunar"] opacity 0.8
+for_window [app_id="thunar"] opacity 0.8
 smart_gaps 	 on
 gaps inner	 4
 gaps outer	 3
@@ -387,7 +387,7 @@ client.urgent           $red        $red        $bg     $red        $red
 client.placeholder      $bg         $bg         $bg     $bg         $bg
 client.background       $bg
 
-seat * xcursor_theme Nordzy-cursors 24
+seat * xcursor_theme Polarnight-cursors 24
 
 include /etc/sway/config.d/*
 
