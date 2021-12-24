@@ -23,23 +23,29 @@ augroup end
  "let g:enable_bold_font = 1
  "let g:hybrid_transparent_background = 0
 " let g:gruvbox_material_background = 'soft'
- let g:gruvbox_material_enable_italic = 1
- let g:gruvbox_material_disable_italic_comment = 0
- let g:gruvbox_material_enable_bold = 1
- let g:gruvbox_material_transparent_background = 1
-
+"let g:gruvbox_material_enable_italic = 1
+"let g:gruvbox_material_disable_italic_comment = 0
+"let g:gruvbox_material_enable_bold = 1
+"let g:gruvbox_material_transparent_background = 1
+"
+   let g:everforest_transparent_background = 1
+   let g:everforest_background = 'soft'
+   let g:everforest_enable_italic = 1
 " Plugins 
 
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'https://github.com/sainnhe/gruvbox-material'
+Plug 'https://github.com/sainnhe/everforest'
+"Plug 'https://github.com/sainnhe/gruvbox-material'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
 call plug#end()
+
+" Vim startify header
 
 let s:header = [
       \ '',
@@ -53,17 +59,20 @@ endfunction
 
 let g:startify_custom_header = s:center(s:header)
 
-" Colorscheme
-set background=dark
-colorscheme gruvbox-material
 " True Color Support
+
 if (has("termguicolors"))
   set termguicolors
 endif
 
+" Colorscheme
+
+set background=dark
+colorscheme everforest
+
 " Lightline Config
 let g:lightline = {
-\ 'colorscheme': 'gruvbox_material',
+\ 'colorscheme': 'everforest',
 \ 'separator': {}, 
 \ 'subseparator': {}, 
 \ 'tabline': {

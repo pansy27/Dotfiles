@@ -1,13 +1,13 @@
 * {	
 	all: unset;
-	font-size: 13px;
-	font-family: Iosevka Fixed;
+	font-size: 12px;
+	font-family: Space Mono;
   font-weight: 400;
 }
 
 /* Variables */
-$highlight: #e0cefe;
-$highlight-ws: #babbed;
+$highlight: #a7c080;
+$highlight-ws: #a7c090;
 
 .main-bar {
   padding-top: 3px;
@@ -15,7 +15,7 @@ $highlight-ws: #babbed;
 }
 
 .main-bar {
-	background: rgba(56,53,51,1.00);
+	background: rgba(56,53,51,0.50);
 }
 
 .mpd {
@@ -32,7 +32,7 @@ $highlight-ws: #babbed;
 
 scale trough {
   all: unset;
-  background-color: #7e718c;
+  background-color: #4b565c;
   border-radius: 50px;
   min-height: 7px;
   min-width: 70px;
@@ -41,7 +41,7 @@ scale trough {
 
 scale trough highlight {
   all: unset;
-  background: #e5d0fd;
+  background: #83c092;
   border-radius: 10px;
 }
 
@@ -80,6 +80,9 @@ scale trough highlight {
   border-radius: 3;
 }
 
+.network-icon {
+  padding-right: 1px;
+}
 .network-ssid {
   padding-right: 10px;
 }
@@ -127,19 +130,12 @@ scale trough highlight {
   background: $highlight-ws;
 }*/
 
-/* Calenddar widget */
+/* Sidebar widget */
+
 .sidebar {
   all: unset;
 }
 
-.calendar {
-  padding: 2px 0px 5px 0px;
-  background: rgba(40,40,40,1.00);
-  color: $highlight;
-  border-radius: 5px;
-  margin-bottom: 0px;
-  color: $highlight
-}
 .media {
   padding-top: 15px;
   padding-left: 15px;
@@ -158,25 +154,25 @@ scale trough highlight {
 .power-menu {
   margin-top: 00px;
   padding-top: 4px;
-  padding-bottom: 4px;
+  padding-bottom: 0px;
 }
 
 .power-icon {
   font-size: 25px;
-  padding: 0px 13px 0px 13px;
-  background: rgba(40,40,40,1.00); 
+  padding: 19px 13px 19px 13px;
+  background: rgba(40,40,40,0.80); 
   border-radius: 10px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
 
 .power-poweroff {
-  font-size: 45px;
+  font-size: 23px;
   margin-top: 2px;
   margin-left: 10px;
   padding: 2px 6px 3px 6px;
   margin-bottom: 10px;
-  background: rgba(40,40,40,1.00); 
+  background: rgba(40,40,40,0.80); 
   border-radius: 9px;
 }
 
@@ -184,23 +180,8 @@ scale trough highlight {
   margin-right: 10px;
 }
 
-.todo-list {
- font-weight: 500; 
- font-size: 1.1em;
- padding: 10px;
- padding-left: 40px;
- padding-top: 4px;
-}
-
-.todo-header {
-  font-size: 2.0em;
-  padding: 10px;
-  padding-left: 30px;
-  padding-bottom: 0px;
-}
-
 .sidebar  {
   color: $highlight-ws;
-  background:  rgba(56,53,51,1.00);
+  background:  rgba(56,53,56,0.54);
   border: 2px $highlight-ws solid;
 }

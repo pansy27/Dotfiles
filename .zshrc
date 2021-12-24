@@ -23,6 +23,8 @@ setopt auto_pushd
 #setopt always_to_end
 setopt hist_ignore_dups
 setopt hist_save_no_dups
+setopt correct
+setopt hash_list_all
 # End
 #
 # Fzf-Options
@@ -78,10 +80,11 @@ alias ncp='ncmpcpp'
 #alias rm="rm -i"
 alias ls='exa'                             
 alias wd='ptPwd'
-alias mkdir='ptMkdir'
-alias rm='ptRm'
-alias cc='ptCp'
-alias touch='ptTouch'
+#alias mkdir='ptMkdir'
+#alias rm='ptRm'
+alias rm='trash'
+#alias cc='ptCp'
+#alias touch='ptTouch'
 alias nrf='neofetch --sixel ~/Pictures/Wallpaper/butterflies.png'
 alias bunny='bunnyfetch'
 #alias weeb="~/Github/weebsay/weebsay"

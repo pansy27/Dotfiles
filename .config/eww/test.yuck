@@ -1,20 +1,19 @@
 (defwindow test
   :monitor 0
-  :geometry (geometry :x "1%"
-              :y "10px"
-              :width "370px"
-              :height "350px"
-              :anchor "top right")
-          :stacking "fg"
-  (sidebar))
+  :geometry (geometry :x "10px"
+                      :y "10px"
+                      :width "370px"
+                      :height "210px"
+                      :anchor "top right")
+                      :stacking "fg"
+  (sidebar_window))
 
-(defwidget sidebar []
+(defwidget sidebar_window []
   (box :class "sidebar"
         :orientation "v"
         :spacing 0
         :space-evenly "false"
       (media-info)   
-      (todo)
       (power-menu)))
 
 (defwidget media-info []
@@ -27,20 +26,7 @@
                :image-width 200))
      (label :text "${metadata}"
             :class "metadata"
-        :wrap "true")))
-
-(defwidget todo []
-  (box :class "todo"
-       :orientation "v"
-       :spacing 0
-       :space-evenly "false"
-      (label :text "Todo Items"
-             :class "todo-header"
-            :halign "start")
-       (label :text "${todo-list}"
-             :class "todo-list"
-              :valign "centre"
-              :halign "start")))
+            :wrap "true")))
 
 (defwidget power-menu []
   (box :class "power-menu"
@@ -63,18 +49,11 @@
        (label :class "power-icon power-hibernation"
              :text ""))))
 
-(defwidget cal []
-  (calendar :class "calendar"
-            :year 2021
-            :month 12
-            ))
-
 ;; Variables
+
 (defvar sidebar_toggle false)
 
 ;; Polling Variables
-(defpoll todo-list :interval "5h"
-  "head -n 3 $HOME/.scripts/todo.md")
 
 (defpoll metadata :interval "5s"
   "playerctl metadata --format '{{ artist }} - {{ title }}'")

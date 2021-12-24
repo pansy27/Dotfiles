@@ -28,11 +28,11 @@
            (box :class "mpd-hover"
                 :spacing 5
                 :space-evenly "false"
-             (label :text "" )
+             (label :text "" )
               (label :text "${mpd}"
                      :limit-width "35"
                      :class "mpd-name")
-                 (revealer :duration "400ms"
+                 (revealer :duration "300ms"
                            :reveal "${media_toggle}"
                            :transition "slideright"
                       (box :class "controls"
@@ -87,7 +87,7 @@
     (light)
     (network)
     (date)
-    (temp)))
+    (sidebar)))
 
 (defwidget volume []
       (box  :class "volume"
@@ -114,7 +114,7 @@
              :spacing 4
              :space-evenly "false"
             ""
-      (revealer :duration "200ms"
+      (revealer :duration "100ms"
                 :transition "slideleft"
                 :reveal "${light_toggle}"
         (label :text "${light}%")))))
@@ -142,8 +142,9 @@
            :space-evenly "false"
         :halign "center"
         (button :onrightclick "nm-connection-editor &"
-       "")
-        (revealer :duration "300ms"
+              (label :text ""
+                     :class "network-icon"))
+        (revealer :duration "250ms"
                   :reveal "${network_toggle}"
                   :transition "slideleft"
              (label :text "${network}"
@@ -157,7 +158,7 @@
            :space-evenly "false"
     (label :text " ${date}"
            :class "time")
-       (revealer :duration "300ms"
+       (revealer :duration "200ms"
                  :transition "slideright"
                  :reveal "${date_toggle}"
          (label :text "${date_alt}"
@@ -170,16 +171,16 @@
            :spacing 10
            :space-evenly "false"
        ""
-        (revealer :duration "300ms"
+        (revealer :duration "200ms"
                   :reveal "${gamma_toggle}"
                   :transition "slideleft"
             (button :onclick "${gamma-toggle}"
                (label :text "${gamma-temp}"))))))
 
-(defwidget temp []
-  (button :onclick "eww open test"
-            :onrightclick "eww close test"
-      (label :text "")))
+(defwidget sidebar []
+  (eventbox :onhover "eww open test"
+    (button :onclick "eww close test"
+      (label :text ""))))
 
 
 ;; Variables

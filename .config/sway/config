@@ -105,6 +105,7 @@ bindsym $alt+n exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode
 bindsym Scroll_Lock exec slurp | grim -g - - | wl-copy
 bindsym shift+Scroll_Lock exec "~/.scripts/test.sh"
 
+bindsym $mod+shift+z exec killall -s SIGINT wf-recorder
 bindsym $mod+space exec env MOZ_ENABLE_WAYLAND=1 env MOZ_DBUS_REMOTE=1 firefox
 
 bindsym ctrl+space exec dunstctl close
@@ -206,6 +207,13 @@ bindsym ctrl+F1 exec dunstctl context
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+z scratchpad show
 #
+# Border images
+border_images.focused ~/.config/sway/shadows.png
+border_images.focused_inactive ~/.config/sway/shadows.png
+border_images.unfocused ~/.config/sway/shadows.png
+border_images.urgent ~/.config/sway/shadows.png
+
+# Gaps mode
 bindsym $mod+Shift+g mode "$mode_gaps"
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -354,9 +362,9 @@ for_window [app_id="transmission-gtk"] floating enable
 for_window [title="Customise Look and Feel"] floating enable
 for_window [class="xdman-Main"] floating enable
 for_window [title="foot-network"] floating enable
-for_window [class="firefox"] opacity 0.3
+for_window [app_id="firefox"] opacity 0.97
 
-for_window [app_id="thunar"] opacity 0.8
+for_window [app_id="thunar"] opacity 0.84
 smart_gaps 	 on
 gaps inner	 4
 gaps outer	 3
@@ -369,7 +377,7 @@ default_floating_border pixel  2
 set $bg       #525052 
 set $fg       #d4be98
 set $red      #cc241d
-set $orange   #beb7d6 
+set $orange   #a7c080 
 set $green    #a9b665
 set $blue     #7daea3
 set $purple   #d3869b
@@ -394,10 +402,11 @@ include /etc/sway/config.d/*
 # Autostart
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
 exec "foot --server"
-exec_always "nm-applet --indicator"
+#exec_always "nm-applet --indicator"
 exec_always "~/.config/gtk-3.0/import-gsettings.sh &"
 exec "wl-paste --watch cliphist store &"
 exec "libinput-gestures-setup restart"
 exec "eww open example"
-exec_always "swaybg -i ~/Pictures/Wallpaper/moth.jpg"
-exec "persway -ao 0.94"
+exec_always "swaybg -i ~/Pictures/Wallpaper/green_tunnel.png"
+
+

@@ -27,7 +27,7 @@
 
     idle_threshold = 20
 
-    font = Victor Mono Bold 8.5
+    font = Iosevka SemiBold 8.5
     line_height = 4
 
     padding = 09
@@ -59,7 +59,7 @@
 
     max_icon_size = 32
 
-    icon_path = $HOME/.local/share/icons/my-papirus/16x16/status/:$HOME/.local/share/icons/my-papirus/16x16/devices/:$HOME/.local/share/icons/my-papirus/16x16/apps/
+    icon_path = $HOME/.local/share/icons/Macaron/status/:$HOME/.local/share/icons/Macaron/devices/:$HOME/.local/share/icons/Macaron/apps/
 
     sticky_history = yes
 
@@ -86,21 +86,21 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#413b3f"
-    foreground = "#e1dcf4"
-    frame_color = "#a89984"
+    background = "#04050560"
+    foreground = "#d3c6aa"
+    frame_color = "#4b565c"
     timeout = 5
 
 [urgency_normal]
-    background = "#413b3f"
-    foreground = "#e1dcf4"
-    frame_color = "#a095be"
+    background = "#04050560"
+    foreground = "#d3c6aa"
+    frame_color = "#a7c6aa"
     timeout = 10
 
 [urgency_critical]
-    background = "#413b3f"
-    foreground = "#e1dcf4"
-    frame_color = "#e5918e"
+    background = "#04050560"
+    foreground = "#d3c6aa"
+    frame_color = "#e67e80"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
     #new_icon = /path/to/icon
