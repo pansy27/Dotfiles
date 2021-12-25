@@ -7,7 +7,9 @@
 
 /* Variables */
 $highlight: #a7c080;
-$highlight-ws: #a7c090;
+$highlight-ws: #fcdddd;
+$highlight-sidebar: #a7c090;
+
 
 .main-bar {
   padding-top: 3px;
@@ -105,30 +107,29 @@ scale trough highlight {
 .date_alt {
   padding-right: 6px;
 }
-/*
 .1 {
-  background: $highlight-ws;
+  color: $highlight-ws;
 }
 
 .2 {
-  background: $highlight-ws;
+  color: $highlight-ws;
 }
 
 .3 {
-  background: $highlight-ws;
+  color: $highlight-ws;
 }
 
 .4 {
-  background: $highlight-ws;
+  color: $highlight-ws;
 }
 
 .5 {
-  background: $highlight-ws;
+  color: $highlight-ws;
 }
 
 .6 {
-  background: $highlight-ws;
-}*/
+  color: $highlight-ws;
+}
 
 /* Sidebar widget */
 
@@ -181,7 +182,7 @@ scale trough highlight {
 }
 
 .sidebar  {
-  color: $highlight-ws;
+  color: $highlight-sidebar;
   background:  rgba(56,53,56,0.54);
-  border: 2px $highlight-ws solid;
+  border: 2px $highlight-sidebar solid;
 }
