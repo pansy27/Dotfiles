@@ -395,7 +395,7 @@ client.urgent           $red        $red        $bg     $red        $red
 client.placeholder      $bg         $bg         $bg     $bg         $bg
 client.background       $bg
 
-seat * xcursor_theme Polarnight-cursors 24
+seat * xcursor_theme phinger-cursors 24
 
 include /etc/sway/config.d/*
 

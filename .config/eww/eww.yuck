@@ -30,7 +30,7 @@
                 :space-evenly "false"
              (label :text "" )
               (label :text "${mpd}"
-                     :limit-width "35"
+                     :limit-width "20"
                      :class "mpd-name")
                  (revealer :duration "300ms"
                            :reveal "${media_toggle}"
@@ -56,22 +56,22 @@
        :orientation "horizontal"
        :spacing 22
        :space-evenly "false"
-   (button :class "${ws1} ?1"
+   (button ;:class "${ws1} ?1"
            :onclick "swaymsg workspace number 1"
     "I")
-   (button :class "${ws2} ?2"
+   (button ;:class "${ws2} ?2"
            :onclick "swaymsg workspace number 2"
     "II")
-   (button :class "${ws3} ?3"
+   (button ;:class "${ws3} ?3"
            :onclick "swaymsg workspace number 3"
     "III")
-   (button :class "${ws4} ?4"
+   (button ;:class "${ws4} ?4"
      :onclick "swaymsg workspace number 4"
     "IV")
-   (button :class "${ws5} ?5"
+   (button ;:class "${ws5} ?5"
      :onclick "swaymsg workspace number 5"
     "V")
-   (button :class "${ws6} ?6"
+   (button ;:class "${ws6} ?6"
      :onclick "swaymsg workspace number 6"
     "VI")))
 
@@ -198,23 +198,23 @@
 (defvar gamma-toggle
   "source $HOME/.config/eww/scripts/env.sh && $HOME/.config/eww/scripts/gammastep.sh toggle")
 
- (defpoll ws1 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w1.sh")
- 
- (defpoll ws2 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w2.sh")
- 
- (defpoll ws3 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w3.sh")
- 
- (defpoll ws4 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w4.sh")
- 
- (defpoll ws5 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w5.sh")
- 
- (defpoll ws6 :interval "100ms"
-  "$HOME/.config/eww/scripts/sway/w6.sh")
+;(defpoll ws1 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w1.sh")
+;
+;(defpoll ws2 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w2.sh")
+;
+;(defpoll ws3 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w3.sh")
+;
+;(defpoll ws4 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w4.sh")
+;
+;(defpoll ws5 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w5.sh")
+;
+;(defpoll ws6 :interval "100ms"
+; "$HOME/.config/eww/scripts/sway/w6.sh")
 
 
 ;; Polling variables
