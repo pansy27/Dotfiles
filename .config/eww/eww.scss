@@ -1,14 +1,14 @@
 * {	
 	all: unset;
 	font-size: 12px;
-	font-family: Space Mono;
-  font-weight: 400;
+	font-family: JetBrains Mono;
+  font-weight: 500;
 }
 
 /* Variables */
-$highlight: #a7c080;
+$highlight: #bcbcbc;
 $highlight-ws: #fcdddd;
-$highlight-sidebar: #a7c090;
+$highlight-sidebar: #bcbcbc;
 
 
 .main-bar {
@@ -17,11 +17,7 @@ $highlight-sidebar: #a7c090;
 }
 
 .main-bar {
-	background: rgba(56,53,51,0.50);
-}
-
-.mpd {
-	margin-left: 30px;
+	background: rgba(56,53,51,0.00);
 }
 
 .playerctl-icon {
@@ -35,7 +31,7 @@ $highlight-sidebar: #a7c090;
 scale trough {
   all: unset;
   background-color: #4b565c;
-  border-radius: 50px;
+  border-radius: 0px;
   min-height: 7px;
   min-width: 70px;
   margin: 0 5px 0 20px;
@@ -43,20 +39,21 @@ scale trough {
 
 scale trough highlight {
   all: unset;
-  background: #83c092;
-  border-radius: 10px;
+  background: #bcbcbc;
+  border-radius: 2px;
 }
 
 .mpd {
-  background: $highlight;
-  color: #242118;
+ /* background: $highlight;
+  color: #242118;*/
+ 	margin-left: 30px;
   padding: 2px 10px 2px 17px;
   border-radius: 3;
 }
 
 .workspaces {
-  background: $highlight;
-  color: #242118;
+/*  background: $highlight;
+  color: #242118;*/
   padding: 2px 10px;
   border-radius: 3;
 }
@@ -76,8 +73,8 @@ scale trough highlight {
 }
 
 .network {
-  background: $highlight;
-  color: #242118;
+/*  background: $highlight;
+  color: #242118;*/
   padding: 2px 1px 2px 11px;
   border-radius: 3;
 }
@@ -90,16 +87,16 @@ scale trough highlight {
 }
 
 .light {
-  background: $highlight;
-  color: #242118;
+/*  background: $highlight;
+  color: #242118;*/
   padding: 2px 5px 2px 9px;
   border-radius: 3;
   font-family: Material\-Design\-Iconic\-Font;
 }
 
 .date {
-  background: $highlight;
-  color: #242118;
+ /* background: $highlight;
+  color: #242118;*/
   padding: 2px 10px;
   padding-right: 0px;
   border-radius: 3;
@@ -107,31 +104,19 @@ scale trough highlight {
 .date_alt {
   padding-right: 6px;
 }
-.1 {
-  color: $highlight-ws;
-}
-
-.2 {
-  color: $highlight-ws;
-}
-
-.3 {
-  color: $highlight-ws;
-}
-
-.4 {
-  color: $highlight-ws;
-}
-
-.5 {
-  color: $highlight-ws;
-}
-
+// Active Workspace highlight
+/*
+.1
+.2
+.3
+.4
+.5
 .6 {
   color: $highlight-ws;
 }
+*/
 
-/* Sidebar widget */
+// Sidebar widget 
 
 .sidebar {
   all: unset;

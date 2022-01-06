@@ -86,21 +86,21 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#04050560"
-    foreground = "#d3c6aa"
-    frame_color = "#4b565c"
+   background = "#24211880"
+    foreground = "#fcdddd"
+    frame_color = "#bcbcbc"
     timeout = 5
 
 [urgency_normal]
-    background = "#04050560"
-    foreground = "#d3c6aa"
-    frame_color = "#a7c6aa"
+    background = "#24211880"
+    foreground = "#fcdddd"
+    frame_color = "#efdfbb"
     timeout = 10
 
 [urgency_critical]
-    background = "#04050560"
-    foreground = "#d3c6aa"
-    frame_color = "#e67e80"
+   background = "#24211880"
+    foreground = "#fcdddd"
+    frame_color = "#e35259"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
     #new_icon = /path/to/icon

@@ -8,7 +8,7 @@ case $charging in
 		"Charging,")
 			echo "";;
 		"Discharging,")
-			echo "";;
+			echo " ";;
 		"Full,")
 			echo "";;
 	*)	

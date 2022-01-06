@@ -9,7 +9,7 @@ export XKB_DEFAULT_OPTIONS=ctrl:swapcaps
 export XCURSOR_PATH=${HOME}/.local/share/icons:${XCURSOR_PATH}
 export PATH=$PATH:/home/koko/.local/bin
 export EDITOR=nvim
-export XDG_CURRENT_DESKTOP=Unity
+#export XDG_CURRENT_DESKTOP=Unity
 # Bat theme
 export BAT_THEME='base16'
 #export MANPAGER="sh -c 'col -bx | bat -l man -p'"

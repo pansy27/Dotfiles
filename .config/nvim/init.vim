@@ -8,6 +8,8 @@ set encoding=utf-8
 set backspace=2
 set ignorecase
 set smartcase
+set autoindent
+set smarttab
 set nocompatible
 
 " Cursor Location

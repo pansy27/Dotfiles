@@ -20,4 +20,14 @@
 	<other-files/>
 	<text-files/>
 </action>
+<action>
+	<icon>com.github.philip-scott.wallpaperize</icon>
+	<name>Set as Wallpaper</name>
+	<unique-id>1641236089436583-1</unique-id>
+	<command>cp %f ~/.cache/wallpaper &amp;&amp; notify-send &quot;Wallpaper Changed to %n&quot; &amp;&amp; pkill swaybg &amp;&amp; swaybg -i %f </command>
+	<description>set an image as wallpaper</description>
+	<patterns>*</patterns>
+	<image-files/>
+	<other-files/>
+</action>
 </actions>

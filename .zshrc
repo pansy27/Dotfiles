@@ -23,8 +23,8 @@ setopt auto_pushd
 #setopt always_to_end
 setopt hist_ignore_dups
 setopt hist_save_no_dups
-setopt correct
-setopt hash_list_all
+#setopt correct
+#setopt hash_list_all
 # End
 #
 # Fzf-Options
@@ -78,14 +78,17 @@ bindkey '^[[B' history-substring-search-down
 alias tree='tree -a -I .git'
 alias ncp='ncmpcpp' 
 #alias rm="rm -i"
-alias ls='exa'                             
-alias wd='ptPwd'
-#alias mkdir='ptMkdir'
-#alias rm='ptRm'
-alias rm='trash'
-#alias cc='ptCp'
-#alias touch='ptTouch'
+alias ls='exa'
+alias l='ptls'
+alias wd='ptpwd'
+alias pdir='ptmkdir'
+alias rm='ptrm'
+#alias rm='trash'
+alias yy='ptcp'
+alias ptouch='pttouch'
+alias c='clear'
 alias nrf='neofetch --sixel ~/Pictures/Wallpaper/butterflies.png'
+alias koko='bash $HOME/.scripts/fetch.sh'
 alias bunny='bunnyfetch'
 #alias weeb="~/Github/weebsay/weebsay"
 alias temproot='xhost si:localuser:root'
@@ -119,4 +122,3 @@ source "/home/koko/Github/fzf-tab/fzf-tab.plugin.zsh"
 #PROMPT="%T"
 PROMPT='%B%F{14} %f%b %~  '
 RPROMPT=''
-
