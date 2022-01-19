@@ -6,7 +6,7 @@ case $charging in
 	"Unknown,")
 			echo "";;
 		"Charging,")
-			echo "ﮣ ";;
+			echo " ";;
 		"Discharging,")
 			echo "";;
 		"Full,")
