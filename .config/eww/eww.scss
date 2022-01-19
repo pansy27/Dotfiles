@@ -1,7 +1,7 @@
 * {	
 	all: unset;
 	font-size: 12px;
-	font-family: JetBrains Mono;
+	font-family: Iosevka Curly ;
   font-weight: 500;
 }
 
@@ -35,6 +35,12 @@ scale trough {
   min-height: 7px;
   min-width: 70px;
   margin: 0 5px 0 20px;
+  // slider {
+  //     background: pink;
+  //     margin: -5px;
+  //     min-height: 1px;
+  //     min-width: 1px;
+  //     border-radius: 0px;
 }
 
 scale trough highlight {
@@ -63,6 +69,9 @@ scale trough highlight {
   border-radius: 3;
 }
 
+.vol-icon {
+  font-size: 13px;
+}
 .battery {
   padding: 2px 0px 2px 0px;
   border-radius: 3;
@@ -166,8 +175,9 @@ scale trough highlight {
   margin-right: 10px;
 }
 
-.sidebar  {
+.sidebar {
   color: $highlight-sidebar;
   background:  rgba(56,53,56,0.54);
   border: 2px $highlight-sidebar solid;
 }
+

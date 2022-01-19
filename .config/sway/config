@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-font pango:Victor Mono Italic 0
+font pango:JetBrains Mono 8
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -78,9 +78,8 @@ input "type:keyboard" {
 
     # Start your launcher
 #    bindsym $mod+d exec $menu
-    bindsym $mod+d exec rofi  -show drun 
+    bindsym $mod+d exec rofi -show drun
     bindsym $mod+n exec rofi -show notes -modi notes:~/.scripts/rofi/notes.py
-    bindsym $mod+g exec "foot -w 1x1 -T foot-network ~/.scripts/rofi/rofi-network-manager.sh"
 #    bindsym $mod+shift+q exec rofi -show power-menu -modi power-menu:~/.scripts/rofi/power.sh
     bindsym $alt+g exec rofimoji -a copy --clipboarder wl-copy --selector rofi --type wtype
     #bindsym ctrl+Scroll_Lock exec ~/.scripts/rofi/Screen.sh
@@ -113,6 +112,8 @@ bindsym ctrl+shift+space exec dunstctl close-all
 bindsym ctrl+grave exec dunstctl history-pop
 bindsym ctrl+F1 exec dunstctl context
 
+bindsym $mod+g exec gtk3-widget-factory
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -124,7 +125,7 @@ bindsym ctrl+F1 exec dunstctl context
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    #bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -352,6 +353,7 @@ bar {
 }
 
 # Options floating enable/disable, resize set x y, move position x y
+for_window [app_id="firefox"] border pixel 2
 for_window [title="Picture-in-Picture"] floating enable, border pixel 2
 for_window [title="Library"] floating enable
 for_window [app_id="pavucontrol"] floating enable
@@ -362,15 +364,15 @@ for_window [app_id="transmission-gtk"] floating enable
 for_window [title="Customise Look and Feel"] floating enable
 for_window [class="xdman-Main"] floating enable
 for_window [title="foot-network"] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 730 height 450, move position 300 120
 #for_window [app_id="firefox"] opacity 0.97
 
-for_window [app_id="thunar"] opacity 0.93
 smart_gaps 	 on
 gaps inner	 4
-gaps outer	 3
+gaps outer   3
 #hide_edge_borders both
-default_border pixel 2
-default_floating_border pixel  2
+#default_border pixel 2
+#default_floating_border pixel  2
 ###############################
 #### Border Colors ####
 ###############################
@@ -408,5 +410,4 @@ exec "wl-paste --watch cliphist store &"
 exec "libinput-gestures-setup restart"
 exec "eww open bar"
 exec_always "swaybg -i ~/.cache/wallpaper"
-
-
+exec_always "autotiling"

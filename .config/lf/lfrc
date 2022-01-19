@@ -1,0 +1,30 @@
+# Setting shell options
+set shell zsh
+set shellopts '-eu'
+# setting escape code 
+set ifs "\n"
+
+set icons	true
+set hidden 	true
+
+# vertical lines
+set drawbox 	true
+set ignorecase 	true
+
+# Setting preview script
+set preview 	true
+set previewer	~/.config/lf/preview.sh
+
+# Remapping rm to trash
+cmd trash %set -f; trash $fx 
+map <delete> trash
+
+# Custom Open command
+cmd open ${{
+   test -L $f && f=$(readlink -f $f)
+   case $(file --mime-type $f -b) in
+       text/*) $EDITOR $fx;;
+       *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+   esac
+}}
+

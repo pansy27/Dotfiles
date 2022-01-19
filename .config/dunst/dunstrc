@@ -27,7 +27,7 @@
 
     idle_threshold = 20
 
-    font = Iosevka SemiBold 8.5
+    font = Poppins Regular 8
     line_height = 4
 
     padding = 09

@@ -5,10 +5,10 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export MOZ_DBUS_REMOTE=1
 export MOZ_ENABLE_WAYLAND=1 
-export XKB_DEFAULT_OPTIONS=ctrl:swapcaps
 export XCURSOR_PATH=${HOME}/.local/share/icons:${XCURSOR_PATH}
-export PATH=$PATH:/home/koko/.local/bin
+export PATH=$PATH:/home/koko/.local/bin:/home/koko/.local/share/gem/ruby/3.0.0/bin
 export EDITOR=nvim
+export WAYFIRE_CONFIG_FILE=/home/koko/.config/wayfire/wayfire.ini
 #export XDG_CURRENT_DESKTOP=Unity
 # Bat theme
 export BAT_THEME='base16'

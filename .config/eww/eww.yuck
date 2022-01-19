@@ -1,7 +1,7 @@
 (defwindow bar
     :monitor 0
     :geometry (geometry :x "0%"
-                        :y "3px"
+                        :y "0px"
                         :width "100%"
                         :height "30px"
                         :anchor "top center")
@@ -28,7 +28,7 @@
            (box :class "mpd-hover"
                 :spacing 5
                 :space-evenly "false"
-             (label :text "" )
+             (label :text "ﱘ" )
               (label :text "${mpd}"
                      :limit-width "20"
                      :class "mpd-name")
@@ -47,7 +47,7 @@
                     "|"
                    (button :onclick "playerctl play-pause"
                            :class "playerctl-icon"
-                    "金")))))))
+                    "")))))))
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -57,23 +57,23 @@
        :spacing 22
        :space-evenly "false"
    (button ;:class "${ws1} ?1"
-           :onclick "swaymsg workspace number 1"
-    "")
+           :onclick "swaymsg workspace 1 " 
+    "")
    (button ;:class "${ws2} ?2"
-           :onclick "swaymsg workspace number 2"
-    "")
+           :onclick "swaymsg workspace 2 "
+    "")
    (button ;:class "${ws3} ?3"
-           :onclick "swaymsg workspace number 3"
-    "")
+           :onclick "swaymsg workspace 3 "
+    "")
    (button ;:class "${ws4} ?4"
-     :onclick "swaymsg workspace number 4"
-    "")
+           :onclick "swaymsg workspace 4 "
+    "")
    (button ;:class "${ws5} ?5"
-     :onclick "swaymsg workspace number 5"
-    "")
+           :onclick "swaymsg workspace 5 "
+    "")
    (button ;:class "${ws6} ?6"
-     :onclick "swaymsg workspace number 6"
-    "")))
+           :onclick "swaymsg workspace 6 "
+    "")))
 
 (defwidget right-side []
   (box :class "right-side"
@@ -86,7 +86,7 @@
     (light)
     (network)
     (date)
-    (sidebar)))
+    (side-bar)))
 
 (defwidget volume []
       (box  :class "volume"
@@ -112,7 +112,7 @@
         (box :class "light"
              :spacing 4
              :space-evenly "false"
-            ""
+            ""
       (revealer :duration "100ms"
                 :transition "slideleft"
                 :reveal "${light_toggle}"
@@ -141,7 +141,7 @@
            :space-evenly "false"
         :halign "center"
         (button :onrightclick "nm-connection-editor &"
-              (label :text ""
+              (label :text "說"
                      :class "network-icon"))
         (revealer :duration "250ms"
                   :reveal "${network_toggle}"
@@ -169,7 +169,7 @@
       (box :class "gammastep"
            :spacing 10
            :space-evenly "false"
-       ""
+       ""
         (revealer :duration "200ms"
                  ; :reveal "${gamma_toggle}"
                   :transition "slideleft"
@@ -177,10 +177,10 @@
  ;              (label :text "${gamma-temp}"))))))
  ))))
 
-(defwidget sidebar []
+(defwidget side-bar []
   (eventbox :onhover "eww open sidebar"
       (button :onclick "eww close sidebar"
-        (label :text ""))))
+        (label :text ""))))
 
 
 ;; Variables

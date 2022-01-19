@@ -97,7 +97,6 @@ alias wprop='swaymsg -t get_tree | grep -i app_id'
 alias clip-clear='rm -f ~/.cache/cliphist/db'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #alias gitlab-push="gitlab push origin main"
-alias dotfiles-push='git push git@github.com:Sad-Shogun/Dotfiles.git'
 alias ..='cd ..'
 alias image='img2sixel'
 alias wev='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''

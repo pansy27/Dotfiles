@@ -5,7 +5,7 @@ STATUS=$(pamixer --get-mute)
 if 
 		 	[ $STATUS = true ];
 	then 
-			echo 			
+			echo 	ﳌ
 else
 			echo 
 fi

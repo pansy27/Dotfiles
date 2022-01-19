@@ -4,13 +4,13 @@ charging=$(acpi | awk '{print $3}')
 
 case $charging in
 	"Unknown,")
-			echo "";;
+			echo "";;
 		"Charging,")
-			echo "";;
+			echo "ﮣ ";;
 		"Discharging,")
-			echo " ";;
+			echo "";;
 		"Full,")
-			echo "";;
+			echo "";;
 	*)	
 	echo ":("
 esac
