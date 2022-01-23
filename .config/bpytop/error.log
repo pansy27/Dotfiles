@@ -183,3 +183,13 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 1357, in refresh
     for f in os.listdir(d):
 FileNotFoundError: [Errno 2] No such file or directory: '/home/koko/.config/bpytop/themes'
+21/01/22 (19:53:44) | ERROR: [Errno 2] No such file or directory: '/home/koko/.config/bpytop/themes'
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1357, in refresh
+    for f in os.listdir(d):
+FileNotFoundError: [Errno 2] No such file or directory: '/home/koko/.config/bpytop/themes'
+23/01/22 (18:47:35) | ERROR: [Errno 2] No such file or directory: '/home/koko/.config/bpytop/themes'
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1357, in refresh
+    for f in os.listdir(d):
+FileNotFoundError: [Errno 2] No such file or directory: '/home/koko/.config/bpytop/themes'

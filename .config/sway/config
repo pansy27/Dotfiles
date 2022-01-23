@@ -363,7 +363,6 @@ for_window [app_id="engrampa"] floating enable
 for_window [app_id="transmission-gtk"] floating enable
 for_window [title="Customise Look and Feel"] floating enable
 for_window [class="xdman-Main"] floating enable
-for_window [title="foot-network"] floating enable
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 730 height 450, move position 300 120
 #for_window [app_id="firefox"] opacity 0.97
 

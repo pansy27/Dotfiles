@@ -8,7 +8,7 @@ SAVEHIST=1000
 bindkey -e
 #
 # Compinstall
-zstyle :compinstall filename '/home/nobu/.zshrc'
+zstyle :compinstall filename '/home/koko/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit
@@ -79,17 +79,10 @@ alias tree='tree -a -I .git'
 alias ncp='ncmpcpp' 
 #alias rm="rm -i"
 alias ls='exa'
-alias l='ptls'
-alias wd='ptpwd'
-alias pdir='ptmkdir'
-alias rm='ptrm'
-#alias rm='trash'
-alias yy='ptcp'
-alias ptouch='pttouch'
+alias rm='trash'
 alias c='clear'
 alias nrf='neofetch --sixel ~/Pictures/Wallpaper/butterflies.png'
 alias koko='bash $HOME/.scripts/fetch.sh'
-alias bunny='bunnyfetch'
 #alias weeb="~/Github/weebsay/weebsay"
 alias temproot='xhost si:localuser:root'
 alias temproot!='xhost -si:localuser:root'
