@@ -1,9 +1,0 @@
-*** MAKE A POWER MENU WITH EWW ***
-
-*bolts for power
-- media on bar
-+ perma network
-+ perma battery
-+ perma date(with cal)
-* sidebar
-+ eww notifications

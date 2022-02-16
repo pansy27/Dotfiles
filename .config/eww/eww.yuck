@@ -1,255 +1,136 @@
-(defwindow bar
+(defwindow bar 
     :monitor 0
     :geometry (geometry :x "0%"
-                        :y "0px"
-                        :width "100%"
-                        :height "30px"
-                        :anchor "top center")
-  :stacking "bottom"
+                :y "1%"
+                :width "95%"
+                :height "32px"
+                :anchor "top center")
+  :stacking "fg"
   :exclusive "true"
   (main-bar))
+
+; sidebar
 (include "./sidebar.yuck")
-;; Main-bar body    
 (defwidget main-bar []
-  (centerbox :orientation "horizontal"
-    :class "main-bar"
-    :space-evenly "true"
-    (mpd)
-    (workspaces)
-    (right-side)))
+    (centerbox :orientation "h"
+      :class "main-bar"
+      :space-evenly "true"
+      (workspaces)
+      (center-widgets)
+      (right-side)))
 
-;; Widgets
-(defwidget mpd []
-   (box :class "mpd"
-        :halign "start"
-        :valign "center"
-      (eventbox :onhover "eww update media_toggle=true"
-                :onhoverlost "eww update media_toggle=false"  
-           (box :class "mpd-hover"
-                :spacing 5
-                :space-evenly "false"
-             (label :text "ﱘ" )
-              (label :text "${mpd}"
-                     :limit-width "20"
-                     :class "mpd-name")
-                 (revealer :duration "300ms"
-                           :reveal "${media_toggle}"
-                           :transition "slideright"
-                      (box :class "controls"
-                           :spacing 15
-                           :space-evenly "false"    
-                   (button :onclick "mpc prev"
-                    "玲")
-                   (button :onclick "mpc toggle"
-                     "")
-                   (button :onclick "mpc next" 
-                    "怜")
-                    "|"
-                   (button :onclick "playerctl play-pause"
-                           :class "playerctl-icon"
-                    "")))))))
+  (defwidget workspaces []
+    (box :class "workspaces"
+         :halign "start"
+      :valign "center"
+      :orientation "horizontal"
+      :spacing 22
+      :space-evenly "false"
+      (button :onclick "swaymsg workspace 1"
+         (image 
+              :path "assets/yukata.png"
+               ))
+      (button :onclick "swaymsg workspace 2"
+         (image 
+              :path "assets/rice.png"
+               ))
+      (button :onclick "swaymsg workspace 3"
+        (image 
+              :path "assets/fuji.png"
+               ))
+      (button :onclick "swaymsg workspace 4"
+         (image 
+              :path "assets/onigiri.png"
+               ))
+      (button :onclick "swaymsg workspace 5"
+         (image 
+              :path "assets/nigiri.png"
+               ))
+      (button :onclick "swaymsg workspace 6"
+         (image 
+              :path "assets/origami.png"
+               ))))
 
-(defwidget workspaces []
-  (box :class "workspaces"
-       :halign "center"
-       :valign "center"
-       :orientation "horizontal"
-       :spacing 22
-       :space-evenly "false"
-   (button ;:class "${ws1} ?1"
-           :onclick "swaymsg workspace 1 " 
-    "")
-   (button ;:class "${ws2} ?2"
-           :onclick "swaymsg workspace 2 "
-    "")
-   (button ;:class "${ws3} ?3"
-           :onclick "swaymsg workspace 3 "
-    "")
-   (button ;:class "${ws4} ?4"
-           :onclick "swaymsg workspace 4 "
-    "")
-   (button ;:class "${ws5} ?5"
-           :onclick "swaymsg workspace 5 "
-    "")
-   (button ;:class "${ws6} ?6"
-           :onclick "swaymsg workspace 6 "
-    "")))
 
-(defwidget right-side []
-  (box :class "right-side"
+  (defwidget center-widgets []
+    (box))
+
+  (defwidget right-side []
+    (box :class "right-side"
       :halign "end"
       :valign "center"
-      :spacing 11
+      :spacing 16
       :space-evenly "false"
-    (volume)
-    (battery)
-    (light)
-    (network)
-    (date)
-    (side-bar)))
+     (volume)
+     (brightness)
+     (battery)
+     (network)
+     (date)
+       ))
 
 (defwidget volume []
-      (box  :class "volume"
-        :spacing 0
-        :space-evenly "false"
-        (button :onrightclick "pamixer -t"
-                :onmiddleclick "pavucontrol &"
-        (label :text "${vol-icon}"
-            :class "vol-icon"))
-          (scale :value "${volume}"
-            :min 0
-            :max 101
-            :class "volume-bar"
-            :onchange "pamixer --set-volume {}"
-            :valign "center"
-            :halign "center"
-            :tooltip "${volume}")))
+  (box :class "volume"
+    :spacing 5
+    :space-evenly "false"
+      (button :onclick "pamixer -t"
+          :onmiddleclick "pavucontrol &"
+        (image :class "volume-icon"
+            :path  "assets/volume.png"))
+        (label :class "volume-label"
+           :text "${volume-level} %")))
 
-    
-(defwidget light []
-  (eventbox :onhover "eww update light_toggle=true"
-            :onhoverlost "eww update light_toggle=false"
-        (box :class "light"
-             :spacing 4
-             :space-evenly "false"
-            ""
-      (revealer :duration "100ms"
-                :transition "slideleft"
-                :reveal "${light_toggle}"
-        (label :text "${light}%")))))
+(defwidget brightness []
+  (box :class "brightness"
+    :spacing 5
+    :space-evenly "false"
+    (image :class "brightness-icon"
+        :path "assets/brightness.png")
+    (label :class "date-value"
+        :text "${brightness-level} %")))
 
 (defwidget battery []
   (box :class "battery"
-    :spacing 1
+    :spacing 5
     :space-evenly "false"
-    (label :text "${battery-state}"
-      :class "battery-icon")
-    (scale :value "${battery}"
-      :min 0
-      :max 101
-      :class "battery-bar"
-      :onchange "${battery}"
-      :valign "center"
-      :halign "center"
-      :tooltip "${battery}")))
+    (image :class "battery-icon"
+        :path "assets/battery.png")
+    (label :class "date-value"
+        :text "${battery-level} %")))
 
 (defwidget network []
-  (eventbox :onhover "eww update network_toggle=true"
-            :onhoverlost "eww update network_toggle=false"
-      (box :class "network"
-           :spacing 10
-           :space-evenly "false"
-        :halign "center"
-        (button :onrightclick "nm-connection-editor &"
-              (label :text "說"
-                     :class "network-icon"))
-        (revealer :duration "250ms"
-                  :reveal "${network_toggle}"
-                  :transition "slideleft"
-             (label :text "${network}"
-                    :class "network-ssid")))))
+  (box :class "network"
+    :spacing 5
+    :space-evenly "false"
+    (image :class "network-icon"
+        :path "assets/network.png")
+    (label :class "network-name"
+        :text "${network-name}")))
 
-(defwidget date []  
-  (eventbox :onhover "eww update date_toggle=true"
-            :onhoverlost "eww update date_toggle=false"
-     (box :class "date"
-           :spacing 10
-           :space-evenly "false"
-    (label :text " ${date}"
-           :class "time")
-       (revealer :duration "200ms"
-                 :transition "slideright"
-                 :reveal "${date_toggle}"
-         (label :text "${date_alt}"
-                :class "date_alt")))))
+(defwidget date []
+  (box :class "date"
+    :spacing 5
+    :space-evenly "false"
+    (image :class "date-icon"
+        :path "assets/date.png")
+    (eventbox :onhover "eww open sidebar"
+        (button :onclick "eww close sidebar"
+          (label :class "date-value"
+                 :text "${date}")))))
 
-(defwidget gammastep []
-  (eventbox :onhover "eww update gamma_toggle=true"
-            :onhoverlost "eww update gamma_toggle=false"
-      (box :class "gammastep"
-           :spacing 10
-           :space-evenly "false"
-       ""
-        (revealer :duration "200ms"
-                 ; :reveal "${gamma_toggle}"
-                  :transition "slideleft"
-;            (button :onclick "${gamma-toggle}"
- ;              (label :text "${gamma-temp}"))))))
- ))))
-
-(defwidget side-bar []
-  (eventbox :onhover "eww open sidebar"
-      (button :onclick "eww close sidebar"
-        (label :text ""))))
-
-
-;; Variables
-
-(defvar media_toggle false)
-
-(defvar network_toggle false)
-
-(defvar light_toggle false)
-
-(defvar date_toggle false)
-
-(defvar gamma_toggle false)
-
-(defvar gamma-toggle
-  "source $HOME/.config/eww/scripts/env.sh && $HOME/.config/eww/scripts/gammastep.sh toggle")
-
-;(defpoll ws1 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w1.sh")
-;
-;(defpoll ws2 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w2.sh")
-;
-;(defpoll ws3 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w3.sh")
-;
-;(defpoll ws4 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w4.sh")
-;
-;(defpoll ws5 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w5.sh")
-;
-;(defpoll ws6 :interval "100ms"
-; "$HOME/.config/eww/scripts/sway/w6.sh")
-
-
-;; Polling variables
-
-(defpoll mpd :interval "2s"
-  "$HOME/.config/eww/scripts/mpd.sh")
-
-(defpoll vol-icon :interval "300ms"
-  "$HOME/.config/eww/scripts/volume.sh")
-
-(defpoll volume :interval "50ms"
+; Variables
+(defpoll volume-level :interval "300ms"
   "pamixer --get-volume")
 
-(defpoll light :interval "500ms"
-  "echo $(light | cut -d. -f1)")
+(defpoll brightness-level :interval "500ms"
+  "light | cut -d. -f1")
 
-(defpoll battery-state :interval "30m"
-  "$HOME/.config/eww/scripts/battery.sh")
-
-(defpoll battery :interval "5s"
+(defpoll battery-level :interval "20m"
   "acpi -b | awk '{print $4}' | sed 's/%//;s/,//'")
 
-(defpoll network :interval "15s"
+(defpoll network-name :interval "10m"
   "$HOME/.config/eww/scripts/network.sh")
 
-(defpoll date :interval "30s"
-    "date +%H:%M")
-
-(defpoll date_alt :interval "9h"
-  "date +'%b %e'")
-
-;(defpoll gamma-temp :interval "1s"
-;  "source $HOME/.config/eww/scripts/env.sh && $HOME/.config/eww/scripts/gammastep.sh temperature")
-
-
-
+(defpoll date :interval "1m"
+  "date +%H:%M")
 
 

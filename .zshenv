@@ -8,6 +8,7 @@ export MOZ_ENABLE_WAYLAND=1
 export XCURSOR_PATH=${HOME}/.local/share/icons:${XCURSOR_PATH}
 export PATH=$PATH:/home/koko/.local/bin
 export EDITOR=nvim
+export TERMINAL=foot
 #export XDG_CURRENT_DESKTOP=Unity
 # Bat theme
 export BAT_THEME='base16'

@@ -1,5 +1,4 @@
-#!/bin/sh
-# Preview script built for use with lf and fzf
+#!/usr/bin/env bash
 
 handle() {
 	if [ -f "$1" ];

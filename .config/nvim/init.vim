@@ -24,21 +24,23 @@ augroup end
  "let g:enable_italic_font = 1
  "let g:enable_bold_font = 1
  "let g:hybrid_transparent_background = 0
-" let g:gruvbox_material_background = 'soft'
-"let g:gruvbox_material_enable_italic = 1
-"let g:gruvbox_material_disable_italic_comment = 0
-"let g:gruvbox_material_enable_bold = 1
-"let g:gruvbox_material_transparent_background = 1
-"
-   let g:everforest_transparent_background = 1
-   let g:everforest_background = 'soft'
-   let g:everforest_enable_italic = 1
+  "let g:gruvbox_material_background = 'soft'
+  "let g:gruvbox_material_enable_italic = 1
+  "let g:gruvbox_material_disable_italic_comment = 0
+  "let g:gruvbox_material_enable_bold = 1
+  "let g:gruvbox_material_transparent_background = 1
+  "
+  let g:everforest_transparent_background = 1
+  let g:everforest_background = 'soft'
+  let g:everforest_enable_italic = 1
+  let g:rose_pine_disable_background = "true"
 " Plugins 
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+"Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
+"Plug 'mengelbrecht/lightline-bufferline'
 Plug 'https://github.com/sainnhe/everforest'
 "Plug 'https://github.com/sainnhe/gruvbox-material'
 Plug 'https://github.com/ap/vim-css-color'
@@ -69,13 +71,15 @@ endif
 
 " Colorscheme
 
-set background=dark
+set background=light
 colorscheme everforest
+
+
 
 " Lightline Config
 let g:lightline = {
-\ 'colorscheme': 'everforest',
-\ 'separator': {}, 
+\ 'colorscheme': 'one',
+\ 'separator': {},
 \ 'subseparator': {}, 
 \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -90,7 +94,12 @@ let g:lightline = {
 \ }
 
 " Always Show Bufferline
-set showtabline=2
+"set showtabline=2
+
+" Changing vertical split separator style
+set fillchars+=vert:\
+" Settings splits direction
+set splitbelow splitright
 
 " Buffer Cycle
 nnoremap <C-n> :bnext<CR> 
@@ -98,9 +107,52 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <A-w> :bd 
 " Clear Highlight
 nnoremap <esc> :noh<return><esc>
+
+" Remapping splits keybinds
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Remapping splits resize keybinds
+nnoremap <silent> <C-Left> :vertical resize +3 <CR>
+nnoremap <silent> <C-Right> :vertical resize -3 <CR>
+nnoremap <silent> <C-Up> :resize +3 <CR>
+nnoremap <silent> <C-Down> :resize -3 <CR>
+
 " \ 'separator': { 
 "	\'left': '', 'right': '' },
 "	\'left': '', 'right': '' },
 "	\'left': '', 'right': '' },
+"
+lua << EOF
+require('lualine').setup {
+options = {
+    icons_enabled = false,
+    theme = 'moon',
+    component_separators = { left = ' ', right = ' '},
+    section_separators = { left = ' ', right = ' '},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {},
 
-
+}
+EOF

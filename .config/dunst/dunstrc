@@ -19,7 +19,7 @@
 
     text_icon_padding = 3
 
-    frame_width = 2
+    frame_width = 3
 
     separator_color = frame
 
@@ -86,19 +86,19 @@
     mouse_right_click = close_all
 
 [urgency_low]
-   background = "#24211880"
+   background = "#242118"
     foreground = "#fcdddd"
-    frame_color = "#bcbcbc"
+    frame_color = "#FBC1C0"
     timeout = 5
 
 [urgency_normal]
-    background = "#24211880"
-    foreground = "#fcdddd"
-    frame_color = "#efdfbb"
+    background = "#f2e9de"
+    foreground = "#464587"
+    frame_color = "#E08BA4"
     timeout = 10
 
 [urgency_critical]
-   background = "#24211880"
+   background = "#242118"
     foreground = "#fcdddd"
     frame_color = "#e35259"
     timeout = 15

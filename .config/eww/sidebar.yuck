@@ -3,7 +3,7 @@
   :geometry (geometry :x "1%"
               :y "10px"
               :width "370px"
-              :height "250px"
+              :height "240px"
               :anchor "top right")
           :stacking "fg"
   (sidebar))

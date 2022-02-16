@@ -1,0 +1,6 @@
+configuration {
+			display-drun: "> ";
+			modi: "drun,run,filebrowser";
+		}
+@theme "koko"
+/* vim:ft=css

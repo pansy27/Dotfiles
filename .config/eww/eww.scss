@@ -1,134 +1,34 @@
-* {	
-	all: unset;
-	font-size: 12px;
-	font-family: JetBrains Mono ;
-  font-weight: 500;
-}
-
-/* Variables */
-$highlight: #bcbcbc;
-$highlight-ws: #fcdddd;
-$highlight-sidebar: #bcbcbc;
-
-
-.main-bar {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.main-bar {
-	background: rgba(56,53,51,0.00);
-}
-
-.playerctl-icon {
-  padding-right: 6px;
-}
-
-.right-side {
-	margin-right: 15px;
-}
-
-scale trough {
+* {
   all: unset;
-  background-color: #4b565c;
-  border-radius: 0px;
-  min-height: 7px;
-  min-width: 70px;
-  margin: 0 5px 0 20px;
-  // slider {
-  //     background: pink;
-  //     margin: -5px;
-  //     min-height: 1px;
-  //     min-width: 1px;
-  //     border-radius: 0px;
-}
-
-scale trough highlight {
-  all: unset;
-  background: #bcbcbc;
-  border-radius: 2px;
-}
-
-.mpd {
- /* background: $highlight;
-  color: #242118;*/
- 	margin-left: 30px;
-  padding: 2px 10px 2px 17px;
-  border-radius: 3;
-}
-
-.workspaces {
-/*  background: $highlight;
-  color: #242118;*/
-  padding: 2px 10px;
-  border-radius: 3;
-}
-
-.volume {
-  padding: 2px 0px 2px 10px;
-  border-radius: 3;
-}
-
-.vol-icon {
+  background: rgba(#FBF4FC,0);
+  color: #60689E;
   font-size: 13px;
-}
-.battery {
-  padding: 2px 0px 2px 0px;
-  border-radius: 3;
-}
-
-.battery-icon {
-  padding-left: 5px;
-}
-
-.network {
-/*  background: $highlight;
-  color: #242118;*/
-  padding: 2px 1px 2px 11px;
-  border-radius: 3;
-}
-
-.network-icon {
-  padding-right: 1px;
-}
-.network-ssid {
-  padding-right: 10px;
-}
-
-.light {
-/*  background: $highlight;
-  color: #242118;*/
-  padding: 2px 5px 2px 9px;
-  border-radius: 3;
-  font-family: Material\-Design\-Iconic\-Font;
-}
-
+  font-family: Zen Kurenaido;
+  font-weight: 700;
+    }
+.main-bar {
+    border: 0px solid black;
+    }
+.workspaces {
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 5px 25px 5px 25px;
+  }
+.volume-icon {
+    font-size: 20px;
+  }
 .date {
- /* background: $highlight;
-  color: #242118;*/
-  padding: 2px 10px;
-  padding-right: 0px;
-  border-radius: 3;
+  margin-right: 10px;
 }
-.date_alt {
-  padding-right: 6px;
-}
-// Active Workspace highlight
-/*
-.1
-.2
-.3
-.4
-.5
-.6 {
-  color: $highlight-ws;
-}
-*/
-
-// Sidebar widget 
-
+.date-icon {
+  padding-bottom: 2px;
+  }
+// sidebar style
 .sidebar {
   all: unset;
+  background: #fbf4fc;
+  border: 2px solid #8378c6;
+  color: #6a6797;
 }
 
 .media {
@@ -139,11 +39,11 @@ scale trough highlight {
 }
 
 .image {
-  border: 2px $highlight solid;
+  border: 2px #8378c6 solid;
 }
 
 .metadata {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .power-menu {
@@ -154,10 +54,12 @@ scale trough highlight {
 
 .power-icon {
   font-size: 25px;
+  font-weight: 600;
   padding: 19px 13px 19px 13px;
-  background: rgba(40,40,40,0.80); 
+  background: rgba(#d1beef,0.80); 
   border-radius: 10px;
   margin-left: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -166,18 +68,13 @@ scale trough highlight {
   margin-top: 2px;
   margin-left: 10px;
   padding: 2px 6px 3px 6px;
+  margin-top: 20px;
   margin-bottom: 10px;
-  background: rgba(40,40,40,0.80); 
+  background: rgba(#d1beef,0.80); 
   border-radius: 9px;
 }
 
 .power-hibernation {
   margin-right: 10px;
-}
-
-.sidebar {
-  color: $highlight-sidebar;
-  background:  rgba(56,53,56,0.54);
-  border: 2px $highlight-sidebar solid;
 }
 
