@@ -1,4 +1,6 @@
 # Dotfiles
-<h1>My Gruvbox Dotfiles</h1>
+<h1>My Crappy Dotfiles :)</h1>
 <br>
-<img src="./Images/final.png">
+<img src="./Images/current.png">
+<br>
+<h4>moved gruvbox dots to gruvbox branch</h4>
