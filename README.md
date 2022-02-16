@@ -3,4 +3,4 @@
 <br>
 <img src="./Images/current.png">
 <br>
-<h4>moved gruvbox dots to gruvbox branch</h4>
+<h6>moved gruvbox dots to gruvbox branch</h6>
