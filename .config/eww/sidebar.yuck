@@ -55,10 +55,10 @@
       (button :onclick "swaymsg exit"
         (label :class "power-icon"
                :text ""))
-      (button :onclick "systemctl suspend"
+      (button :onclick "systemctl suspend && $HOME/.scripts/lock.sh"
         (label :class "power-icon"
                :text "鈴"))
-      (button :onclick "notify-send 'set-up hibernation mooncalf'"
+      (button :onclick "systemctl hibernate && $HOME/.scripts/lock.sh"
        (label :class "power-icon power-hibernation"
              :text ""))))
 

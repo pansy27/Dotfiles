@@ -4,13 +4,13 @@
 #image=$(img2sixel $HOME/Pictures/Wallpaper/butterflies.png -q high -w  $[$(tput cols)*2])
 username=$(whoami)
 hostname=$(cat /etc/hostname)
-linux=$(cat /etc/os-release | rg  -i name -m 1 | awk -F "=" '{ print $2}' | sed 's/"//g')
+#linux=$(cat /etc/os-release | rg  -i name -m 1 | awk -F "=" '{ print $2}' | sed 's/"//g')
 kernel=$(uname -a | awk '{ print $3 }')
-packages=$(pacman -Q | wc -l)
-memory=$(free -h | rg -i mem | awk '{ print $3 " / " $2 }')
+#packages=$(pacman -Q | wc -l)
+#memory=$(free -h | rg -i mem | awk '{ print $3 " / " $2 }')
 uptime=$(uptime --pretty | awk '{ print $2 " " $3 " " $4 " " $5}')
-gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
-icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g")
+#gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
+#icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g")
 wm=$(ps -e | grep -m 1 -o \
 			-e "sway" \
 			-e "kiwmi" \
