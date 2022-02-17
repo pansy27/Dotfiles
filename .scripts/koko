@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Variables
+#image=$(img2sixel $HOME/Pictures/Wallpaper/butterflies.png -q high -w  $[$(tput cols)*2])
+username=$(whoami)
+hostname=$(cat /etc/hostname)
+linux=$(cat /etc/os-release | rg  -i name -m 1 | awk -F "=" '{ print $2}' | sed 's/"//g')
+kernel=$(uname -a | awk '{ print $3 }')
+packages=$(pacman -Q | wc -l)
+memory=$(free -h | rg -i mem | awk '{ print $3 " / " $2 }')
+uptime=$(uptime --pretty | awk '{ print $2 " " $3 " " $4 " " $5}')
+gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | sed "s/'//g")
+icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g")
+wm=$(ps -e | grep -m 1 -o \
+			-e "sway" \
+			-e "kiwmi" \
+			-e "wayfire" \
+			-e "sowm" \
+			-e "catwm" \
+			-e "fvwm" \
+			-e "dwm" \
+			-e "2bwm" \
+			-e "monsterwm" \
+			-e "tinywm" \
+			-e "bspwm" \
+			-e "i3wm" \
+			-e "qtile" \
+			-e "awesomewm" \
+			-e "xmonad")
+
+# Fetch part
+#echo -e "  $(tput bold)\e[1;30mK \e[0m \e[1;31mO \e[0m \e[1;32mN \e[0m \e[1;33mO \e[0m \e[1;34m   D \e[0m \e[1;35mI \e[0m \e[1;36mO \e[0m \e[1;37m   D \e[0m \e[1;32mA \e[0m"
+echo -e "  ⢀⣈⠓⠦⣄⡀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠚⣁⠀⠀ \e[0;34muser\e[0m   : \e[1;31m$username @ $hostname\e[0m"
+#echo -e "  \e[1;31m \e[0m : \e[1;37m$linux\e[0m"
+echo -e " ⠀⠀⣅⣂⠷⢦⡙⢦⠀⠀⠀⠀⡴⢋⡴⠾⣐⣀⠀  \e[1;31mwm\e[0m     : \e[1;33m$wm\e[0m⠀"
+echo -e " ⠀⠀⠹⡅⠾⠆⣽⡌⢧⢀⡀⡼⢡⣯⠰⠷⢈⠇⠀⠀ \e[1;32mloonix\e[0m : \e[1;32m$kernel\e[0m"
+#echo -e "  \e[1;34m \e[0m : \e[1;31m$memory\e[0m"
+echo -e "  ⠀⠀⠈⠐⢊⣉⡉⢘⠠⠄⡃⢉⣉⠑⠀⠁⠀⠀⠀ \e[1;35muptime\e[0m : \e[1;37m$uptime\e[0m"
+#echo -e "  \e[1;36m \e[0m : \e[1;36m$gtk_theme\e[0m"
+#echo -e "  \e[1;37m \e[0m : \e[1;35m$icon_theme\e[0m"
+#echo -e "  \e[1;31m \e[0m : \e[1;33m$wm\e[0m"\e[1;31m \e[0m : \e[1;33m$wm\e[0m
+#echo -e "  \e[1;32m \e[0m : \e[1;35m$(echo $TERM)\e[0m"
+echo -e "  ⠀⠀⠀⣰⠟⡛⢀⣀⠀⠀⣄⡀⢛⠻⡆⠀⠀⠀" 
+echo -e "⠀    ⠳⡘⠛⣸⠟⠀⠀⢻⣇⠛⢃⠌⠀ \e[1;30m \e[0m \e[1;31m  \e[0m \e[1;32m  \e[0m \e[1;33m  \e[0m \e[1;34m  \e[0m \e[1;35m  \e[0m \e[1;36m  \e[0m \e[1;37m  \e[0m"
+echo -e " ⠀⠀ ⠀ ⠈⠉⠁⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀"
+
