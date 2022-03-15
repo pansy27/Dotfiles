@@ -1,0 +1,82 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + d
+	rofi -show drun
+
+# make sxhkd reload its configuration files:
+super + F11
+	pkill -USR1 -x sxhkd
+
+#
+# berry hotkeys
+#
+
+super + {h, j, k, l}
+    berryc window_move {-50 0, 0 50, 0 -50, 50 0}
+
+super + shift +  {h, j, k, l}
+    berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
+
+super + {1-9}
+    berryc switch_workspace {0-9}
+
+super + shift + {1-9}
+    berryc send_to_workspace {0-9}
+
+super + m
+    berryc window_monocle
+
+super + f
+    berryc fullscreen
+
+super +  p
+    berryc snap_right
+
+super + o 
+    berryc snap_left
+
+super + n
+    berryc toggle_decorations
+
+super + Tab
+    berryc cycle_focus
+
+super + w
+    berryc window_close
+
+super + c
+    berryc window_center
+
+super + shift + e
+    berryc quit
+
+~button1
+    berryc pointer_focus
+
+F3
+	pamixer -i 5 --allow-boost
+F2
+	pamixer -d 5 --allow-boost
+F4	
+	pamixer -t
+F9
+	light -A 2
+F6
+	light -U 2
+F7
+	mpc toggle
+alt + a
+	playerctl play-pause
+alt + n
+	"greenclip print | grep . | dmenu -i -l 10 -p clipboard | xargs -r -d'\n' -I '{}' greenclip print '{}'"
+alt + e
+	nautilus
+super + space
+    firefox

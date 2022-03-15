@@ -1,0 +1,83 @@
+* {
+  all: unset;
+  background: rgba(#FBF4FC,0);
+  color: #fff;
+  font-size: 13px;
+  font-family: Zen Kurenaido;
+  font-weight: 700;
+    }
+.main-bar {
+    border: 0px solid black;
+    }
+.workspaces {
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 5px 25px 5px 25px;
+  }
+.volume-icon {
+    font-size: 20px;
+  }
+.date {
+  margin-right: 10px;
+}
+.date-icon {
+  padding-bottom: 2px;
+  }
+// sidebar style
+.sidebar {
+  all: unset;
+  background: rgba(#faf4f7,1.0);
+  border: 2px solid #8378c6;
+  color: #8378c6;
+}
+
+.media {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+}
+
+.image {
+  border: 2px #8378c6 solid;
+}
+
+.metadata {
+  font-weight: 700;
+  color: #8378c6;
+}
+
+.power-menu {
+  margin-top: 00px;
+  padding-top: 4px;
+  padding-bottom: 0px;
+}
+
+.power-icon {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 19px 13px 19px 13px;
+  background: rgba(#d1beef,0.45); 
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #8378c6;
+}
+
+.power-poweroff {
+  font-size: 23px;
+  margin-top: 2px;
+  margin-left: 10px;
+  padding: 2px 6px 3px 6px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background: rgba(#d1beef,0.45); 
+  border-radius: 9px;
+  color: #8378c6;
+}
+
+.power-hibernation {
+  margin-right: 10px;
+}
+

@@ -1,0 +1,32 @@
+(defwindow sidebar-alt
+  :monitor 0
+  :geometry (geometry :x "20%"
+                      :y "20px"
+                      :width "600px"
+                :height "850px"
+              :anchor "top right")
+              :stacking "fg"
+    (side-window))
+(defwidget side-window []
+  (box :class "side-window"
+      :orientation "v"
+      :spacing 0
+    :space-evenly "false"
+    (media-info)
+    (calendar)
+    (label :text "heylo : )")))
+(defwidget media-info []
+  (box :classs "media-info"
+    :orientation  "h"
+      :spacing 10
+    :space-evenly "fasle"
+    (image :path "../../Pictures/Others/Dark_aesthetic.jpg"
+      :image-width "200")
+    (label :text "${metadata}"
+        :class "metadata"
+      :wrap "true")))
+(defwidget cal []
+  (calendar))
+
+(defpoll metadata :interval "5s"
+  "playerctl metadata --format '{{ artist }} - {{ title }}'")

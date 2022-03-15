@@ -1,0 +1,86 @@
+[global]
+    monitor = 0
+    follow = mouse
+    width = (100, 300)
+    height = 300
+    origin = top-right
+    offset = 10x10
+
+    notification_limit = 4
+    progress_bar = true
+    indicate_hidden = yes
+    separator_height = 2
+    text_icon_padding = 3
+
+    frame_width = 2
+    separator_color = frame
+    sort = yes
+    idle_threshold = 20
+
+    font = Balsamiq Sans Regular 9
+    line_height = 4
+
+    padding = 9
+    horizontal_padding = 9
+    text_icon_padding = 9
+
+    markup = full
+    format = "<span><b>%s</b>%p</span>\n%b"
+    alignment = left
+    vertical_alignment = center
+
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    show_indicators = yes
+    icon_position = left
+    min_icon_size = 0
+    max_icon_size = 0
+    icon_size = 128
+    enable_recursive_icon_lookup = true
+    icon_theme = "Papirus-Light, Papirus, Adwaita"
+
+    sticky_history = yes
+    history_length = 10
+
+    dmenu = rofi -dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+
+    title = Dunst
+    class = Dunst
+
+    corner_radius = 0
+    ignore_dbusclose = true
+    layer = top
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, context
+    mouse_right_click = close_all
+
+[urgency_low]
+   background = "#faf4f7"
+    foreground = "#8378c6"
+    frame_color = "#b5adca"
+    default_icon = "$HOME/Pictures/temp/temp/rose.png"
+    timeout = 5
+
+[urgency_normal]
+    background = "#faf4f7"
+    foreground = "#8378c6"
+    frame_color = "#6b679a"
+    default_icon = "$HOME/Pictures/temp/temp/rose.png"
+    timeout = 10
+
+[urgency_critical]
+   background = "#faf4f7"
+    foreground = "#8378c6"
+    frame_color = "#f8928a"
+    default_icon = "$HOME/Pictures/temp/temp/rose.png"
+    timeout = 15
+    # Icon for notifications with critical urgency, uncomment to enable
+    #new_icon = /path/to/icon
+

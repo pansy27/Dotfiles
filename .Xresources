@@ -1,0 +1,72 @@
+! Cursor Theme
+Xcursor.theme: phinger-cursors
+
+! Font settings
+Xft.antialias:	true
+Xft.hinting:	true
+Xft.hintstyle:	hintslight
+! URxvt Settings
+URxvt.scrollBar: false
+URxvt.font:	xft:Iosevka Moe:size=11, xft:CaskaydiaCove Nerd Font:size=11, xft:Noto Color Emoji:size=11
+URxvt.internalBorder: 20
+!URxvt.letterSpace: -1
+
+! URxvt contrl-shift mode
+URxvt*iso14755_52: false
+URxvt*iso14755: false
+
+! URxvt perl extensions
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,resize-font
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	2
+URxvt.url-select.underline:	true
+
+! URxvt keybinds
+!URxvt.keysym.M-c:	perl:clipboard:paste
+!URxvt.keysym.C-v:	perl:selection_to_clipboard
+URxvt.keysym.M-c:	perl:selection_to_clipboard
+URxvt.keysym.C-v:	eval:paste_clipboard
+!URxvt.keysym.Home:	^[[F
+!Urxvt.keysym.End:	^[[H
+!URxvt.keysym.S-Delete:	\033[3;2~
+!URxvt.keysym.S-Home:	\033[1;2H
+!URxvt.keysym.S-End:	\033[1;2F
+!URxvt.keysym.S-Page_Up:	\033[5;2~
+!Urxvt.keysym.S-Page_Down:	\033[6;2~
+! Moon light colorscheme
+! special
+*.foreground:   #6a6797
+*.background:   #faf4fc
+*.cursorColor:  #d1beef
+
+! black
+*.color0:       #fbf5f7
+*.color8:       #d1beef
+
+! red
+*.color1:       #f8928a
+*.color9:       #f8928a
+
+! green
+*.color2:       #a4ae54
+*.color10:      #a4ae54
+
+! yellow
+*.color3:       #d9b335
+*.color11:      #d9b335
+
+! blue
+*.color4:       #8378c6
+*.color12:      #8378c6
+
+! magenta
+*.color5:       #b5adca
+*.color13:      #b5adca
+
+! cyan
+*.color6:       #a0abcf
+*.color14:      #a0abcf
+
+! white
+*.color7:       #6b679a
+*.color15:      #5461a0

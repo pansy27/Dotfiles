@@ -1,0 +1,79 @@
+(defwindow sidebar
+  :monitor 0
+  :geometry (geometry :x "1%"
+              :y "10px"
+              :width "370px"
+              :height "240px"
+              :anchor "top right")
+          :stacking "fg"
+  (sidebar))
+
+(defwidget sidebar []
+  (box :class "sidebar"
+        :orientation "v"
+        :spacing 0
+        :space-evenly "false"
+      (media-info)   
+      (power-menu)))
+
+(defwidget media-info []
+  (box :class "media"
+        :spacing 10
+        :space-evenly "false"
+      (button :onclick "playerctl play-pause"
+        (image :path "${art}"
+               :class "image"
+               :image-width 200))
+     (label :text "${metadata}"
+            :class "metadata"
+        :wrap "true")))
+
+(defwidget todo []
+  (box :class "todo"
+       :orientation "v"
+       :spacing 0
+       :space-evenly "false"
+      (label :text "Todo Items"
+             :class "todo-header"
+            :halign "start")
+       (label :text "${todo-list}"
+             :class "todo-list"
+              :valign "centre"
+              :halign "start")))
+(defwidget calendar []
+  (box :class "calendar"
+       :orientation "h"
+      (calendar)))
+
+(defwidget power-menu []
+  (box :class "power-menu"
+      (button :onclick "systemctl poweroff"
+        (label :class "power-poweroff"
+               :text "⏻"))
+      (button :onclick "systemctl reboot"
+        (label :class "power-icon"
+               :text "ﰇ"))
+      (button :onclick "$HOME/.scripts/lock.sh"
+        (label :class  "power-icon"
+               :text ""))
+      (button :onclick "swaymsg exit"
+        (label :class "power-icon"
+               :text ""))
+      (button :onclick "systemctl suspend && /home/mikage/.scripts/lock.sh"
+        (label :class "power-icon"
+               :text "鈴"))
+      (button :onclick "systemctl hibernate && /home/mikage/.scripts/lock.sh"
+       (label :class "power-icon power-hibernation"
+             :text ""))))
+
+;; Variables
+
+;; Polling Variables
+(defpoll todo-list :interval "5h"
+  "head -n 3 $HOME/.scripts/todo.md")
+
+(defpoll metadata :interval "5s"
+  "playerctl metadata --format '{{ artist }} - {{ title }}'")
+
+(defpoll art :interval "5s"
+  "$HOME/.config/eww/scripts/art.sh")

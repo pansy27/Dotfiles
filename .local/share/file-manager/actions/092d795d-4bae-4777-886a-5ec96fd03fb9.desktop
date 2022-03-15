@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Action
+ToolbarLabel[en_US]=Open alacritty here
+ToolbarLabel[en]=Open alacritty here
+ToolbarLabel[C]=Open alacritty here
+Name[en_US]=Open alacritty here
+Name[en]=Open alacritty here
+Name[C]=Open alacritty here
+Profiles=profile-zero;
+TargetToolbar=true
+
+
+TargetContext=false
+
+[X-Action-Profile profile-zero]
+Exec=/usr/bin/alacritty --working-directory %d
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+# Set decoration geometry
+berryc border_width       5
+berryc inner_border_width 3
+berryc title_height       20
+berryc top_gap            0
+
+# Set decoration colors
+berryc focus_color         d1beef
+berryc unfocus_color       292D3E
+berryc inner_focus_color   323232
+berryc inner_unfocus_color 565679
+berryc text_focus_color    ffffff
+berryc text_unfocus_color  eeeeee
+
+# Other options
+berryc smart_place "true"
+berryc draw_text   "true"
+berryc edge_lock   "true"
+berryc set_font    "Dina-9"
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+picom --experimental-backends &
+greenclip daemon &
+feh --bg-scale $HOME/Pictures/new_world.jpg &
+setxkbmap -option ctrl:swapcaps &
+/usr/bin/dunst &

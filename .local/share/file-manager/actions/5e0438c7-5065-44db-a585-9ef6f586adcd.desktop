@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Action
+ToolbarLabel[en_US]=Set as Wallpaper
+ToolbarLabel[en]=Set as Wallpaper
+ToolbarLabel[C]=Set as Wallpaper
+Name[en_US]=Set as Wallpaper
+Name[en]=Set as Wallpaper
+Name[C]=Set as Wallpaper
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=/home/mikage/.scripts/wall.sh %d/%b
+Name[en_US]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile
