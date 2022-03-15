@@ -3,4 +3,5 @@
 <br>
 <img src=".config/Images/current.png">
 <br>
-<h6>moved gruvbox dots to gruvbox branch</h6>
+<h5> moved moon dots to old-moon branch</h5>
+<h5>moved gruvbox dots to gruvbox branch</h5>
