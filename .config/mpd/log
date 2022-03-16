@@ -536,3 +536,53 @@ Mar 15 17:40 : exception: Failed to open /home/mikage/.config/mpd/playlists: No 
 Mar 15 17:40 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
 Mar 15 17:40 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
 Mar 15 17:44 : player: played "2/UVERworld - ODD FUTURE.mp3"
+Mar 16 00:22 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 00:29 : player: played "2/Fripside/fripSide - Decade.mp3"
+Mar 16 00:37 : player: played "2/Fripside/fripSide - Decade.mp3"
+Mar 16 00:44 : player: played "2/Fripside/fripSide - Decade.mp3"
+Mar 16 00:52 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 00:58 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 01:06 : player: played "2/Fripside/fripSide - Decade.mp3"
+Mar 16 01:11 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 16:33 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:10 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:15 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:20 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:26 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:31 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:39 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 17:45 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 18:09 : player: played "2/Fripside/fripSide - fortissimo-the ultimate crisis.mp3"
+Mar 16 18:09 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 18:09 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 18:09 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 18:13 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:19 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:23 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:27 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:32 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:36 : player: played "1/mp3/Ember Island - Umbrella.mp3"
+Mar 16 18:42 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 18:46 : player: played "5/Maigo Hanyuu - Zangemairi.mp3"
+Mar 16 18:49 : player: played "5/Maigo Hanyuu - Zangemairi.mp3"
+Mar 16 18:53 : player: played "5/Maigo Hanyuu - Zangemairi.mp3"
+Mar 16 20:54 : player: played "5/Maigo Hanyuu - Zangemairi.mp3"
+Mar 16 20:57 : player: played "5/Maigo Hanyuu - Zangemairi.mp3"
+Mar 16 20:58 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 20:58 : ffmpeg/opus: Could not update timestamps for skipped samples.
+Mar 16 21:03 : ffmpeg/opus: Could not update timestamps for discarded samples.
+Mar 16 21:03 : player: played "4/Hiryu No Kishi.mkv"
+Mar 16 21:06 : ffmpeg/opus: Could not update timestamps for skipped samples.
+Mar 16 21:09 : ffmpeg/opus: Could not update timestamps for discarded samples.
+Mar 16 21:09 : player: played "4/Hollow Purple.mkv"
+Mar 16 21:10 : ffmpeg/opus: Could not update timestamps for skipped samples.
+Mar 16 21:13 : ffmpeg/opus: Could not update timestamps for discarded samples.
+Mar 16 21:13 : player: played "4/Hollow Purple.mkv"
+Mar 16 21:15 : ffmpeg/opus: Could not update timestamps for skipped samples.
+Mar 16 21:19 : ffmpeg/opus: Could not update timestamps for discarded samples.
+Mar 16 21:19 : player: played "4/Hollow Purple.mkv"
+Mar 16 21:50 : ffmpeg/opus: Could not update timestamps for skipped samples.
+Mar 16 21:54 : ffmpeg/opus: Could not update timestamps for discarded samples.
+Mar 16 21:54 : player: played "4/Hollow Purple.mkv"
+Mar 16 22:10 : exception: Failed to open /home/mikage/.config/mpd/playlists: No such file or directory
+Mar 16 22:14 : player: played "2/UVERworld, 山田孝之, Aiemu - 来鳥江.mp3"

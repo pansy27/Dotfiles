@@ -5,7 +5,8 @@ local beautiful = require("beautiful")
 require "modules/menu"
 
 -- Wibar configuration
-tbox_separator = wibox.widget.textbox("  |  ")
+tbox_separator_alt = wibox.widget.textbox("  ")
+tbox_separator = wibox.widget.textbox("    ")
 l_sep = wibox.widget.textbox(" [ ")
 m_sep = wibox.widget.textbox(" ][ ")
 r_sep = wibox.widget.textbox(" ] ")
@@ -71,11 +72,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
+        bg = "#faf4f7",
+        fg = "#6b679a",
+        height = 32,
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                tbox_separator,
+                tbox_separator_alt,
                 launcher,
                 tbox_separator,
                 s.mytaglist,
@@ -89,7 +93,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 wibox.widget.systray(),
                 mytextclock,
                 s.mylayoutbox,
-                tbox_separator,
+                tbox_separator_alt,
             },
         }
     }

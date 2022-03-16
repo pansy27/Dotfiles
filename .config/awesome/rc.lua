@@ -80,6 +80,7 @@ ruled.client.connect_signal("request::rules", function()
         rule         = { name = "Picture-in-Picture" },
         properties   = { ontop = true }
     }
+    
 end)
 
 -- Sloppy focus
@@ -89,8 +90,4 @@ end)
 -- Autostart script
 awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
 -- Run garbage collector
-gears.timer {
-    timeout = 30,
-    autostart = true,
-    callback = function() collectgarbage() end
-}
+

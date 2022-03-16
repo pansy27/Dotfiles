@@ -172,3 +172,4 @@ RPROMPT='%T'
 # zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' '+r:|[._-]=** r:|=** l:|=*'
 # zstyle ':completion:*' original true
 # zstyle ':completion:*' menu select
+

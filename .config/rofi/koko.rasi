@@ -48,7 +48,7 @@ element-text {
 		}
 
 element-text selected {
-		text-color: #6b679a;
+		text-color: #343434;
 		}
 
 /* vim:ft=css

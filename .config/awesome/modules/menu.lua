@@ -12,10 +12,10 @@ awesomemenu = {
    { "reboot", function () awesome.spawn("systemctl reboot") end },
 }
 
-mainmenu = awful.menu({ items = { { "awesome", awesomemenu, beautiful.awesome_icon },
+mainmenu = awful.menu({ items = { { "awesome", awesomemenu, "/home/mikage/Pictures/temp/temp/rose.png" },
                                     { "open terminal", terminal }
                                   }
                         })
 
-launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
+launcher = awful.widget.launcher({ image = "/home/mikage/Pictures/temp/temp/rose.png",
                                      menu = mainmenu })

@@ -14,22 +14,42 @@ local theme = {}
 
 theme.font          = "sans 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = "#faf4f7"
+theme.bg_focus      = "#faf4f7"
+theme.bg_urgent     = "#faf4f7"
+theme.bg_minimize   = "#faf4f7"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#6b679a"
+theme.fg_focus      = "#8378c6"
+theme.fg_urgent     = "#f8928a"
+theme.fg_minimize   = "#b5adca"
 
-theme.useless_gap         = dpi(0)
-theme.border_width        = dpi(1)
+theme.useless_gap         = 2
+theme.border_width        = 2
 theme.border_color_normal = "#000000"
 theme.border_color_active = "#535d6c"
 theme.border_color_marked = "#91231c"
+
+theme.tasklist_bg_normal = "#faf4f7"
+theme.tasklist_fg_normal = "#d1beef"
+theme.tasklist_fg_focus = "#8378c6"
+theme.tasklist_bg_focus = "#faf4f7"
+theme.tasklist_fg_minimize = "#b5adca"
+theme.tasklist_bg_minimize = "#fbf5f7"
+theme.tasklist_disable_icon = true
+
+
+theme.taglist_bg_normal = "#faf4f7"
+theme.taglist_fg_normal = "#d1beef"
+theme.taglist_fg_focus = "#8378c6"
+theme.taglist_bg_focus = "#faf4f7"
+theme.taglist_spacing = 6
+
+theme.titlebar_bg_normal = "#faf4f7"
+theme.titlebar_fg_normal = "#d1beef"
+theme.titlebar_fg_focus = "#8378c6"
+theme.titlebar_bg_focus = "#faf4f7"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -61,9 +81,14 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_submenu = "/home/mikage/Pictures/temp/temp/rose.png"
+theme.menu_height = 30
+theme.menu_width  = 150
+
+theme.menu_bg_normal = "#faf4f7"
+theme.menu_fg_normal = "#d1beef"
+theme.menu_fg_focus = "#8378c6"
+theme.menu_bg_focus = "#faf4f7"
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -119,7 +144,8 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
+    theme.menu_height, 
+  theme.bg_focus, theme.fg_focus
 )
 
 -- Define the icon theme for application icons. If not set then the icons
