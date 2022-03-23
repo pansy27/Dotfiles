@@ -57,7 +57,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({ "Mod1", }, "e", function () awful.spawn("nemo") end),
     awful.key({ modkey, }, "space", function () awful.spawn("env MOZ_DISABLE_RDD_SANDBOX=1 firefox") end),
     awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/lock-x.sh") end),
-    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm") end),
+    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("urxvt -e btm") end),
     awful.key({ "Mod1", "Control"}, "Delete", function () awful.spawn("xkill") end),
 -- playerclt and mpc
     awful.key({ "Mod1", }, "a", function () awful.spawn("playerctl play-pause") end),

@@ -44,24 +44,24 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'https://github.com/sainnhe/everforest'
 "Plug 'https://github.com/sainnhe/gruvbox-material'
 Plug 'https://github.com/ap/vim-css-color'
-Plug 'https://github.com/elkowar/yuck.vim'
+"Plug 'https://github.com/elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 call plug#end()
 
 " Vim startify header
-
-let s:header = [
-      \ '',
-           \ ]
-function! s:center(lines) abort
-  let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
-  let centered_lines = map(copy(a:lines),
-        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
-  return centered_lines
-endfunction
-
-let g:startify_custom_header = s:center(s:header)
+"
+"let s:header = [
+"     \ '',
+"          \ ]
+"function! s:center(lines) abort
+" let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+" let centered_lines = map(copy(a:lines),
+"       \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+" return centered_lines
+"endfunction
+"
+"let g:startify_custom_header = s:center(s:header)
 
 " True Color Support
 

@@ -10,7 +10,7 @@ Name[C]=Open file with neovim
 Profiles=profile-zero;
 
 [X-Action-Profile profile-zero]
-Exec=/usr/bin/alacritty --working-directory %d -e nvim %b
+Exec=/usr/bin/urxvt -cd %d -e nvim %b
 Name[en_US]=Default profile
 Name[en]=Default profile
 Name[C]=Default profile

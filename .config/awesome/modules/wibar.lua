@@ -11,11 +11,15 @@ l_sep = wibox.widget.textbox(" [ ")
 m_sep = wibox.widget.textbox(" ][ ")
 r_sep = wibox.widget.textbox(" ] ")
 -- Clock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget{
+        format = '  %d,   %H:%M ',
+        widget = wibox.widget.textclock
+        }
 
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "卵 ", "卵", "卵", "卵", "卵", "卵", "卵", "卵", "卵" }, s)
+    --, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()

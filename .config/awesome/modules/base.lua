@@ -3,7 +3,7 @@ local beautiful = require("beautiful")
 beautiful.init("~/.config/awesome/themes/default/theme.lua")
 beautiful.font = "Poppins 10"
 -- Default terminal and editor
-terminal = "alacritty"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "neovim"
 editor_cmd = terminal .. " -e " .. editor
 -- Mod key

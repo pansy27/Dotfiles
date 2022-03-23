@@ -1,20 +1,9 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
--- Declarative object management
 local ruled = require("ruled")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
-require("awful.hotkeys_popup.keys")
 
 -- Importing rest of the Modules
 require "modules/error"
@@ -79,6 +68,10 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule {
         rule         = { name = "Picture-in-Picture" },
         properties   = { ontop = true }
+    }
+    ruled.client.append_rule {
+        rule         = { class = "mpv" },
+        properties   = { floating = true }
     }
     
 end)

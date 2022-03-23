@@ -21,6 +21,11 @@ URxvt.url-launcher:	/usr/bin/xdg-open
 URxvt.matcher.button:	2
 URxvt.url-select.underline:	true
 
+!URxvt scroll fix
+URxvt.scrollTtyOutput:	false
+URxvt.scrollWithBuffer:	true
+URxvt.scrollTtyKeypress:	true
+
 ! URxvt keybinds
 !URxvt.keysym.M-c:	perl:clipboard:paste
 !URxvt.keysym.C-v:	perl:selection_to_clipboard
