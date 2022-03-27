@@ -104,7 +104,9 @@ bindkey '^[[B' history-substring-search-down
 alias tree='tree -a -I .git'
 alias ncp='$HOME/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug' 
 #alias rm="rm -i"
-alias ls='exa'
+alias ls='ptls'
+alias cwd='ptpwd'
+alias yy='ptcp'
 alias rm='trash'
 alias c='clear'
 alias nrf='neofetch --sixel $HOME/Pictures/Wallpaper/butterflies.png'

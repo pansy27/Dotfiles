@@ -13,4 +13,3 @@ run greenclip daemon
 #run /home/mikage/.scripts/art.sh 
 run nm-applet 
 run urxvtd
-run evtest --grab /dev/input/event6
