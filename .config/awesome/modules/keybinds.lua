@@ -67,6 +67,8 @@ awful.keyboard.append_global_keybindings({
     awful.key({}, "F6", function () awful.spawn("light -U 2") end),
 -- Screenshot keybinds
     awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("shotgun -g $(slop) - | xclip -t 'image/png' -selection clipboard") end),
+    awful.key({ "Shift" }, "Scroll_Lock", function() awful.spawn.with_shell("shotgun -g $(slop) - | swappy -f -") end),
+
 })
 -- }}}
  
