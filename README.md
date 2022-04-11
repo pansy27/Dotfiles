@@ -1,4 +1,5 @@
 <h1>My Crappy Dotfiles :)</h1>
+![ "asuka" ](/Images/asuka.jpg")
 <br>
 <h3> Moon: </h3>
 <img src=".config/Images/current.png">
