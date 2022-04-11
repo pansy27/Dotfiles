@@ -1,4 +1,4 @@
-#files: 792	version: 5.8.1
+#files: 782	version: 5.8.1
 
 _comps=(
 '-' '_precommand'
@@ -132,7 +132,6 @@ _comps=(
 'cabal' '_cabal'
 'cal' '_cal'
 'calendar' '_calendar'
-'cargo' '_cargo'
 'cat' '_cat'
 'catchsegv' '_precommand'
 'cc' '_gcc'
@@ -326,6 +325,8 @@ _comps=(
 'findmnt' '_findmnt'
 'finger' '_finger'
 'firefox' '_mozilla'
+'firewall-cmd' '_firewalld'
+'firewall-offline-cmd' '_firewalld'
 '-first-' '_first'
 'fixdlsrps' '_psutils'
 'fixfmps' '_psutils'
@@ -351,8 +352,6 @@ _comps=(
 'fold' '_fold'
 'folder' '_mh'
 'folders' '_mh'
-'foot' '_foot'
-'footclient' '_footclient'
 'fortune' '_fortune'
 'forw' '_mh'
 'fprev' '_mh'
@@ -572,6 +571,8 @@ _comps=(
 'hostnamectl' '_hostnamectl'
 'hotjava' '_webbrowser'
 'htop' '_htop'
+'_hugo' '_hugo'
+'hugo' '_hugo'
 'iceweasel' '_mozilla'
 'icombine' '_ispell'
 'iconv' '_iconv'
@@ -734,7 +735,6 @@ _comps=(
 'mencal' '_mencal'
 'mere' '_mere'
 'merge' '_rcs'
-'meson' '_meson'
 'metaflac' '_flac'
 'mformat' '_mtools'
 'mgv' '_pspdf'
@@ -827,7 +827,6 @@ _comps=(
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
-'ninja' '_ninja'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -1058,7 +1057,6 @@ _comps=(
 'run-help' '_run-help'
 'rup' '_hosts'
 'rusage' '_precommand'
-'rustup' '_rustup'
 'rview' '_vim'
 'rvim' '_vim'
 'rwho' '_hosts'
@@ -1175,9 +1173,6 @@ _comps=(
 'svnlite' '_subversion'
 'swaks' '_swaks'
 'swanctl' '_swanctl'
-'sway' '_sway'
-'swaylock' '_swaylock'
-'swaymsg' '_swaymsg'
 'swift' '_swift'
 'swiftc' '_swift'
 'sync' '_nothing'
@@ -1397,8 +1392,6 @@ _comps=(
 'whom' '_mh'
 'wiggle' '_wiggle'
 'wipefs' '_wipefs'
-'wl-copy' '_wl-copy'
-'wl-paste' '_wl-paste'
 'wodim' '_cdrecord'
 'wpa_cli' '_wpa_cli'
 'write' '_users_on'
@@ -1458,7 +1451,6 @@ _comps=(
 'yafc' '_yafc'
 'yash' '_sh'
 'yay' '_yay'
-'youtube-dl' '_youtube-dl'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1629,15 +1621,13 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _alacritty _bat _bootctl _btm _busctl \
-            _cargo _coredumpctl _curl _exa _foot \
-            _footclient _hostnamectl _journalctl _kernel-install _libinput \
-            _localectl _loginctl _machinectl _meson _mkinitcpio \
-            _mpv _networkctl _ninja _pacman _playerctl \
-            _pulseaudio _resolvectl _rustup _sd_hosts_or_user_at_host _sd_machines \
-            _sd_outputmodes _sd_unit_files _sway _swaylock _swaymsg \
-            _systemctl _systemd _systemd-analyze _systemd-delta _systemd-inhibit \
-            _systemd-nspawn _systemd-path _systemd-run _systemd-tmpfiles _timedatectl \
-            _udevadm _wl-copy _wl-paste _yay _youtube-dl \
+            _coredumpctl _curl _exa _firewalld _hostnamectl \
+            _hugo _journalctl _kernel-install _libinput _localectl \
+            _loginctl _machinectl _mkinitcpio _mpv _networkctl \
+            _pacman _playerctl _pulseaudio _resolvectl _sd_hosts_or_user_at_host \
+            _sd_machines _sd_outputmodes _sd_unit_files _systemctl _systemd \
+            _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path \
+            _systemd-run _systemd-tmpfiles _timedatectl _udevadm _yay \
             _zathura _cdr _all_labels _all_matches _alternative \
             _approximate _arg_compile _arguments _bash_completions _cache_invalid \
             _call_function _combination _complete _complete_debug _complete_help \

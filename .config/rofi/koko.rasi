@@ -16,7 +16,7 @@ window {
 
 mainbox {
 		padding: 0px 0px 0px 230px;
-		background-image: url("sidebar.png");
+/*		background-image: url("sidebar.png");*/
 		}
 
 inputbar {

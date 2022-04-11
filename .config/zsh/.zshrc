@@ -104,11 +104,14 @@ bindkey '^[[B' history-substring-search-down
 alias tree='tree -a -I .git'
 alias ncp='$HOME/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug' 
 #alias rm="rm -i"
-alias ls='ptls'
-alias cwd='ptpwd'
-alias yy='ptcp'
+#alias ls='ptls'
+#alias cwd='ptpwd'
+#alias yy='ptcp'
+alias rmr='/usr/bin/rm'
 alias rm='trash'
 alias c='clear'
+alias fontp='fontpreview-ueberzug'
+alias tar='tar xvf'
 alias nrf='neofetch --sixel $HOME/Pictures/Wallpaper/butterflies.png'
 alias weeb="weebsay"
 alias temproot='xhost si:localuser:root'
@@ -121,6 +124,7 @@ alias ..='cd ..'
 alias image='img2sixel'
 alias farge='farge --image-viewer sxiv'
 alias wev='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
+alias zzup='uguush -s -o fiery -F "https://zz.ht" -a 5379 -t "bdUVgjTkZMJXk2K1YyIdZU4v2TDKu7EPLX41lcdKhzRdtmexEOQtOwHkwCUFyKuj" -n'
 #alias hx='helix'
 
 # ===> Sourcing addons <===
@@ -138,14 +142,13 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Fzf-Keybinds
 source "/usr/share/fzf/key-bindings.zsh"
 # Fzf-Tab
-source "$HOME/Github/fzf-tab/fzf-tab.plugin.zsh"
+source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 # Prompt
-#ROMPT="  %B%F{14}%n%f %b  %F{14}%m%f   %~%     "
-#PROMPT="%T"
+#PROMPT="  %B%F{14}%n%f %b  %F{14}%m%f   %~%    "
+RPROMPT="%T"
 PROMPT='%B%F{15}%f%b %~ '
-RPROMPT='%T'
-
-
+#PROMPT="%F{4}%n%f %F{4}~%f%F{4}>%f "
+#RPROMPT="%~"
 #!/bin/sh
 #f [ "$TERM" = "linux" ]; then
 # /bin/echo -e "

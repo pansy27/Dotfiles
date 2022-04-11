@@ -12,4 +12,4 @@ run libinput-gestures-setup restart
 run greenclip daemon 
 #run /home/mikage/.scripts/art.sh 
 run nm-applet 
-run urxvtd
+run emacs --daemon

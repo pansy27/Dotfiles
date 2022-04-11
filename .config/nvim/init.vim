@@ -74,25 +74,6 @@ endif
 set background=light
 colorscheme everforest
 
-
-
-" Lightline Config
-let g:lightline = {
-\ 'colorscheme': 'one',
-\ 'separator': {},
-\ 'subseparator': {}, 
-\ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-\ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-\ 'component_type': {
-      \   'buffers': 'tabsel'
-\ }
-\ }
-
 " Always Show Bufferline
 "set showtabline=2
 

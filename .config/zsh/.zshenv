@@ -1,5 +1,6 @@
 
 # Export environment variables.
+export CCACHE_DIR=/tmp/ccache
 export LIBVA_DRIVER_NAME=i965
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache

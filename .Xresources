@@ -7,9 +7,9 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 ! URxvt Settings
 URxvt.scrollBar: false
-URxvt.font:	xft:Iosevka Moe:size=11, xft:CaskaydiaCove Nerd Font:size=11, xft:Noto Color Emoji:size=11
+URxvt.font:	xft:Fifteen:size=11, xft:CaskaydiaCove Nerd Font:size=11, xft:Noto Color Emoji:size=11
 URxvt.internalBorder: 20
-!URxvt.letterSpace: -1
+URxvt.letterSpace: 1
 
 ! URxvt contrl-shift mode
 URxvt*iso14755_52: false

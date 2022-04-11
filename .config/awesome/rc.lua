@@ -73,7 +73,10 @@ ruled.client.connect_signal("request::rules", function()
         rule         = { class = "mpv" },
         properties   = { floating = true }
     }
-    
+    ruled.client.append_rule {
+        rule         = { instance = "Navigator" },
+        properties   = { maximized_vertical = true }
+    }
 end)
 
 -- Sloppy focus

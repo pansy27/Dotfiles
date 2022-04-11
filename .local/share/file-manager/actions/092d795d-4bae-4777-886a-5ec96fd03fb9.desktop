@@ -10,10 +10,9 @@ Profiles=profile-zero;
 TargetToolbar=true
 
 
-TargetContext=false
 
 [X-Action-Profile profile-zero]
-Exec=/usr/bin/urxvt -cd %d
+Exec=/usr/bin/alacritty --working-directory %d
 Name[en_US]=Default profile
 Name[en]=Default profile
 Name[C]=Default profile
