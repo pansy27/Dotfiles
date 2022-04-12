@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) Iosekva FT Extended Extended
     #   - (Windows) Consolas
-    family: Cascadia Code
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: SemiLight
@@ -128,7 +128,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: Fira Code
     # The `style` can be specified to pick a specific face.
     style: Bold
 
@@ -138,7 +138,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -149,7 +149,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Cascadia Code
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -310,7 +310,7 @@ font:
   # Moon-light colorscheme
 colors:
   primary:
-    background: '#faf4fc'
+    background: '#f9fbff'
     foreground: '#6a6797'
   cursor:
     text: '#fbf5f7'

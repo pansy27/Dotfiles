@@ -3,20 +3,20 @@
     margin:     0;
     padding:    0;
 		height: 400px;
-		background-color: #faf4f7;
-		text-color: #8378c6;
+		background-color: #f9fbff;
+		text-color: grey;
 		}
 
 window {
 		border-radius: 3px;
 		transparency: "real";
 		border: 2px solid ;
-		border-color: #faf4f7;
+		border-color: #f9fbff;
 		}
 
 mainbox {
 		padding: 0px 0px 0px 230px;
-/*		background-image: url("sidebar.png");*/
+		background-image: url("sidebar.png");
 		}
 
 inputbar {

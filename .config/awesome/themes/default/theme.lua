@@ -12,44 +12,44 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "sans 8"
+theme.font          = "Iosevka Moe 8"
 
-theme.bg_normal     = "#faf4f7"
-theme.bg_focus      = "#faf4f7"
-theme.bg_urgent     = "#faf4f7"
-theme.bg_minimize   = "#faf4f7"
+theme.bg_normal     = "#f9fbff"
+theme.bg_focus      = "#f9fbff"
+theme.bg_urgent     = "#f9fbff"
+theme.bg_minimize   = "#f9fbff"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#6b679a"
+theme.fg_normal     = "#8378c6"
 theme.fg_focus      = "#8378c6"
 theme.fg_urgent     = "#f8928a"
-theme.fg_minimize   = "#b5adca"
+theme.fg_minimize   = "#d1beef"
 
 theme.useless_gap         = 2
 theme.border_width        = 2
-theme.border_color_normal = "#000000"
-theme.border_color_active = "#535d6c"
+theme.border_color_normal = "#f9fbff"
+theme.border_color_active = "#f9fbff"
 theme.border_color_marked = "#91231c"
 
-theme.tasklist_bg_normal = "#faf4f7"
+theme.tasklist_bg_normal = "#f9fbff"
 theme.tasklist_fg_normal = "#d1beef"
 theme.tasklist_fg_focus = "#8378c6"
-theme.tasklist_bg_focus = "#faf4f7"
+theme.tasklist_bg_focus = "#f9fbff"
 theme.tasklist_fg_minimize = "#b5adca"
 theme.tasklist_bg_minimize = "#fbf5f7"
 theme.tasklist_disable_icon = true
 
 
-theme.taglist_bg_normal = "#faf4f7"
+theme.taglist_bg_normal = "#f9fbff"
 theme.taglist_fg_normal = "#d1beef"
 theme.taglist_fg_focus = "#8378c6"
-theme.taglist_bg_focus = "#faf4f7"
+theme.taglist_bg_focus = "#f9fbff"
 theme.taglist_spacing = 6
 
-theme.titlebar_bg_normal = "#faf4f7"
+theme.titlebar_bg_normal = "#f9fbff"
 theme.titlebar_fg_normal = "#d1beef"
 theme.titlebar_fg_focus = "#8378c6"
-theme.titlebar_bg_focus = "#faf4f7"
+theme.titlebar_bg_focus = "#f9fbff"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -85,10 +85,10 @@ theme.menu_submenu = "/home/mikage/Pictures/temp/temp/rose.png"
 theme.menu_height = 30
 theme.menu_width  = 150
 
-theme.menu_bg_normal = "#faf4f7"
+theme.menu_bg_normal = "#f9fbff"
 theme.menu_fg_normal = "#d1beef"
 theme.menu_fg_focus = "#8378c6"
-theme.menu_bg_focus = "#faf4f7"
+theme.menu_bg_focus = "#f9fbff"
 
 -- You can add as many variables as
 -- you wish and access them by using

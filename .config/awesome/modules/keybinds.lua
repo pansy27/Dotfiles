@@ -56,7 +56,7 @@ awful.keyboard.append_global_keybindings({
 -- others
     awful.key({ modkey, }, "a", function () awful.spawn("emacsclient -c") end),
     awful.key({ "Mod1", }, "e", function () awful.spawn("nemo") end),
-    awful.key({ modkey, }, "space", function () awful.spawn("firefox") end),
+    awful.key({ modkey, }, "space", function () awful.spawn("env MOZ_DISABLE_RDD_SANDBOX=1 firefox") end),
     awful.key({ modkey, "Shift" }, "space", function () awful.spawn("firefox --private-window") end),
     awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/lock-x.sh") end),
     awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm") end),
@@ -69,7 +69,8 @@ awful.keyboard.append_global_keybindings({
     awful.key({}, "F9", function () awful.spawn("light -A 2") end),
     awful.key({}, "F6", function () awful.spawn("light -U 2") end),
 -- Screenshot keybinds
-    awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("uguush -s -o fiery -F \"https://zz.ht\" -a 5379 -t \"bdUVgjTkZMJXk2K1YyIdZU4v2TDKu7EPLX41lcdKhzRdtmexEOQtOwHkwCUFyKuj\" -n") end),
+--    awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("uguush -s -o fiery -F \"https://zz.ht\" -a 5379 -t \"bdUVgjTkZMJXk2K1YyIdZU4v2TDKu7EPLX41lcdKhzRdtmexEOQtOwHkwCUFyKuj\" -n") end),
+    awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("shotgun -g $(slop) - | xclip -t 'image/png' -selection clipboard") end),
     awful.key({ "Shift" }, "Scroll_Lock", function() awful.spawn.with_shell("shotgun -g $(slop) - | swappy -f -") end),
 
 })

@@ -76,8 +76,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
-        bg = "#faf4f7",
-        fg = "#6b679a",
+        bg = "#f9fbff",
+        fg = "#d1beef",
         height = 32,
         widget   = {
             layout = wibox.layout.align.horizontal,

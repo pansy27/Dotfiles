@@ -15,9 +15,9 @@ export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=qt5ct
 # Fzf colors
 export FZF_DEFAULT_OPTS='--layout=reverse -i --border sharp
-    --color=fg:#6a6797,bg:#faf4f7,hl:#81a1c1
-    --color=fg+:#6a6797,bg+:#faf4f7,hl+:#f8928a
-    --color=info:#faf4f7,prompt:#f8928a,pointer:#b48dac
+    --color=fg:#6a6797,bg:#f8fbff,hl:#81a1c1
+    --color=fg+:#6a6797,bg+:#f9fbff,hl+:#f8928a
+    --color=info:#f9fbff,prompt:#f8928a,pointer:#b48dac
     --color=marker:#f8928a,spinner:#a4ae54,header:#f8928a'
 #export XDG_CURRENT_DESKTOP=Unity
 export XINITRC=$XDG_CONFIG_HOME/xorg/xinitrc
