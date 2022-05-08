@@ -34,6 +34,8 @@ augroup end
   let g:everforest_background = 'soft'
   let g:everforest_enable_italic = 1
   let g:rose_pine_disable_background = "true"
+   let g:edge_better_performance = 1
+   let g:edge_transparent_background = 1
 " Plugins 
 
 call plug#begin(stdpath('data') . '/plugged')
@@ -46,6 +48,7 @@ Plug 'https://github.com/sainnhe/everforest'
 Plug 'https://github.com/ap/vim-css-color'
 "Plug 'https://github.com/elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'sainnhe/edge'
 "Plug 'mhinz/vim-startify'
 call plug#end()
 
@@ -72,7 +75,7 @@ endif
 " Colorscheme
 
 set background=light
-colorscheme everforest
+colorscheme edge
 
 " Always Show Bufferline
 "set showtabline=2
@@ -95,7 +98,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Remapping splits resize keybinds
+" Remapping split resize keybinds
 nnoremap <silent> <C-Left> :vertical resize +3 <CR>
 nnoremap <silent> <C-Right> :vertical resize -3 <CR>
 nnoremap <silent> <C-Up> :resize +3 <CR>
@@ -110,7 +113,7 @@ lua << EOF
 require('lualine').setup {
 options = {
     icons_enabled = false,
-    theme = 'moon',
+    theme = 'edge',
     component_separators = { left = ' ', right = ' '},
     section_separators = { left = ' ', right = ' '},
     disabled_filetypes = {},

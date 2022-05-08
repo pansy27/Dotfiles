@@ -31,7 +31,7 @@
     "mpd": {
         "format": "{stateIcon} {artist} - {title} ",
         "format-disconnected":  "",
-        "format-stopped": "",
+        "format-stopped": "ﱙ",
         "unknown-tag": "Owo",
         "interval": 2,
         "title-len": 30,
