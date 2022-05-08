@@ -17,7 +17,7 @@ theme.font          = "Iosevka Moe 8"
 theme.bg_normal     = "#f9fbff"
 theme.bg_focus      = "#f9fbff"
 theme.bg_urgent     = "#f9fbff"
-theme.bg_minimize   = "#f9fbff"
+theme.bg_minimize   = "#b5adca"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#8378c6"

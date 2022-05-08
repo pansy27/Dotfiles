@@ -14,8 +14,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 autoload -Uz compinit
 # 
 # -- osc7 escape part ----
-autoload -Uz add-zsh-hook
-add-zsh-hook -Uz chpwd osc7_cwd
+#autoload -Uz add-zsh-hook
+#add-zsh-hook -Uz chpwd osc7_cwd
 # --------------------------
 compinit
 # End
@@ -28,7 +28,7 @@ setopt auto_pushd
 #setopt always_to_end
 setopt hist_ignore_dups
 setopt hist_save_no_dups
-setopt beep
+#setopt beep
 #setopt correct
 #setopt hash_list_all
 # End
@@ -41,24 +41,25 @@ zstyle ':fzf-tab:*' fzf-flags -i --color=hl:#a4ae54
 export FZF_CTRL_T_COMMAND='find'
 # End
 #
-# emit osc 7 escape sequence
-_urlencode() {
-	local length="${#1}"
-	for (( i = 0; i < length; i++ )); do
-		local c="${1:$i:1}"
-		case $c in
-			%) printf '%%%02X' "'$c" ;;
-			*) printf "%s" "$c" ;;
-		esac
-	done
-}
-
-osc7_cwd() {
-	printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(_urlencode "$PWD")"
-}
+# emit osc 7 escape sequence (foot)
+#_urlencode() {
+# local length="${#1}"
+# for (( i = 0; i < length; i++ )); do
+# 	local c="${1:$i:1}"
+# 	case $c in
+# 		%) printf '%%%02X' "'$c" ;;
+# 		*) printf "%s" "$c" ;;
+# 	esac
+# done
+#}
+#
+#osc7_cwd() {
+# printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(_urlencode "$PWD")"
+#}
 # end 
 #
 # Keybinds
+# for st, replace [F with [4~
 bindkey "^[[F" end-of-line
 bindkey "^[[H" beginning-of-line
 bindkey "^[[3~" delete-char
@@ -102,17 +103,17 @@ bindkey '^[[B' history-substring-search-down
 
 # Aliases
 alias tree='tree -a -I .git'
-alias ncp='$HOME/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug' 
+#alias ncp='ncmpcpp' 
+alias ncp='$XDG_CONFIG_HOME/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
 #alias rm="rm -i"
-#alias ls='ptls'
-#alias cwd='ptpwd'
-#alias yy='ptcp'
-alias rmr='/usr/bin/rm'
-alias rm='trash'
+alias ls='ptls'
+alias cwd='ptpwd'
+alias yy='ptcp'
+alias rt='trash'
 alias c='clear'
 alias fontp='fontpreview-ueberzug'
 alias tar='tar xvf'
-alias nrf='neofetch --sixel $HOME/Pictures/Wallpaper/butterflies.png'
+alias nrf='neofetch --sixel $HOME/Pictures/Pfp/cigarette.jpg'
 alias weeb="weebsay"
 alias temproot='xhost si:localuser:root'
 alias temproot!='xhost -si:localuser:root'
@@ -145,10 +146,15 @@ source "/usr/share/fzf/key-bindings.zsh"
 source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 # Prompt
 #PROMPT="  %B%F{14}%n%f %b  %F{14}%m%f   %~%    "
-RPROMPT="%T"
-PROMPT='%B%F{15}%f%b %~ '
+#RPROMPT="%T"
+#PROMPT='%B%F{15}%f%b %~ '
 #PROMPT="%F{4}%n%f %F{4}~%f%F{4}>%f "
 #RPROMPT="%~"
+#PROMPT="  %1d ~ "
+#PROMPT="(─‿‿─)  %1d ~ "
+#PROMPT="｡◕‿‿◕ ｡ " 
+#PROMPT="《=^ェ^=》"
+PROMPT=" %1d  "
 #!/bin/sh
 #f [ "$TERM" = "linux" ]; then
 # /bin/echo -e "

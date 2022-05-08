@@ -1,5 +1,5 @@
 #!/bin/bash
-fallback="../../Pictures/Others/not_human.jpg"
+fallback="../../Pictures/Pfp/not_human.jpg"
 mpris="$HOME/.mozilla/firefox/firefox-mpris"
 if 
 	[[ -d "$HOME/.mozilla/firefox/firefox-mpris" ]];

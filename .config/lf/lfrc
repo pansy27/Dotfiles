@@ -4,11 +4,11 @@ set shellopts '-eu'
 # setting escape code 
 set ifs "\n"
 
-#set icons	true
-set hidden 	true
+set icons	true
+#set hidden 	true
 
 # vertical lines
-set drawbox 	true
+#set drawbox 	true
 set ignorecase 	true
 
 # Setting preview script

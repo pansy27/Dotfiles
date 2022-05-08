@@ -1,5 +1,5 @@
-execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
-#execute_on_song_change=notify-send "Now Playing" "$(mpc --format '%artist% - %title%' current)"
+#execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
+execute_on_song_change=notify-send "Now Playing" "$(mpc --format '%artist% - %title%' current)"
 
 # Files
  mpd_music_dir = "~/Music"  
@@ -90,7 +90,7 @@ ignore_leading_the = "yes"
 empty_tag_marker = ""
 
 
-#visualizer_look = "  "          
+visualizer_look = "  "          
 #visualizer_look = "▌▌"          
 
 startup_screen = visualizer      

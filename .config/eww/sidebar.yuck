@@ -59,12 +59,12 @@
       (button :onclick "swaymsg exit"
         (label :class "power-icon"
                :text ""))
-      (button :onclick "systemctl suspend && /home/mikage/.scripts/lock.sh"
+      (button :onclick "systemctl suspend && /home/rider/.scripts/lock.sh"
         (label :class "power-icon"
-               :text "鈴"))
-      (button :onclick "systemctl hibernate && /home/mikage/.scripts/lock.sh"
-       (label :class "power-icon power-hibernation"
-             :text ""))))
+        :text ""))))
+;;      (button :onclick "systemctl hibernate && /home/rider/.scripts/lock.sh"
+;;       (label :class "power-icon power-hibernation"
+;;             :text ""))))
 
 ;; Variables
 

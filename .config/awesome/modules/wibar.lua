@@ -1,24 +1,22 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-
+require "modules/rider"
 require "modules/menu"
 
 -- Wibar configuration
-tbox_separator_alt = wibox.widget.textbox("  ")
-tbox_separator = wibox.widget.textbox("    ")
-l_sep = wibox.widget.textbox(" [ ")
-m_sep = wibox.widget.textbox(" ][ ")
-r_sep = wibox.widget.textbox(" ] ")
+-- toy widget
+riderwidget = wibox.widget.textbox()
+riderwidget.text = "    "
 -- Clock widget
 mytextclock = wibox.widget{
-        format = '  %d,   %H:%M ',
+        format = '  %d,   %H:%M ',
         widget = wibox.widget.textclock
         }
 
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s)
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     --, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
@@ -76,28 +74,25 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
-        bg = "#f9fbff",
-        fg = "#d1beef",
-        height = 32,
+        height = 25,
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                tbox_separator_alt,
                 launcher,
-                tbox_separator,
+                riderwidget,
                 s.mytaglist,
+                riderwidget,
                 s.mypromptbox,
-                tbox_separator,
             },
             s.mytasklist, -- Middle widget
             { -- Right widgets
-                tbox_separator,
                 layout = wibox.layout.fixed.horizontal,
                 wibox.widget.systray(),
+                ridgetwidget,
                 mytextclock,
                 s.mylayoutbox,
-                tbox_separator_alt,
+                riderwidget,
             },
         }
     }

@@ -56,15 +56,19 @@ awful.keyboard.append_global_keybindings({
 -- others
     awful.key({ modkey, }, "a", function () awful.spawn("emacsclient -c") end),
     awful.key({ "Mod1", }, "e", function () awful.spawn("nemo") end),
-    awful.key({ modkey, }, "space", function () awful.spawn("env MOZ_DISABLE_RDD_SANDBOX=1 firefox") end),
+    awful.key({ modkey, }, "space", function () awful.spawn("firefox") end),
     awful.key({ modkey, "Shift" }, "space", function () awful.spawn("firefox --private-window") end),
-    awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/lock-x.sh") end),
-    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm") end),
+    awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/new-lock.sh") end),
+    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("tym -e btm") end),
     awful.key({ "Mod1", "Control"}, "Delete", function () awful.spawn("xkill") end),
     awful.key({ modkey, }, "g", function () awful.spawn("gtk3-widget-factory") end),
 -- playerclt and mpc
     awful.key({ "Mod1", }, "a", function () awful.spawn("playerctl play-pause") end),
     awful.key({}, "F7", function () awful.spawn("mpc toggle") end),
+    awful.key({}, "XF86AudioStop", function () awful.spawn("mpc stop") end),
+    awful.key({}, "XF86AudioNext", function () awful.spawn("mpc next") end),
+    awful.key({}, "XF86AudioPrev", function () awful.spawn("mpc prev") end),
+
 -- light
     awful.key({}, "F9", function () awful.spawn("light -A 2") end),
     awful.key({}, "F6", function () awful.spawn("light -U 2") end),

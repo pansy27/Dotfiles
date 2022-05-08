@@ -11,6 +11,7 @@ require "modules/base"
 require "modules/layouts"
 require "modules/keybinds"
 require "modules/wibar"
+require "modules/rider"
 require "modules/notifs"
 require "modules/titlebar"
 require "modules/wallpaper"
@@ -52,14 +53,14 @@ ruled.client.connect_signal("request::rules", function()
         },
         properties = { floating = true }
     }
-
+--[[
     -- Add titlebars to normal clients and dialogs
     ruled.client.append_rule {
         id         = "titlebars",
         rule_any   = { type = { "normal", "dialog" } },
         properties = { titlebars_enabled = true      }
     }
-
+    ]]--
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- ruled.client.append_rule {
     --     rule       = { class = "Firefox"     },
@@ -73,10 +74,10 @@ ruled.client.connect_signal("request::rules", function()
         rule         = { class = "mpv" },
         properties   = { floating = true }
     }
-    ruled.client.append_rule {
+ --[[   ruled.client.append_rule {
         rule         = { instance = "Navigator" },
         properties   = { maximized_vertical = true }
-    }
+    }]]--
 end)
 
 -- Sloppy focus

@@ -1,0 +1,99 @@
+/* Defining color variables */
+@define-color --fg #99806a;
+@define-color	--bg #f9fbff;
+
+* {
+	border: none;
+	min-height: 0;
+}
+
+/* Waybar main window */
+window#waybar {
+	background: rgba(249, 251, 255, 0.0);
+	color: #6a679a;
+	font-family: Balsamiq Sans;
+	font-size: 12px;
+}
+
+/* Tooltip */
+tooltip {
+  background: rgba(249, 251, 255, 1.0);
+  border: 2px solid rgba(34, 34, 34, 0.5);
+}
+tooltip label {
+ 	color: @--fg;
+}
+/* System tray */
+#tray {
+		background: @--bg;
+		padding: 2px;
+		margin: 0px 13px;
+		border-radius: 30px;
+		padding: 0px 15px;
+	}
+#tray menu {
+		background: #f9fbff;
+		color: #91a8d0;
+		border: 2px solid @--fg;
+		border-radius: 6px;
+	}
+#tray menu menuitem {
+		font-family: Google Sans;
+		font-size: 13px;
+		padding-top: 5px;
+	}
+#tray menu menuitem:hover {
+			color: #8378c6;
+			background: rgba(223,227,196,0.6);
+}
+/* MPD */
+#mpd {
+		margin-left: 140px;
+		background: @--bg;
+		color: @--fg;
+		padding: 2px;
+		margin-left: 13px;
+		border-radius: 30px;
+		padding: 0px 25px;
+	}
+
+/* Workspaces */
+#workspaces {
+		background: @--bg;
+		padding: 2px;
+		margin-left: 13px;
+		border-radius: 30px;
+		padding: 0px 10px;
+	}
+#workspaces button {
+		color: #efbab7;
+}
+#workspaces button.focused {
+		color: @--fg;
+	}
+
+/* Date */
+#clock {
+		background: @--bg;
+		color: @--fg;
+		padding: 2px;
+		margin-left: 13px;
+		border-radius: 30px;
+		padding: 0px 25px;
+}
+
+/* Right side */
+#network, #pulseaudio, #battery, #backlight {
+		background: @--bg;
+		color: @--fg;
+		padding: 2px 5px;
+}
+#network {
+	border-radius: 30px 0px 0px 30px;
+	padding-left: 20px;
+}
+
+#backlight {
+	border-radius: 0px 30px 30px 0px;
+	padding-right: 15px;
+}

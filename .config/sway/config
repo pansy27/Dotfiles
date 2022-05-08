@@ -16,7 +16,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -102,7 +102,7 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioStop exec mpc stop
 bindsym $alt+a exec playerctl play-pause
 
-bindsym $alt+e exec nautilus
+bindsym $alt+e exec nemo
 
 bindsym $mod+v exec ~/.scripts/lock.sh
 bindsym $alt+n exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
@@ -110,7 +110,8 @@ bindsym Scroll_Lock exec slurp | grim -g - - | wl-copy
 bindsym shift+Scroll_Lock exec "~/.scripts/test.sh"
 
 bindsym $mod+shift+z exec killall -s SIGINT wf-recorder
-bindsym $mod+space exec env MOZ_ENABLE_WAYLAND=1 env MOZ_DBUS_REMOTE=1 firefox
+bindsym $mod+space exec env MOZ_ENABLE_WAYLAND=1 env MOZ_DISABLE_RDD_SANDBOX=1 env MOZ_DBUS_REMOTE=1 firefox
+bindsym $mod+shift+space exec env MOZ_ENABLE_WAYLAND=1 env MOZ_DISABLE_RDD_SANDBOX=1 env MOZ_DBUS_REMOTE=1 firefox --private-window
 
 bindsym ctrl+space exec dunstctl close
 bindsym ctrl+shift+space exec dunstctl close-all
@@ -121,6 +122,7 @@ bindsym $mod+g exec gtk3-widget-factory
 
 bindsym $mod+c exec killall -SIGUSR1 waybar
 
+bindsym ctrl+shift+escape exec footclient -e btm
 #bindsym $mod+b exec farge
 bindsym $mod+b exec "$HOME/.scripts/bar.sh"
 
@@ -272,8 +274,6 @@ for_window [title="^.*"] title_format ""
 for_window [app_id="iwgtk"] floating enable
 #for_window [app_id="firefox"] opacity 0.97
 
-smart_gaps 	 on
-smart_borders off
 gaps inner	 4
 gaps outer   4
 #hide_edge_borders both
@@ -283,7 +283,7 @@ default_floating_border pixel  2
 #### Sway Window Colors ####
 set $unfocused  #a6a1ae
 set $urgent     #f8928a
-set $normal     #c3aaea
+set $normal     #99806a
 set $inactive   #d1beef
 
 # colors                    border        bg          text         indicator   chld_brdr
@@ -300,14 +300,14 @@ seat * xcursor_theme phinger-cursors 24
 include /etc/sway/config.d/*
     
 # Autostart
-#exec_always "nm-applet --indicator"
+exec_always "nm-applet --indicator"
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
 exec "foot --server"
 exec_always "~/.config/gtk-3.0/import-gsettings.sh &"
 exec "wl-paste --watch cliphist store &"
 exec "libinput-gestures-setup restart"
-exec "eww open bar"
+exec "waybar"
 exec_always "swaybg -i ~/.cache/wallpaper -m fill"
 #exec "udiskie"
 #exec_always "autotiling"
-exec "$HOME/.scripts/art.sh"
+#exec "$HOME/.scripts/art.sh"
