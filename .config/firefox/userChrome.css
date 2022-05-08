@@ -1,0 +1,293 @@
+/* 
+┌─┐┬┌┬┐┌─┐┬  ┌─┐
+└─┐││││├─┘│  ├┤ 
+└─┘┴┴ ┴┴  ┴─┘└─┘
+┌─┐┌─┐─┐ ┬      
+├┤ │ │┌┴┬┘      
+└  └─┘┴ └─
+
+by Miguel Avila
+
+*/
+
+/*
+ 
+┌─┐┌─┐┌┐┌┌─┐┬┌─┐┬ ┬┬─┐┌─┐┌┬┐┬┌─┐┌┐┌
+│  │ ││││├┤ ││ ┬│ │├┬┘├─┤ │ ││ ││││
+└─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘
+
+*/
+
+:root {
+  --sfwindow: #f9fbff;
+  --sfsecondary: #f9fbff;
+  --tab-background: #f9fbff;
+  /* tab variables */
+  --tab-font-family: "SF Pro Text", sans;
+  --tab-font-size: 10pt;
+  --tab-font-weight: 500;
+  --tab-color: #8378c6;
+  --tab-selected-background: #f4e4d5;
+  --tab-non-active-color: #343434;
+  /* urlbar variables */
+  --urlbar-font-family: "SF Pro Text", serif;
+  --urlbar-font-size: 10.5pt;
+  --urlbar-font-weight: 500;
+  --urlbar-color: #8378c6;
+  /* urlbar results variables */
+  --urlbar-results-font-family: "SF Pro Text", serif;
+  --urlbar-results-font-size: 10.5pt;
+  --urlbar-results-font-weight: 500;
+  --urlbar-results-url-color: #6b679a;
+}
+
+/* Urlbar View */
+
+/*─────────────────────────────*/
+/* Comment this section if you */
+/* want to show the URL Bar    */
+/*─────────────────────────────*/
+
+/*.urlbarView {
+  display: none !important;
+}*/
+
+*/
+/*─────────────────────────────*/
+
+/* 
+┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
+│  │ ││  │ │├┬┘└─┐
+└─┘└─┘┴─┘└─┘┴└─└─┘ 
+*/
+/* Settings fonts for UI */
+.tab-text {
+  font-family: var(--tab-font-family);
+  font-weight: var(--tab-font-weight);
+  font-size: var(--tab-font-size) !important;
+  color: var(--tab-color);
+}
+#urlbar-results {
+  font-family: var(--urlbar-results-font-family);
+  font-weight: var(--urlbar-results-font-weight);
+  font-size: var(--urlbar-results-font-size) !important;
+  color: var(--urlbar-results-color) !important;
+}
+#urlbar-input {
+  font-size: var(--urlbar-font-size) !important;
+  color: var(--urlbar-color) !important;
+  font-family: var(--urlbar-font-family) !important;
+  font-weight: var(--urlbar-font-weight)!important;
+  text-align: center !important;
+}
+.urlbarView-url, .search-panel-one-offs-container {
+  color: var(--urlbar-results-url-color) !important;
+  font-family: var(--urlbar-font-family);
+  font-weight: var(--urlbar-results-font-weight);
+  font-size: var(--urlbar-font-size) !important;
+}
+
+/* Tabs colors  */
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[multiselected='true'],
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected='true'] {
+  background-image: none !important;
+  background-color: var(--tab-selected-background) !important;
+  border: 5px solid transparent !important;
+  border-bottom: 0px !important;
+}
+
+/* Inactive tabs color */
+#navigator-toolbox {
+  background-color: var(--sfwindow) !important;
+}
+/* ----- Non active tabs have darker text ----- */
+.tabbrowser-tab:not([visuallyselected="true"]):not([multiselected]):not(:hover) {
+  color: var(--tab-non-active-color) !important;
+}
+/* Window colors  */
+:root {
+  --toolbar-bgcolor: var(--sfsecondary) !important;
+  --tabs-border-color: var(--sfsecondary) !important;
+  --lwt-sidebar-background-color: var(--sfwindow) !important;
+  --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+}
+
+/* Sidebar color  */
+#sidebar-box,
+.sidebar-placesTree {
+  background-color: var(--sfwindow) !important;
+}
+
+/* 
+
+┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐            
+ ││├┤ │  ├┤  │ ├┤             
+─┴┘└─┘┴─┘└─┘ ┴ └─┘            
+┌─┐┌─┐┌┬┐┌─┐┌─┐┌┐┌┌─┐┌┐┌┌┬┐┌─┐
+│  │ ││││├─┘│ ││││├┤ │││ │ └─┐
+└─┘└─┘┴ ┴┴  └─┘┘└┘└─┘┘└┘ ┴ └─┘
+
+*/
+
+/* Tabs elements  */
+.tab-close-button {
+  display: none;
+}
+
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
+  display: none !important;
+}
+
+#nav-bar:not([tabs-hidden='true']) {
+  box-shadow: none;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab[first-visible-unpinned-tab] {
+  margin-inline-start: 0 !important;
+}
+
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+  --tab-border-radius: 0 !important;
+  --tab-block-margin: 0 !important;
+}
+
+.tab-background {
+  border-right: 0px solid rgba(0, 0, 0, 0) !important;
+  margin-left: -4px !important;
+  background: var(--tab-background) !important;
+}
+
+.tabbrowser-tab:is([visuallyselected='true'], [multiselected])
+  > .tab-stack
+  > .tab-background {
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab[last-visible-tab='true'] {
+  padding-inline-end: 0 !important;
+}
+
+#tabs-newtab-button {
+  padding-left: 0 !important;
+}
+
+/* Url Bar  */
+#urlbar-input-container {
+  background-color: var(--sfsecondary) !important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+#urlbar-container {
+  margin-left: 0 !important;
+}
+
+#urlbar[focused='true'] > #urlbar-background {
+  box-shadow: none !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+}
+
+/* Bookmarks bar  */
+.bookmark-item .toolbarbutton-icon {
+  display: none;
+}
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  min-width: 1.6em;
+}
+
+/* Toolbar  */
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+/*star-button-box,*/
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#back-button,
+#PanelUI-button,
+#forward-button,
+.tab-secondary-label {
+  display: none !important;
+}
+
+.urlbarView-url {
+  color: #6b679a !important;
+}
+
+/* Disable elements  */
+#context-navigation,
+#context-savepage,
+#context-pocket,
+#context-sendpagetodevice,
+#context-selectall,
+#context-viewsource,
+#context-inspect-a11y,
+#context-sendlinktodevice,
+#context-openlinkinusercontext-menu,
+#context-bookmarklink,
+#context-savelink,
+#context-savelinktopocket,
+#context-sendlinktodevice,
+#context-searchselect,
+#context-sendimage,
+#context-print-selection {
+  display: none !important;
+}
+
+#context_bookmarkTab,
+#context_moveTabOptions,
+#context_sendTabToDevice,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeTabOptions {
+  display: none !important;
+}
+/* Fill tab bar */
+.tabbrowser-tab[fadein]:not([style^="max-width"]){ max-width: 100vw !important }
+
+/* Center tab text */
+.tab-label-container {
+ display: grid !important; 
+ justify-items: safe center !important;
+  align-items: center !important;
+ }
+.tab-label {
+ overflow: hidden !important; 
+ }
+
+/* Remove pocket icon */
+#save-to-pocket-button {
+    display: none !important;
+}
+
+/* Enable favicons for sound playing tabs */
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+  display: initial !important;
+}
+
+/* Remove separator lines */
+menuseparator {
+    display: none !important;
+}
+/* Autohide urlbar */
+:root[sessionrestored] #nav-bar{ max-height:0; min-height: 0 !important }
+#navigator-toolbox:hover > #nav-bar,
+#nav-bar:focus-within{ max-height: unset; min-height: unset !important; }
+:root {--tab-min-height: 28px !important;}
+:root #tabbrowser-tabs {--tab-min-height: 20px !important;}
+
+/* idk why but this makes decreasing tab height possible so ... */
+.tab-label-container{ height: unset !important }
+
