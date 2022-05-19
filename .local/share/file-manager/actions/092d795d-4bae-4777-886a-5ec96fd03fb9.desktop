@@ -11,6 +11,8 @@ TargetToolbar=true
 
 
 
+TargetContext=false
+
 [X-Action-Profile profile-zero]
 Exec=/usr/bin/alacritty --working-directory %d
 Name[en_US]=Default profile

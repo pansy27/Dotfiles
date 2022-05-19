@@ -12,7 +12,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Iosevka Moe 8"
+theme.font          = "Poppins 9"
 
 theme.bg_normal     = "#f9fbff"
 theme.bg_focus      = "#f9fbff"
@@ -81,7 +81,8 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu = "/home/mikage/Pictures/temp/temp/rose.png"
+--theme.menu_submenu = "/home/rider/Desktop/cherry.png"
+--theme.menu = "/home/rider/Desktop/cherry.png"
 theme.menu_height = 30
 theme.menu_width  = 150
 

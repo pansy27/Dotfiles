@@ -1,0 +1,33 @@
+# lain-light colorscheme
+colors:
+ primary:
+   background: '#faf4fc'
+   foreground: '#8e7f85'
+ cursor:
+   text: '#f9fbff'
+   cursor: '#b8a797'
+ vi_mode_cursor:
+   text: '#f9fbff'
+   cursor: '#b8a797'
+ selection:
+   text: '#f9fbff'
+   background: '#b8a797'
+ normal:
+   black:   '#fefbee'
+   red:     '#f88b89'
+   green:   '#a2b962'
+   yellow:  '#cab04b'
+   blue:    '#8378c6'
+   magenta: '#838fc1'
+   cyan:    '#a5c0ca'
+   white:   '#5b6b7b'
+ bright:
+   black:   '#c6abf1'
+   red:     '#f88b89'
+   green:   '#a2b962'
+   yellow:  '#cab04b'
+   blue:    '#8378c6'
+   magenta: '#838fc1'
+   cyan:    '#a5c0ca'
+   white:   '#4c6b9e' 
+

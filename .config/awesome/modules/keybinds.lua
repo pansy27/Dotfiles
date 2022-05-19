@@ -54,12 +54,12 @@ awful.keyboard.append_global_keybindings({
     awful.key({ "Mod1", }, "n", function () awful.spawn("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'") end),
     awful.key({ modkey, }, "n", function () awful.spawn("rofi -show notes -modi notes:~/.scripts/rofi/notes.py") end),
 -- others
-    awful.key({ modkey, }, "a", function () awful.spawn("emacsclient -c") end),
+    awful.key({ modkey, }, "a", function () awful.spawn.with_shell("~/.local/bin/farge") end),
     awful.key({ "Mod1", }, "e", function () awful.spawn("nemo") end),
     awful.key({ modkey, }, "space", function () awful.spawn("firefox") end),
     awful.key({ modkey, "Shift" }, "space", function () awful.spawn("firefox --private-window") end),
-    awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/new-lock.sh") end),
-    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("tym -e btm") end),
+    awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/lock.sh") end),
+    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm --battery") end),
     awful.key({ "Mod1", "Control"}, "Delete", function () awful.spawn("xkill") end),
     awful.key({ modkey, }, "g", function () awful.spawn("gtk3-widget-factory") end),
 -- playerclt and mpc

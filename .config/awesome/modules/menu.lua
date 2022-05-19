@@ -6,16 +6,16 @@ awesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "lock", function () awful.spawn.with_shell("~/.scripts/new-lock.sh") end },
+   { "lock", function () awful.spawn.with_shell("~/.scripts/lock.sh") end },
    { "quit", function() awesome.quit() end },
-   { "poweroff", function () awesome.spawn("systemctl poweroff") end },
+   { "shutdown", function () awesome.spawn("shutdown now") end },
    { "reboot", function () awesome.spawn("systemctl reboot") end },
 }
 
-mainmenu = awful.menu({ items = { { "awesome", awesomemenu, "/home/rider/Desktop/onigiri.png" },
+mainmenu = awful.menu({ items = { { "awesome", awesomemenu, "/home/rider/Desktop/cherry.png" },
                                     { "open terminal", terminal }
                                   }
                         })
 
-launcher = awful.widget.launcher({ image = "/home/rider/Desktop/onigiri.png",
+launcher = awful.widget.launcher({ image = "/home/rider/Desktop/cherry.png",
                                      menu = mainmenu })

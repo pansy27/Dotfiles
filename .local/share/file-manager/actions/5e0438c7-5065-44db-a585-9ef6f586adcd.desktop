@@ -9,7 +9,7 @@ Name[C]=Set as Wallpaper
 Profiles=profile-zero;
 
 [X-Action-Profile profile-zero]
-Exec=/home/ei/.scripts/wall.sh %d/%b
+Exec=/home/rider/.scripts/wall.sh %d/%b
 Name[en_US]=Default profile
 Name[en]=Default profile
 Name[C]=Default profile

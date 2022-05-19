@@ -4,9 +4,9 @@
 export LIBVA_DRIVER_NAME=iHD
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export MOZ_DISABLE_RDD_SANDBOX=1
-export MOZ_DBUS_REMOTE=1
-export MOZ_ENABLE_WAYLAND=1 
+#export MOZ_DISABLE_RDD_SANDBOX=1
+#export MOZ_DBUS_REMOTE=1
+#export MOZ_ENABLE_WAYLAND=1 
 export XCURSOR_PATH=${HOME}/.local/share/icons:${XCURSOR_PATH}
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
@@ -15,10 +15,10 @@ export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=qt5ct
 # Fzf colors
 export FZF_DEFAULT_OPTS='--layout=reverse -i --border sharp
-    --color=fg:#6a6797,bg:#f8fbff,hl:#81a1c1
-    --color=fg+:#6a6797,bg+:#f9fbff,hl+:#f8928a
-    --color=info:#f9fbff,prompt:#f8928a,pointer:#b48dac
-    --color=marker:#f8928a,spinner:#a4ae54,header:#f8928a'
+    --color=fg:#b79fbb,bg:#f4f1f3,hl:#ad70a8
+    --color=fg+:#b79fbb,bg+:#f4f1f3,hl+:#d95b6d
+    --color=info:#f4f1f3,prompt:#d95b6d,pointer:#b48dac
+    --color=marker:#d95b6d,spinner:#d95d6b,header:#d95d6b'
 #export XDG_CURRENT_DESKTOP=Unity
 export XINITRC=$XDG_CONFIG_HOME/xorg/xinitrc
 # Bat theme

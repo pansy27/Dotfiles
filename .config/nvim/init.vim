@@ -49,6 +49,7 @@ Plug 'https://github.com/ap/vim-css-color'
 "Plug 'https://github.com/elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/edge'
+Plug 'kmonad/kmonad-vim'
 "Plug 'mhinz/vim-startify'
 call plug#end()
 

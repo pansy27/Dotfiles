@@ -105,6 +105,8 @@ bindkey '^[[B' history-substring-search-down
 alias tree='tree -a -I .git'
 #alias ncp='ncmpcpp' 
 alias ncp='$XDG_CONFIG_HOME/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
+alias e='nvim'
+alias startx='startx ~/.config/X11/xinitrc --keeptty >~/.cache/xorg.log 2>&1'
 #alias rm="rm -i"
 #alias ls='ptls'
 #alias cwd='ptpwd'
@@ -154,7 +156,8 @@ source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 #PROMPT="(─‿‿─)  %1d ~ "
 #PROMPT="｡◕‿‿◕ ｡ " 
 #PROMPT="《=^ェ^=》"
-PROMPT=" %1d  "
+PROMPT=" %1d ~ "
+#PROMPT="%F{4}%f%K{4}%F{0} %f%k%F{4}%f %F{4}%f%K{4}%F{0}   %1d %f%k%F{4}%f > "
 #!/bin/sh
 #f [ "$TERM" = "linux" ]; then
 # /bin/echo -e "

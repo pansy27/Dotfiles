@@ -4,7 +4,7 @@ set shellopts '-eu'
 # setting escape code 
 set ifs "\n"
 
-set icons	true
+#set icons	true
 #set hidden 	true
 
 # vertical lines

@@ -4,7 +4,7 @@ local tym = require('tym')
 -- set individually
 --tym.set('width', 100)
 
-tym.set('font', 'Mononoki Regular 10')
+tym.set('font', 'CozetteVector 9')
 
 -- set by table
 tym.set_config({
@@ -14,4 +14,9 @@ tym.set_config({
   padding_horizontal = 15,
   padding_vertical = 15,
 --  color_foreground = 'red',
+
+-- Change paste keybind
 })
+tym.set_keymap('<Ctrl>v', function()
+  tym.paste()
+end)
