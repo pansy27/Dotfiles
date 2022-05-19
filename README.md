@@ -3,5 +3,8 @@
 <h3> Lain: </h3>
 <img src=".config/Images/current.png">
 <br>
+<h3> Moon: </h3>
+<img src=".config/Images/moon.png">
+<br>
 <h5>moved moon dots to old-moon branch</h5>
 <h5>moved gruvbox dots to gruvbox branch</h5>
