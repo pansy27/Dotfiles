@@ -106,16 +106,17 @@ alias tree='tree -a -I .git'
 #alias ncp='ncmpcpp' 
 alias ncp='$XDG_CONFIG_HOME/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
 alias e='nvim'
-alias startx='startx ~/.config/X11/xinitrc --keeptty >~/.cache/xorg.log 2>&1'
+alias nv='neovide'
+alias startx='startx "$XDG_CONFIG_HOME/X11/xinitrc" --"$XDG_CONFIG_HOME/X11/xserverrc" --keeptty >~/.cache/xorg.log 2>&1'
 #alias rm="rm -i"
 #alias ls='ptls'
 #alias cwd='ptpwd'
 #alias yy='ptcp'
+alias lf='rider'
 alias rt='trash'
 alias c='clear'
-alias fontp='fontpreview-ueberzug'
 alias tar='tar xvf'
-alias nrf='neofetch --sixel $HOME/Pictures/Pfp/cigarette.jpg'
+alias nrf='neofetch --sixel $HOME/Pictures/Artworks/bouquet.png'
 alias weeb="weebsay"
 alias temproot='xhost si:localuser:root'
 alias temproot!='xhost -si:localuser:root'
@@ -157,6 +158,15 @@ source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 #PROMPT="｡◕‿‿◕ ｡ " 
 #PROMPT="《=^ェ^=》"
 PROMPT=" %1d ~ "
+#function currentDir {
+#  if [[ ${%1d} == "rider" ]] 
+#  then
+#    return "~"
+#  else
+#    exit
+#  fi
+#}
+#PROMPT=" % ~ "
 #PROMPT="%F{4}%f%K{4}%F{0} %f%k%F{4}%f %F{4}%f%K{4}%F{0}   %1d %f%k%F{4}%f > "
 #!/bin/sh
 #f [ "$TERM" = "linux" ]; then

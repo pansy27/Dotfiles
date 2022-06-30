@@ -1,7 +1,7 @@
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-require "modules/rider"
 require "modules/menu"
 
 -- Wibar configuration
@@ -10,10 +10,9 @@ riderwidget = wibox.widget.textbox()
 riderwidget.text = "    "
 -- Clock widget
 mytextclock = wibox.widget{
-        format = '  %d,   %H:%M ',
+        format = '  %d,    %H:%M ',
         widget = wibox.widget.textclock
         }
-
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -60,6 +59,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
+       style = {
+           background = "#f8fbff",
+       },
         buttons = {
             awful.button({ }, 1, function (c)
                 c:activate { context = "tasklist", action = "toggle_minimization" }
@@ -68,22 +70,24 @@ screen.connect_signal("request::desktop_decoration", function(s)
             awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
             awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
         }
-    }
+}
 
     -- Create the wibox
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
         height = 25,
+        width = 1200,
+        bgimage = "~/Pictures/ummm/hug.jpg",
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
                 launcher,
-                riderwidget,
+    --            riderwidget,
                 s.mytaglist,
-                riderwidget,
-                s.mypromptbox,
+    --            riderwidget,
+    --            s.mypromptbox,
             },
             s.mytasklist, -- Middle widget
             { -- Right widgets
@@ -94,6 +98,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 s.mylayoutbox,
                 riderwidget,
             },
+            
         }
     }
 end)

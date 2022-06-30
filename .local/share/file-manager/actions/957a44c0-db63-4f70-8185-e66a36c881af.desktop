@@ -1,16 +1,16 @@
 [Desktop Entry]
 Type=Action
 TargetToolbar=true
-ToolbarLabel[en_US]=Open file with neovim
-ToolbarLabel[en]=Open file with neovim
-ToolbarLabel[C]=Open file with neovim
-Name[en_US]=Open file with neovim
-Name[en]=Open file with neovim
-Name[C]=Open file with neovim
+ToolbarLabel[en_US]=Open file with neovide
+ToolbarLabel[en]=Open file with neovide
+ToolbarLabel[C]=Open file with neovide
+Name[en_US]=Open file with neovide
+Name[en]=Open file with neovide
+Name[C]=Open file with neovide
 Profiles=profile-zero;
 
 [X-Action-Profile profile-zero]
-Exec=/usr/bin/alacritty --working-directory %d -e nvim %b
+Exec=/usr/bin/neovide %b
 Name[en_US]=Default profile
 Name[en]=Default profile
 Name[C]=Default profile

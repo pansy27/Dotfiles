@@ -4,7 +4,7 @@ set shellopts '-eu'
 # setting escape code 
 set ifs "\n"
 
-#set icons	true
+set icons	true
 #set hidden 	true
 
 # vertical lines
@@ -14,6 +14,7 @@ set ignorecase 	true
 # Setting preview script
 set preview 	true
 set previewer	~/.config/lf/preview.sh
+set cleaner ~/.config/lf/clear_img.sh
 
 # Remapping rm to trash
 cmd trash %set -f; trash $fx 

@@ -10,15 +10,16 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XCURSOR_PATH=${HOME}/.local/share/icons:${XCURSOR_PATH}
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
+export TERMINAL=alacritty
 #export TERMINAL=foot
 #export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=qt5ct
 # Fzf colors
 export FZF_DEFAULT_OPTS='--layout=reverse -i --border sharp
-    --color=fg:#b79fbb,bg:#f4f1f3,hl:#ad70a8
-    --color=fg+:#b79fbb,bg+:#f4f1f3,hl+:#d95b6d
-    --color=info:#f4f1f3,prompt:#d95b6d,pointer:#b48dac
-    --color=marker:#d95b6d,spinner:#d95d6b,header:#d95d6b'
+  --color=fg:#8378c6,bg:#f9fbff,hl:#8378c6
+  --color=fg+:#8378c6,bg+:#f9fbff,hl+:#f8928a
+  --color=info:#f9fbff,prompt:#f8928a,pointer:#8378c6
+  --color=marker:#f8928a,spinner:#f8928a,header:#d95d6b'
 #export XDG_CURRENT_DESKTOP=Unity
 export XINITRC=$XDG_CONFIG_HOME/xorg/xinitrc
 # Bat theme

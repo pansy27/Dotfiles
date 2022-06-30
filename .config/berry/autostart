@@ -24,6 +24,6 @@ berryc set_font    "Dina-9"
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom --experimental-backends &
 greenclip daemon &
-feh --bg-scale $HOME/Pictures/new_world.jpg &
+feh --bg-scale $HOME/.cache/wallpaper &
 setxkbmap -option ctrl:swapcaps &
-/usr/bin/dunst &
+libinput-gestures-setup restart &

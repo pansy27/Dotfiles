@@ -11,7 +11,7 @@ set smartcase
 set autoindent
 set smarttab
 set nocompatible
-
+set guifont=Liga\ SFMono\ Nerd\ Font:h9
 " Cursor Location
 augroup jump
 	autocmd BufReadPost *
@@ -32,10 +32,6 @@ augroup end
   "
   let g:everforest_transparent_background = 1
   let g:everforest_background = 'soft'
-  let g:everforest_enable_italic = 1
-  let g:rose_pine_disable_background = "true"
-   let g:edge_better_performance = 1
-   let g:edge_transparent_background = 1
 " Plugins 
 
 call plug#begin(stdpath('data') . '/plugged')
@@ -44,12 +40,13 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'mengelbrecht/lightline-bufferline'
 Plug 'https://github.com/sainnhe/everforest'
-"Plug 'https://github.com/sainnhe/gruvbox-material'
 Plug 'https://github.com/ap/vim-css-color'
 "Plug 'https://github.com/elkowar/yuck.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'sainnhe/edge'
-Plug 'kmonad/kmonad-vim'
+"Plug 'https://github.com/mcchrish/zenbones.nvim'
+Plug 'https://github.com/rktjmp/lush.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'mcchrish/zenbones.nvim'
 "Plug 'mhinz/vim-startify'
 call plug#end()
 
@@ -76,7 +73,7 @@ endif
 " Colorscheme
 
 set background=light
-colorscheme edge
+colorscheme everforest
 
 " Always Show Bufferline
 "set showtabline=2
@@ -105,6 +102,8 @@ nnoremap <silent> <C-Right> :vertical resize -3 <CR>
 nnoremap <silent> <C-Up> :resize +3 <CR>
 nnoremap <silent> <C-Down> :resize -3 <CR>
 
+" Mapping nvim-tree keybindings
+nnoremap <silent> <C-N> :NvimTreeToggle
 " \ 'separator': { 
 "	\'left': '', 'right': '' },
 "	\'left': '', 'right': '' },
@@ -114,7 +113,7 @@ lua << EOF
 require('lualine').setup {
 options = {
     icons_enabled = false,
-    theme = 'edge',
+--    theme = 'moon',
     component_separators = { left = ' ', right = ' '},
     section_separators = { left = ' ', right = ' '},
     disabled_filetypes = {},
@@ -140,5 +139,10 @@ options = {
   extensions = {},
 
 }
+-- nvim-tree options
+require'nvim-tree'.setup {
+  open_on_setup = false,
+}
+
 EOF
 "theme = 'moon',

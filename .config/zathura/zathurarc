@@ -7,35 +7,35 @@
 # Change 'recolor' and 'recolor-keephue' to true to change
 # the document colors for a more uniform viewing experience.
 
-set default-bg                  "#faf4fc"
-set default-fg                  "#6a6797"
+set default-bg                  "#f9fbff"
+set default-fg                  "#6b679a"
 
-set statusbar-fg                "#9893a5"
-set statusbar-bg                "#fffaf3"
+set statusbar-bg                "#f9fbff"
+set statusbar-fg                "#8378c6"
 
-set inputbar-bg                 "#6e6a86"
-set inputbar-fg                 "#faf4ed"
+set inputbar-bg                 "#f9fbff"
+set inputbar-fg                 "#8378c6"
 
-set notification-bg             "#6e6a86"
-set notification-fg             "#faf4fc"
+set notification-bg             "#f9fbff"
+set notification-fg             "#8378c6"
 
-set notification-error-bg       "#6e6a86"
-set notification-error-fg       "#ea9d34"
+set notification-error-bg       "#f9fbff"
+set notification-error-fg       "#f38ba8"
 
-set notification-warning-bg     "#6e6a86"
-set notification-warning-fg     "#ea9d34"
+set notification-warning-bg     "#f9fbff"
+set notification-warning-fg     "#8378c6"
 
-set highlight-color             "#b4637a"
-set highlight-active-color      "#d7827e"
+set highlight-color             "#8378c6"
+set highlight-active-color      "#8378c6"
 
-set completion-bg               "#6e6a86"
-set completion-fg               "#d7827e"
+set completion-bg               "#f9fbff"
+set completion-fg               "#8378c6"
 
-set completion-highlight-fg     "#575279"
-set completion-highlight-bg     "#d7827e"
+set completion-highlight-fg     "#f9fbff"
+set completion-highlight-bg     "#8378c6"
 
-set recolor-lightcolor          "#faf4fc"
-set recolor-darkcolor           "#6a6797"
+set recolor-lightcolor          "#f9fbff"
+set recolor-darkcolor           "#6b679a"
 
-set recolor                     "false"
+set recolor                     "true"
 set recolor-keephue             "false"

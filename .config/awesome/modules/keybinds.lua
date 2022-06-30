@@ -1,6 +1,7 @@
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
+--require (rider)
 
 -- Define Mod key for keybinds
 modkey = "Mod4"
@@ -51,6 +52,18 @@ awful.keyboard.append_global_keybindings({
     awful.key({}, "F4", function () awful.spawn("pamixer -t") end),
 --rofi keybinds
     awful.key({ modkey, }, "d", function () awful.spawn("rofi -show drun") end),
+    awful.key({ modkey, "Shift"}, "g", function () awful.spawn("rofi -show emoji -modi emoji") end),
+    awful.key({ modkey }, "b",
+              function ()
+                  awful.prompt.run {
+                    prompt       = "Run Lua code: ",
+                    textbox      = awful.screen.focused().mypromptbox.widget,
+                    exe_callback = awful.util.eval,
+                    history_path = awful.util.get_cache_dir() .. "/history_eval"
+                  }
+              end,
+              {description = "lua execute prompt", group = "awesome"}),
+    awful.key({ "Mod1", }, "q", function () awful.spawn("neovide") end),
     awful.key({ "Mod1", }, "n", function () awful.spawn("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'") end),
     awful.key({ modkey, }, "n", function () awful.spawn("rofi -show notes -modi notes:~/.scripts/rofi/notes.py") end),
 -- others
@@ -59,9 +72,14 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, }, "space", function () awful.spawn("firefox") end),
     awful.key({ modkey, "Shift" }, "space", function () awful.spawn("firefox --private-window") end),
     awful.key({ modkey, }, "v", function () awful.spawn.with_shell("~/.scripts/lock.sh") end),
-    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm --battery") end),
+    awful.key({ "Control", "Shift"}, "Escape", function () awful.spawn.with_shell("alacritty -e btm") end),
     awful.key({ "Mod1", "Control"}, "Delete", function () awful.spawn("xkill") end),
     awful.key({ modkey, }, "g", function () awful.spawn("gtk3-widget-factory") end),
+--[[ test keybind
+     awful.key({ modkey, }, "=", function ()
+         awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+     end, {description = "Toggle systray visibility", group = "Custom"})
+     ]]--
 -- playerclt and mpc
     awful.key({ "Mod1", }, "a", function () awful.spawn("playerctl play-pause") end),
     awful.key({}, "F7", function () awful.spawn("mpc toggle") end),
@@ -72,6 +90,7 @@ awful.keyboard.append_global_keybindings({
 -- light
     awful.key({}, "F9", function () awful.spawn("light -A 2") end),
     awful.key({}, "F6", function () awful.spawn("light -U 2") end),
+--    awful.key({ modkey }, "p", function () awful.spawn(riberbox),
 -- Screenshot keybinds
 --    awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("uguush -s -o fiery -F \"https://zz.ht\" -a 5379 -t \"bdUVgjTkZMJXk2K1YyIdZU4v2TDKu7EPLX41lcdKhzRdtmexEOQtOwHkwCUFyKuj\" -n") end),
     awful.key({}, "Scroll_Lock", function() awful.spawn.with_shell("shotgun -g $(slop) - | xclip -t 'image/png' -selection clipboard") end),

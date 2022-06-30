@@ -9,8 +9,9 @@ FONT="Coming Soon"
 
 quote="$(shuf -n 1 ~/.config/quotes)"
 status=$(playerctl status || true)
+mpd_status=$(mpc status | grep "playing" | sed 's/\[playing]/dank/' | awk '{print $1}')
 music_paused_on_lock=false
-
+mpd_paused_on_lock=false
 lock() {
         i3lock -n -c 0000008c -e --fill \
                 --ind-pos="w/2:h-24"\
@@ -40,6 +41,12 @@ if [ "$status" == "Playing" ]; then
 	music_paused_on_lock=true
 fi
 
+# Pause mpd using mpc
+if [ "$mpd_status" == "dank" ]; then
+  mpc pause &
+  mpd_paused_on_lock=true
+fi
+
 # Pause dunst notifications
 #dunstctl set-paused true
 
@@ -54,6 +61,10 @@ lock
 # Resume playback on unlock
 if [ "$music_paused_on_lock" = true ]; then
 	playerctl play
+fi
+
+if [ "$mpd_paused_on_lock" = true ]; then
+  mpc play
 fi
 
 # Resume dunst notifications

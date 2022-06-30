@@ -1,4 +1,5 @@
 local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
 local beautiful = require("beautiful")
 
 awesomemenu = {
@@ -12,10 +13,10 @@ awesomemenu = {
    { "reboot", function () awesome.spawn("systemctl reboot") end },
 }
 
-mainmenu = awful.menu({ items = { { "awesome", awesomemenu, "/home/rider/Desktop/cherry.png" },
+mainmenu = awful.menu({ items = { { "awesome", awesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal }
                                   }
                         })
 
-launcher = awful.widget.launcher({ image = "/home/rider/Desktop/cherry.png",
+launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mainmenu })

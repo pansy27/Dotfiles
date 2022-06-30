@@ -4,7 +4,7 @@ local tym = require('tym')
 -- set individually
 --tym.set('width', 100)
 
-tym.set('font', 'CozetteVector 9')
+tym.set('font', 'Victor Mono 9')
 
 -- set by table
 tym.set_config({

@@ -1,5 +1,5 @@
 ---------------------------
--- Default awesome theme --
+-- default awesome theme --
 ---------------------------
 
 local theme_assets = require("beautiful.theme_assets")
@@ -10,47 +10,49 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
-local theme = {}
+local theme = {yumeko}
 
-theme.font          = "Poppins 9"
+theme.font          = "SF Pro Text 10"
 
 theme.bg_normal     = "#f9fbff"
 theme.bg_focus      = "#f9fbff"
 theme.bg_urgent     = "#f9fbff"
-theme.bg_minimize   = "#b5adca"
+theme.bg_minimize   = "#f9fbff"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#8378c6"
-theme.fg_focus      = "#8378c6"
+theme.fg_normal     = "#6a679a"
+theme.fg_focus      = "#6a679a"
 theme.fg_urgent     = "#f8928a"
-theme.fg_minimize   = "#d1beef"
+theme.fg_minimize   = "#cdd6f4"
 
 theme.useless_gap         = 2
-theme.border_width        = 2
-theme.border_color_normal = "#f9fbff"
-theme.border_color_active = "#f9fbff"
-theme.border_color_marked = "#91231c"
+theme.border_width        = 0
+theme.border_color_normal = "#f4f1fc"
+theme.border_color_active = "#f4f1fc"
+theme.border_color_marked = "#b79fb8"
 
 theme.tasklist_bg_normal = "#f9fbff"
-theme.tasklist_fg_normal = "#d1beef"
-theme.tasklist_fg_focus = "#8378c6"
+theme.tasklist_fg_normal = "#cdd6f4"
+theme.tasklist_fg_focus = "#6a679a"
 theme.tasklist_bg_focus = "#f9fbff"
-theme.tasklist_fg_minimize = "#b5adca"
-theme.tasklist_bg_minimize = "#fbf5f7"
+theme.tasklist_bg_minimize = "#f9fbff"
+theme.tasklist_fg_minimize = "#585b70"
 theme.tasklist_disable_icon = true
 
 
 theme.taglist_bg_normal = "#f9fbff"
-theme.taglist_fg_normal = "#d1beef"
-theme.taglist_fg_focus = "#8378c6"
+theme.taglist_fg_normal = "#cdd6f4"
+theme.taglist_fg_focus = "#6a679a"
 theme.taglist_bg_focus = "#f9fbff"
 theme.taglist_spacing = 6
 
 theme.titlebar_bg_normal = "#f9fbff"
-theme.titlebar_fg_normal = "#d1beef"
-theme.titlebar_fg_focus = "#8378c6"
+theme.titlebar_fg_normal = "#cdd6f4"
+theme.titlebar_fg_focus = "#6a679a"
 theme.titlebar_bg_focus = "#f9fbff"
 
+-- custom color definitions
+theme.hotkeys_modifiers_fg = "#cdd6f4"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -83,12 +85,12 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[border_color|border_width]
 --theme.menu_submenu = "/home/rider/Desktop/cherry.png"
 --theme.menu = "/home/rider/Desktop/cherry.png"
-theme.menu_height = 30
-theme.menu_width  = 150
+theme.menu_height = 24
+theme.menu_width  = 120
 
 theme.menu_bg_normal = "#f9fbff"
-theme.menu_fg_normal = "#d1beef"
-theme.menu_fg_focus = "#8378c6"
+theme.menu_fg_normal = "#cdd6f4"
+theme.menu_fg_focus = "#6a679a"
 theme.menu_bg_focus = "#f9fbff"
 
 -- You can add as many variables as
@@ -151,13 +153,13 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = "Papirus-Dark"
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal('request::rules', function()
     rnotification.append_rule {
         rule       = { urgency = 'critical' },
-        properties = { bg = '#ff0000', fg = '#ffffff' }
+        properties = { bg = '#f9fbff', fg = '#8378c6' }
     }
 end)
 

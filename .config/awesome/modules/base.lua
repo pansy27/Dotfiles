@@ -1,10 +1,11 @@
 local beautiful = require("beautiful")
 -- Theme 
-beautiful.init("~/.config/awesome/themes/default/theme.lua")
+beautiful.init("~/.config/awesome/themes/yumeko/theme.lua")
 -- Default terminal and editor
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "neovim"
-editor_cmd = terminal .. " -e " .. editor
+editor = os.getenv("EDITOR") or "nvim"
+--editor_cmd = terminal .. " -e " .. editor
+editor_cmd = editor
 -- Mod key
 modkey = "Mod4"
 

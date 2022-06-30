@@ -4,7 +4,7 @@
     padding:    0;
 		height: 400px;
 		background-color: #f9fbff;
-		text-color: grey;
+		text-color: #8378c6;
 		}
 
 window {
@@ -48,7 +48,7 @@ element-text {
 		}
 
 element-text selected {
-		text-color: #343434;
+		text-color: #a4ae54;
 		}
 
 /* vim:ft=css

@@ -4,18 +4,19 @@ pcall(require, "luarocks.loader")
 local awful = require("awful")
 require("awful.autofocus")
 local ruled = require("ruled")
-
+local gears = require("gears")
 -- Importing rest of the Modules
 require "modules/error"
 require "modules/base"
 require "modules/layouts"
-require "modules/keybinds"
 require "modules/wibar"
-require "modules/rider"
+--require "modules/tags"
+require "modules/keybinds"
+--require "modules/slidebar"
 require "modules/notifs"
+require "modules/menu"
 require "modules/titlebar"
 require "modules/wallpaper"
-
 --  Rules
 -- Rules for new clients.
 ruled.client.connect_signal("request::rules", function()
@@ -76,17 +77,28 @@ ruled.client.connect_signal("request::rules", function()
         rule         = { class="xdman-Main" },
         properties   = { floating = true }
     }
- --[[   ruled.client.append_rule {
+    ruled.client.append_rule {
         rule         = { instance = "Navigator" },
         properties   = { maximized_vertical = true }
-    }]]--
+    }
 end)
 
 -- Sloppy focus
 client.connect_signal("mouse::enter", function(c)
     c:activate { context = "mouse_enter", raise = false }
 end)
+
+
+--[[ nice module
+local nice = require("nice")
+nice()
+]]--
 -- Autostart script
 awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
--- Run garbage collector
+-- Run garbage collector regularly to prevent memory leaks
+gears.timer {
+       timeout = 30,
+       autostart = true,
+       callback = function() collectgarbage() end
+}
 

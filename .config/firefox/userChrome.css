@@ -1,92 +1,14 @@
-/* 
-┌─┐┬┌┬┐┌─┐┬  ┌─┐
-└─┐││││├─┘│  ├┤ 
-└─┘┴┴ ┴┴  ┴─┘└─┘
-┌─┐┌─┐─┐ ┬      
-├┤ │ │┌┴┬┘      
-└  └─┘┴ └─
-
-by Miguel Avila
-
-*/
-
-/*
- 
-┌─┐┌─┐┌┐┌┌─┐┬┌─┐┬ ┬┬─┐┌─┐┌┬┐┬┌─┐┌┐┌
-│  │ ││││├┤ ││ ┬│ │├┬┘├─┤ │ ││ ││││
-└─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘
-
-*/
-
+/* Setting variables */
 :root {
-  --sfwindow: #f9fbff;
-  --sfsecondary: #f9fbff;
+  --sfwindow: #f9fbff !important;
+  --tab-selected-background: #f9fbff;
+  --tab-context-line: #8378c6;
+  --sidebar-background: #f9fbff;
   --tab-background: #f9fbff;
-  /* tab variables */
-  --tab-font-family: "SF Pro Text", sans;
-  --tab-font-size: 10pt;
-  --tab-font-weight: 500;
-  --tab-color: #8378c6;
-  --tab-selected-background: #f4e4d5;
-  --tab-non-active-color: #343434;
-  /* urlbar variables */
-  --urlbar-font-family: "SF Pro Text", serif;
-  --urlbar-font-size: 10.5pt;
-  --urlbar-font-weight: 500;
-  --urlbar-color: #8378c6;
-  /* urlbar results variables */
-  --urlbar-results-font-family: "SF Pro Text", serif;
-  --urlbar-results-font-size: 10.5pt;
-  --urlbar-results-font-weight: 500;
-  --urlbar-results-url-color: #6b679a;
+  --toolbar-bgcolor: #f9fbff !important;
+  --tab-block-margin: 0 !important; /* removes extra margin b/w tabs and urlbar */
+  --arrowpanel-menuitem-padding: 2px 5px !important;
 }
-
-/* Urlbar View */
-
-/*─────────────────────────────*/
-/* Comment this section if you */
-/* want to show the URL Bar    */
-/*─────────────────────────────*/
-
-/*.urlbarView {
-  display: none !important;
-}*/
-
-*/
-/*─────────────────────────────*/
-
-/* 
-┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
-│  │ ││  │ │├┬┘└─┐
-└─┘└─┘┴─┘└─┘┴└─└─┘ 
-*/
-/* Settings fonts for UI */
-.tab-text {
-  font-family: var(--tab-font-family);
-  font-weight: var(--tab-font-weight);
-  font-size: var(--tab-font-size) !important;
-  color: var(--tab-color);
-}
-#urlbar-results {
-  font-family: var(--urlbar-results-font-family);
-  font-weight: var(--urlbar-results-font-weight);
-  font-size: var(--urlbar-results-font-size) !important;
-  color: var(--urlbar-results-color) !important;
-}
-#urlbar-input {
-  font-size: var(--urlbar-font-size) !important;
-  color: var(--urlbar-color) !important;
-  font-family: var(--urlbar-font-family) !important;
-  font-weight: var(--urlbar-font-weight)!important;
-  text-align: center !important;
-}
-.urlbarView-url, .search-panel-one-offs-container {
-  color: var(--urlbar-results-url-color) !important;
-  font-family: var(--urlbar-font-family);
-  font-weight: var(--urlbar-results-font-weight);
-  font-size: var(--urlbar-font-size) !important;
-}
-
 /* Tabs colors  */
 #tabbrowser-tabs:not([movingtab])
   > #tabbrowser-arrowscrollbox
@@ -98,136 +20,58 @@ by Miguel Avila
   > .tabbrowser-tab
   > .tab-stack
   > .tab-background[selected='true'] {
-  background-image: none !important;
-  background-color: var(--tab-selected-background) !important;
-  border: 5px solid transparent !important;
-  border-bottom: 0px !important;
+    border-radius: 0px !important;
+    background-color: var(--tab-selected-background) !important;
+    box-shadow: none !important;
+    box-shadow: 1.5px -4px 7px -5px rgba(38, 38, 38,0.9) !important;
+/*  border-radius: 12px 12px 0px 0px !important;*/
+}
+/* Bring back tab group highlight line */
+.tab-context-line {
+  padding-top: 6px;
+}
+/* The highlight line above selected tab */
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected='true'] .tab-context-line {
+    background-color: var(--tab-context-line) !important;
+    margin-top: -4px;
+/*  border-radius: 12px 12px 0px 0px !important;*/
 }
 
+/* Tab-text opacity */
+.tab-text {
+  opacity: 0.3;
+}
+.tab-text[selected] {
+  opacity: 1;
+}
 /* Inactive tabs color */
 #navigator-toolbox {
   background-color: var(--sfwindow) !important;
 }
-/* ----- Non active tabs have darker text ----- */
-.tabbrowser-tab:not([visuallyselected="true"]):not([multiselected]):not(:hover) {
-  color: var(--tab-non-active-color) !important;
-}
-/* Window colors  */
-:root {
-  --toolbar-bgcolor: var(--sfsecondary) !important;
-  --tabs-border-color: var(--sfsecondary) !important;
-  --lwt-sidebar-background-color: var(--sfwindow) !important;
-  --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+
+.tab-background {
+  background: var(--tab-background) !important;
+  margin-left: -4px !important; /* tabs gap fix */
+  border-radius: 0px !important;
 }
 
-/* Sidebar color  */
-#sidebar-box,
-.sidebar-placesTree {
-  background-color: var(--sfwindow) !important;
-}
-
-/* 
-
-┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐            
- ││├┤ │  ├┤  │ ├┤             
-─┴┘└─┘┴─┘└─┘ ┴ └─┘            
-┌─┐┌─┐┌┬┐┌─┐┌─┐┌┐┌┌─┐┌┐┌┌┬┐┌─┐
-│  │ ││││├─┘│ ││││├┤ │││ │ └─┐
-└─┘└─┘┴ ┴┴  └─┘┘└┘└─┘┘└┘ ┴ └─┘
-
-*/
-
-/* Tabs elements  */
-.tab-close-button {
-  display: none;
-}
-
-.tabbrowser-tab:not([pinned]) .tab-icon-image {
-  display: none !important;
-}
-
-#nav-bar:not([tabs-hidden='true']) {
-  box-shadow: none;
-}
-
+/* pinned tabs gap fix */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
   > #tabbrowser-arrowscrollbox
   > .tabbrowser-tab[first-visible-unpinned-tab] {
   margin-inline-start: 0 !important;
 }
-
-:root {
-  --toolbarbutton-border-radius: 0 !important;
-  --tab-border-radius: 0 !important;
-  --tab-block-margin: 0 !important;
-}
-
-.tab-background {
-  border-right: 0px solid rgba(0, 0, 0, 0) !important;
-  margin-left: -4px !important;
-  background: var(--tab-background) !important;
-}
-
-.tabbrowser-tab:is([visuallyselected='true'], [multiselected])
-  > .tab-stack
-  > .tab-background {
-  box-shadow: none !important;
-}
-
-.tabbrowser-tab[last-visible-tab='true'] {
-  padding-inline-end: 0 !important;
-}
-
-#tabs-newtab-button {
-  padding-left: 0 !important;
-}
-
-/* Url Bar  */
-#urlbar-input-container {
-  background-color: var(--sfsecondary) !important;
-  border: 1px solid rgba(0, 0, 0, 0) !important;
-}
-
-#urlbar-container {
-  margin-left: 0 !important;
-}
-
-#urlbar[focused='true'] > #urlbar-background {
-  box-shadow: none !important;
-}
-
-#navigator-toolbox {
-  border: none !important;
-}
-
-/* Bookmarks bar  */
-.bookmark-item .toolbarbutton-icon {
-  display: none;
-}
-toolbarbutton.bookmark-item:not(.subviewbutton) {
-  min-width: 1.6em;
-}
-
-/* Toolbar  */
-#tracking-protection-icon-container,
-#urlbar-zoom-button,
-/*star-button-box,*/
-#pageActionButton,
-#pageActionSeparator,
-#tabs-newtab-button,
-#back-button,
-#PanelUI-button,
-#forward-button,
-.tab-secondary-label {
-  display: none !important;
-}
-
-.urlbarView-url {
-  color: #6b679a !important;
-}
+/* Sidebar color  */
+#sidebar-box,
+.sidebar-placesTree {
+  background-color: var(--sidebar-background) !important;
+ }
 
 /* Disable elements  */
-#context-navigation,
 #context-savepage,
 #context-pocket,
 #context-sendpagetodevice,
@@ -235,7 +79,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 #context-viewsource,
 #context-inspect-a11y,
 #context-sendlinktodevice,
-#context-openlinkinusercontext-menu,
 #context-bookmarklink,
 #context-savelink,
 #context-savelinktopocket,
@@ -249,45 +92,160 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 #context_bookmarkTab,
 #context_moveTabOptions,
 #context_sendTabToDevice,
-#context_reopenInContainer,
 #context_selectAllTabs,
 #context_closeTabOptions {
   display: none !important;
 }
-/* Fill tab bar */
-.tabbrowser-tab[fadein]:not([style^="max-width"]){ max-width: 100vw !important }
-
-/* Center tab text */
-.tab-label-container {
- display: grid !important; 
- justify-items: safe center !important;
-  align-items: center !important;
- }
-.tab-label {
- overflow: hidden !important; 
- }
 
 /* Remove pocket icon */
 #save-to-pocket-button {
     display: none !important;
 }
 
-/* Enable favicons for sound playing tabs */
-.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
-  display: initial !important;
-}
-
 /* Remove separator lines */
 menuseparator {
     display: none !important;
 }
-/* Autohide urlbar */
-:root[sessionrestored] #nav-bar{ max-height:0; min-height: 0 !important }
-#navigator-toolbox:hover > #nav-bar,
-#nav-bar:focus-within{ max-height: unset; min-height: unset !important; }
-:root {--tab-min-height: 28px !important;}
-:root #tabbrowser-tabs {--tab-min-height: 20px !important;}
+
+/* Decrease tab height */
+:root {--tab-min-height: 30px !important;}
+/*:root #tabbrowser-tabs {--tab-min-height: 20px !important;}*/
 
 /* idk why but this makes decreasing tab height possible so ... */
 .tab-label-container{ height: unset !important }
 
+/* Enable favicons for sound playing tabs 
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+  display: initial !important;
+}*/
+
+/* Toolbar  */
+#tracking-protection-icon-container,
+#pageActionButton,
+#pageActionSeparator,
+#identity-permission-box,
+/*#tabs-newtab-button,*/
+.tab-secondary-label {
+  display: none !important;
+}
+
+/* rounded urlbar css duckery */
+#urlbar-input-container {
+  border-radius: 20px !important;
+}
+.urlbarView-results{ overflow-y: auto; max-height: 30vh !important; }
+
+#urlbar {
+width: 40vw !important;
+}
+
+#urlbar-background {
+  border-radius: 20px !important;
+}
+#identity-box {
+  padding-left: 4px; /* this works plus using padding causes icons to distort */
+  border-radius: 20px !important;
+    
+}
+/* center urlbar text too 'cause why not ? */
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important; }
+
+/* Hide tab icons except for soundplaying, pinned and selected tab */
+.tabbrowser-tab:not([selected="true"]) .tab-icon-image {
+  display: none !important;
+}
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+  display: initial !important;
+}
+.tabbrowser-tab[pinned="true"] .tab-icon-image {
+  display: initial !important;
+}
+
+/* Tab content center */
+.tabbrowser-tab[selected]:not(:hover):not([pinned]) .tab-label-container,
+#tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab:not(:hover):not([pinned]) .tab-label-container{ margin-inline-end: 10px }
+.tab-content:not([pinned])::before{
+  display: -moz-box;
+  content: "";
+  -moz-box-flex: 1;
+}
+/* Tab loading icon fix */
+.tab-throbber[busy]::before {
+	background-image: url("chrome://global/skin/icons/loading.png") !important;
+	animation: unset !important;
+}
+
+.tab-throbber[busy]:not([progress])::before {
+	filter: grayscale(100%) !important;
+}
+/* Rounded urlbar buttons */
+toolbar toolbarbutton:not(.bookmark-item) > .toolbarbutton-icon{  border-radius: 0px !important; clip-path: circle() }
+
+/* Bring sound icon back for soundplaying tabs 
+.tabbrowser-tab:not([pinned]) .tab-icon-stack:is([muted],[soundplaying],[activemedia-blocked]){
+  grid-template-areas: "a s";
+}
+.tabbrowser-tab:not([pinned]) .tab-icon-overlay:is([muted],[soundplaying],[activemedia-blocked]){ grid-area: s; }
+.tab-icon-overlay,
+.tab-icon-image,
+.tab-throbber{ opacity: 1 !important; }
+
+.tab-icon-overlay:not([pinned]){
+  padding: 0px !important;
+  margin-inline: -3px 1px !important;
+}*/
+
+/* Custom icons owo 
+#tabs-newtab-button {
+  list-style-image: url("assets/add.png") !important;
+}
+#back-button {
+  list-style-image: url("assets/swipe-left.png") !important;
+}
+#forward-button {
+  list-style-image: url("assets/swipe-right.png") !important;
+}
+.tab-close-button {
+  list-style-image: url("assets/purple-cross.png") !important;
+}
+#reload-button {
+  list-style-image: url("assets/restart.png") !important;
+}
+#home-button {
+  list-style-image: url("assets/home.png") !important;
+}
+#star-button {
+  list-style-image: url("assets/book-empty.png") !important;
+  margin-right: 10px;
+}
+#star-button[starred] {
+  list-style-image: url("assets/book.png") !important;
+}
+#PanelUI-menu-button {
+  list-style-image: url("assets/menu.png") !important;
+}
+#nav-bar-overflow-button {
+  list-style-image: url("assets/connect.png") !important;
+}
+#pageAction-urlbar-_testpilot-containers {
+  list-style-image: url("assets/duplicate.png") !important;
+}
+#pageAction-urlbar-tab-stash_condordes_net {
+  list-style-image: url("assets/download.png") !important;
+}
+#identity-icon {
+  list-style-image: url("assets/unlock.png") !important;
+}
+/* Bookmark's sidebar folder icon 
+.sidebar-panel .sidebar-placesTreechildren::-moz-tree-image {
+  list-style-image: url("assets/folder.png") !important;
+}*/
+/* Rounded urlbar icons(somewhat) */
+.urlbar-page-action:hover{ border-radius: 100% !important;}
+/* Rounded tab close button too owo */
+.tab-close-button {
+  border-radius: 999px !important; /* using 100% causes icon to distort */
+}
+/* fix hamburger menu items padding --> done, bookmark sidebar folder icon --> done, round urlbar inside items without clipping them off --> somewhat. */
+/* also replace tab context line with rainbow tab highlight :) */ 

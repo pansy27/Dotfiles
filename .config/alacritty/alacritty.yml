@@ -2,39 +2,41 @@ env:
   TERM: alacritty
 
 window:
+  dimensions: 
+    columns: 98
+    lines: 28
   padding:
     x: 10
     y: 10
   dynamic_padding: true
 
-  opacity: 1.00
+  opacity: 1
 
 # Importing Colorscheme
 import:
-  - ~/.config/alacritty/yumeko.yaml
+      - ~/.config/alacritty/moon.yml
 
 # Font configuration
 font:
   normal:
-    family: Victor Mono SemiBold 
-    style: SemiBold
+    family: Plemol JP   
+    style: Regular
   bold:
-    family: Victor Mono SemiBold
+    family: Plemol JP   
     style: Bold
   italic:
-    family: Victor Mono SemiBold
+    family: Plemol JP   
     style: Italic
   bold_italic:
-    family: Victor Mono SemiBold
-    style: Italic
+    family: Plemol JP   
+    style: Bold Italic
   # Point size
-  size: 8
-  offset:
-    x: 0
-  #  y: 0
-  #
+  size: 9
+    #offset:
+    # x: -1
 
 # Keybinds
 key_bindings:
-  - { key: V,     mods: Control,                                action: Paste          }
-  - { key: C,     mods: Alt,                                     action: Copy           }
+  - { key: V,     mods: Control,          action: Paste          }
+  - { key: C,     mods: Alt,              action: Copy           }
+  - { key: Return,     mods: Shift|Control,    action: SpawnNewInstance}
