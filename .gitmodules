@@ -1,3 +1,6 @@
 [submodule "/home/anon/.config/awesome/icon_customizer"]
 	path = /home/anon/.config/awesome/icon_customizer
 	url = https://github.com/intrntbrn/icon_customizer
+[submodule "/home/anon/.config/picom/shaders"]
+	path = /home/anon/.config/picom/shaders
+	url = https://github.com/ikz87/picom-shaders
