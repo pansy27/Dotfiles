@@ -1,81 +1,55 @@
 * {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  background-color: #3a3a3a;
+  color: #b0b4bc;
+  padding: 10px;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
   all: unset;
-  background: rgba(#FBF4FC,0);
-  color: #343434;
-  font-size: 13px;
-  font-family: Zen Kurenaido;
-  font-weight: 700;
-    }
-.main-bar {
-    border: 0px solid black;
-    }
-.workspaces {
-  font-size: 16px;
-  margin-left: 10px;
-  padding: 5px 25px 5px 25px;
-  }
-.volume-icon {
-    font-size: 20px;
-  }
-.date {
-  margin-right: 10px;
+  color: #ffd5cd;
 }
-.date-icon {
-  padding-bottom: 2px;
-  }
-// sidebar style
-.sidebar {
+
+.metric scale trough highlight {
   all: unset;
-  background: rgba(#faf4f7,1.0);
-  border: 2px solid #8378c6;
-  color: #8378c6;
-}
-
-.media {
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 10px;
-  padding-bottom: 12px;
-}
-
-.image {
-  border: 2px #8378c6 solid;
-}
-
-.metadata {
-  font-weight: 700;
-  color: #8378c6;
-}
-
-.power-menu {
-  margin-top: 00px;
-  padding-top: 4px;
-  padding-bottom: 0px;
-}
-
-.power-icon {
-  font-size: 25px;
-  font-weight: 600;
-  padding: 19px 13px 19px 13px;
-  background: rgba(#d1beef,0.45); 
+  background-color: #D35D6E;
+  color: #000000;
   border-radius: 10px;
-  margin: 20px 5px 10px 5px;
-  color: #8378c6;
 }
-
-.power-poweroff {
-  font-size: 23px;
-  margin-top: 2px;
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
   margin-left: 10px;
-  padding: 2px 6px 3px 6px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  background: rgba(#d1beef,0.45); 
-  border-radius: 9px;
-  color: #8378c6;
+  margin-right: 20px;
 }
-
-.power-hibernation {
-  margin-right: 10px;
+.metric scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.label-ram {
+  font-size: large;
+}
+.workspaces button:hover {
+  color: #D35D6E;
 }
 

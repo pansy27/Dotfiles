@@ -1,0 +1,78 @@
+! Cursor Theme
+Xcursor.theme: miku-cursor
+Xcursor.size: 28
+
+! Font settings
+Xft.antialias:	true
+Xft.hinting:	true
+Xft.hintstyle:	hintslight
+
+! Xterm sixel settings
+XTerm*decTerminalID: vt340
+XTerm*numColorRegisters: 256
+UXTerm*decTerminalID: vt340
+UXTerm*numColorRegisters: 256
+XTerm*faceName: xft: Monospace:style=Regular:size=11, xft: BlexMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+UXTerm*faceName: xft: Monospace:style=Regular:size=11, xft: BlexMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+! XTerm*faceSize: 11
+! UXTerm*faceSize: 11
+
+! URxvt Settings
+! urxvt.boldFont:
+URxvt.scrollBar: false
+URxvt.font: xft: Monospace:style=Regular:size=11.5, xft: BlexMono Nerd Font Mono:style=Regular:size=10, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+! URxvt.boldFont:
+URxvt.internalBorder: 20
+! URxvt.letterSpace: 1.0
+
+! URxvt contrl-shift mode
+URxvt*iso14755_52: false
+URxvt*iso14755: false
+
+! URxvt perl extensions
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,-background,resize-font,-confirm-paste,bell-command,tabbedex
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	2
+URxvt.url-select.underline:	true
+! URxvt.backgroundPixmap: /home/anon/pictures/others/wallpapers/cinna_landscape.png;style=scaled
+
+!URxvt scroll fix
+URxvt.scrollTtyOutput:	false
+URxvt.scrollWithBuffer:	true
+URxvt.scrollTtyKeypress:	true
+
+! URxvt keybinds
+!URxvt.keysym.M-c:	perl:clipboard:paste
+!URxvt.keysym.C-v:	perl:selection_to_clipboard
+URxvt.keysym.M-c:	perl:selection_to_clipboard
+URxvt.keysym.C-v:	eval:paste_clipboard
+!URxvt.keysym.Home:	^[[F
+!Urxvt.keysym.End:	^[[H
+!URxvt.keysym.S-Delete:	\033[3;2~
+!URxvt.keysym.S-Home:	\033[1;2H
+!URxvt.keysym.S-End:	\033[1;2F
+!URxvt.keysym.S-Page_Up:	\033[5;2~
+!Urxvt.keysym.S-Page_Down:	\033[6;2~
+URxvt.searchable-scrollback:    C-F
+
+! URxvt bell
+URxvt.bell-command: canberra-gtk-play -i bell
+
+! URxvt tabbed
+URxvt.tabbedex.tabbar-bg: -1
+URxvt.tabbedex.tab-bg: 4
+!! colorscheme
+#include "farside.txt"
+
+! Sxiv settings
+! double quoting does not work for font name
+Sxiv.font: Comic Mono-10
+Sxiv.background: #f9fbff
+Sxiv.fsBackground: #f9fbff
+! foreground changed bar color
+Sxiv.foreground: #8378c6 
+Sxiv.barBackground: #8378c6
+Sxiv.mark: #f8928a
+Sxiv.titlePrefix: Sxiv
+Sxiv.titleSuffix: 4
+Sxiv.handlerKey: false

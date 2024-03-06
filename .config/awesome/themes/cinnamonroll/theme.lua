@@ -1,0 +1,1 @@
+/home/anon/.config/awesome/themes/cinnamonroll/theme_dark.lua

@@ -1,139 +1,75 @@
-(defwindow bar 
-    :monitor 0
-    :geometry (geometry :x "0%"
-                :y "1%"
-                :width "95%"
-                :height "32px"
-                :anchor "top center")
-  :stacking "fg"
-;  :reserve (struts :distance "32px" :side "top")
-;  :windowtype "dock"
-  :exclusive "true"
-  (main-bar))
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (sidestuff)))
 
-; sidebar
-(include "./sidebar.yuck")
-;(include "./new.yuck")
-(defwidget main-bar []
-    (centerbox :orientation "h"
-      :class "main-bar"
-      :space-evenly "true"
-      (workspaces)
-      (center-widgets)
-      (right-side)))
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "💾"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    time))
 
-  (defwidget workspaces []
-    (box :class "workspaces"
-         :halign "start"
-      :valign "center"
-      :orientation "horizontal"
-      :spacing 22
-      :space-evenly "false"
-      (button :onclick "swaymsg workspace 1 "
-         (image 
-              :path "assets/yukata.png"
-               ))
-      (button :onclick "swaymsg workspace 2 "
-         (image 
-              :path "assets/rice.png"
-               ))
-      (button :onclick "swaymsg workspace 3 "
-        (image 
-              :path "assets/fuji.png"
-               ))
-      (button :onclick "swaymsg workspace 4 "
-         (image 
-              :path "assets/onigiri.png"
-               ))
-      (button :onclick "swaymsg workspace 5 "
-         (image 
-              :path "assets/nigiri.png"
-               ))
-      (button :onclick "swaymsg workspace 6 "
-         (image 
-              :path "assets/origami.png"
-               ))))
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)
+    (button :onclick "wmctrl -s 7" 8)
+    (button :onclick "wmctrl -s 8" 9)))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
 
 
-  (defwidget center-widgets []
-    (box))
-
-  (defwidget right-side []
-    (box :class "right-side"
-      :halign "end"
-      :valign "center"
-      :spacing 16
-      :space-evenly "false"
-     (volume)
-     (brightness)
-     (battery)
-     (network)
-     (date)
-       ))
-
-(defwidget volume []
-  (box :class "volume"
-    :spacing 5
-    :space-evenly "false"
-      (button :onclick "pamixer -t"
-          :onmiddleclick "pavucontrol &"
-        (image :class "volume-icon"
-            :path  "assets/volume.png"))
-        (label :class "volume-label"
-           :text "${volume-level} %")))
-
-(defwidget brightness []
-  (box :class "brightness"
-    :spacing 5
-    :space-evenly "false"
-    (image :class "brightness-icon"
-        :path "assets/brightness.png")
-    (label :class "date-value"
-        :text "${brightness-level} %")))
-
-(defwidget battery []
-  (box :class "battery"
-    :spacing 5
-    :space-evenly "false"
-    (image :class "battery-icon"
-        :path "assets/battery.png")
-    (label :class "date-value"
-        :text "${battery-level} %")))
-
-(defwidget network []
-  (box :class "network"
-    :spacing 5
-    :space-evenly "false"
-    (image :class "network-icon"
-        :path "assets/network.png")
-    (label :class "network-name"
-        :text "${network-name}")))
-
-(defwidget date []
-  (box :class "date"
-    :spacing 5
-    :space-evenly "false"
-    (image :class "date-icon"
-        :path "assets/date.png")
-    (eventbox :onhover "eww open sidebar"
-        (button :onclick "eww close sidebar"
-          (label :class "date-value"
-                 :text "${date}")))))
-
-; Variables
-(defpoll volume-level :interval "300ms"
-  "pamixer --get-volume")
-
-(defpoll brightness-level :interval "500ms"
-  "light | cut -d. -f1")
-
-(defpoll battery-level :interval "20m"
-  "acpi -b | awk '{print $4}' | sed 's/%//;s/,//'")
-
-(defpoll network-name :interval "10m"
-  "$HOME/.config/eww/scripts/network.sh")
-
-(defpoll date :interval "1m"
-  "date +%H:%M")
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
 
 
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "90%"
+                      :height "10px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (bar))

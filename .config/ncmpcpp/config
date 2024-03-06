@@ -1,6 +1,7 @@
+# execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
 # Files
-mpd_music_dir = "~/Music"  
-lyrics_directory  = ~/.config/ncmpcpp/lyrics
+mpd_music_dir = "~/music"  
+lyrics_directory  = ~/.local/share/lyrics
 ncmpcpp_directory  = ~/.config/ncmpcpp
 mpd_host = "localhost"
 mpd_port = "6600"  
@@ -12,14 +13,21 @@ mpd_crossfade_time = "5"
 visualizer_data_source = "/tmp/mpd.fifo"
 visualizer_output_name = "my_fifo"
 visualizer_in_stereo = "yes"
-visualizer_type = "spectrum"
-visualizer_look = ""
+visualizer_type = "ellipse"
+# visualizer_look = "▌▌"
 # attempt #1
 user_interface = "alternative"
 song_list_format = "$6{  %a	 >>    %t}|{  %f}$9"
 now_playing_prefix = "$b$8$7 "
 current_item_prefix = "$b$7$/b$3 "
-song_columns_list_format = "(30)[white]{a} >> (45)[blue]{t} (5)[white]{l}"
+# song_columns_list_format = "(30)[white]{a} >> (45)[blue]{t} (5)[white]{l}"
+song_columns_list_format = "(25)[6]{a} (35)[4]{t} (5)[2]{l}
 #song_columns_list_format = "(53)[white]{ar} >>  (45)[blue]{t}"
 song_library_format = "$6{  %t}|{  %f}$9"
 
+# ncmpcpp ueberzug tweaks
+# visualizer_look = "  "
+startup_screen = visualizer
+startup_slave_screen = playlist
+startup_slave_screen_focus = yes
+locked_screen_width_part = 30

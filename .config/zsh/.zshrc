@@ -1,199 +1,233 @@
-# Zsh-History
-HISTFILE=$XDG_CONFIG_HOME/zsh/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# End
-#
-# Keybinds Mode
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#!/usr/bin/env zsh
+# zmodload zsh/zprof # could be used with zprof for testing loading times for individual plugins
+
+# Zsh-history
+HISTFILE=$ZDOTDIR/histfile
+HISTSIZE=2000
+SAVEHIST=10000
+
+# ==> additonal options <==
+# beep on error ⬇
+setopt autocd beep
+
+# keybindings mode
 bindkey -e
-#
-# Compinstall
-zstyle :compinstall filename '$XDG_CONFIG_HOME/zsh/.zshrc'
+
+# ⬇ provides completions and stuff other than basic tab completion for files and stuff
+zstyle :compinstall filename $XDG_CONFIG_HOME/zsh/.zshrc
+# 🍡 case-insensitive matching only if there are no case-sensitive matches
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+# 📦 caches the completions for faster completions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/.zcompcache
+# 🍡 creates menu, 🐹 allows using arrow keys for selecting, ❌ pressing tab continously
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit
-# 
-# -- osc7 escape part ----
-#autoload -Uz add-zsh-hook
-#add-zsh-hook -Uz chpwd osc7_cwd
-# --------------------------
 compinit
-# End
-#
-# More Options
-setopt glob_dots     # no special treatment for dotfiles 
-#setopt no_auto_menu  # require an extra TAB for completion menu 
-setopt auto_cd		# cd into selected directory with just name
-setopt auto_pushd
-#setopt always_to_end
-setopt hist_ignore_dups
-setopt hist_save_no_dups
-#setopt beep
-#setopt correct
-#setopt hash_list_all
-# End
-#
-# Fzf-tab color
-zstyle ':fzf-tab:*' fzf-flags -i --color=hl:#a4ae54
 
-# --color='fg:#c4c9fa,hl:#8ec07c,fg+:#a598ab,bg+:#3d322a,pointer:#ebdbb2''
-#
-export FZF_CTRL_T_COMMAND='find'
-# End
-#
-# emit osc 7 escape sequence (foot)
-#_urlencode() {
-# local length="${#1}"
-# for (( i = 0; i < length; i++ )); do
-# 	local c="${1:$i:1}"
-# 	case $c in
-# 		%) printf '%%%02X' "'$c" ;;
-# 		*) printf "%s" "$c" ;;
-# 	esac
-# done
-#}
-#
-#osc7_cwd() {
-# printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(_urlencode "$PWD")"
-#}
-# end 
-#
-# Keybinds
-# for st, replace [F with [4~
-bindkey "^[[F" end-of-line
+# ⌨  keybinds
+# find out keyconds by executing cat
+bindkey "^[[a" history-substring-search-up
+bindkey "^[[b" history-substring-search-down
+
 bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
-bindkey "^[[3;2~" delete-word
-# => History-Substring-Search Keybinds
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-# => Single Tab Fzf-Menu keybind
-#bindkey '^I' single-tab-menu
-# End
-#
-# Single Tab Fzf-Menu
-#unction single-tab-menu() {
-#   if [[ $#BUFFER == 0 ]]; then
-#     BUFFER="$(find $path -type f -printf "%f\n" | fzf --border sharp)"
-#       CURSOR=3
-#       zle list-choices
-# zle accept-and-hold
-#       zle backward-kill-word
-#   else
-#       zle expand-or-complete
-#   fi
-#
-#zle -N single-tab-menu
-# End
-#
-# Change cursor shape for different vi modes.
-    function zle-keymap-select {
-      if [[ ${KEYMAP} == vicmd ]] ||
-         [[ $1 = 'block' ]]; then
-        echo -ne '\e[1 q'
- 
-      elif [[ ${KEYMAP} == main ]] ||
-           [[ ${KEYMAP} == viins ]] ||
-           [[ ${KEYMAP} = '' ]] ||
-           [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-      fi
+# bindkey "^[[3;2~" delete-word
+bindkey "^[[5~" forward-char
+bindkey "^[[6~" backward-char
+# bindkey "^[[3;2~" delete-word
+
+# sourcing aliases
+source $ZDOTDIR/aliases.sh
+
+
+# Plugins
+# plugins dir ⬇
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+
+# get zsh_unplugged
+if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]
+  then git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+fi
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
+
+# plugins list, loaded in order of listing
+repos=(
+  romkatv/powerlevel10k
+  romkatv/zsh-defer
+  Aloxaf/fzf-tab
+  zsh-users/zsh-completions
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+  zsh-users/zsh-autosuggestions
+)
+
+# loading plugins
+plugin-load $repos
+
+# plugins update
+function plugin-update {
+  for d in $ZPLUGINDIR/*/.git(/); do
+    echo "Updating ${d:h:t}..."
+    command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+  done
+}
+
+# 🐴 Plugin settings ⬇
+if [[ -d "$HOME/bin" ]]
+  then eval "$(jump shell)"
+fi
+# Zsh autosuggestions 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# Fzf 
+# loading fzf keybinds
+if [[ -d "/usr/share/fzf" ]]
+ then source /usr/share/fzf/completion.zsh
+   source /usr/share/fzf/key-bindings.zsh
+fi
+
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f -d 4 --strip-cwd-prefix --hidden --follow --exclude .git'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# fzf-completions (use fd instead of find)
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Fzf-tab
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons --color=always $realpath'
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# making completions for kill command more user friendly :)
+zstyle ':completion:*:processes' command "ps -u $USER -o pid,user,comm"
+# systemctl command preview
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+# environment variables preview(-command-)
+zstyle ':fzf-tab:complete:(-parameter-|-brace-parameter-|export|unset|expand):*' \
+	fzf-preview 'echo ${(P)word}'
+# git preview for fzf-tab
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+	'git diff $word | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+	'git log --color=always $word'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+	'git help $word | bat -plman --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+	'case "$group" in
+	"commit tag") git show --color=always $word ;;
+	*) git show --color=always $word | delta ;;
+	esac'
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+	'case "$group" in
+	"modified file") git diff $word | delta ;;
+	"recent commit object name") git show --color=always $word | delta ;;
+	*) git log --color=always $word ;;
+	esac'
+
+# Custom prompts i stole 💀
+# RPROMPT='%(?.%F{red}ヾ(●´▽｀●)ﾉ彡☆勹”ﾉヽ.%F{red}┻━┻%F{magenta} ︵ ╯(°□° ╯%))'
+
+# pyenv (for python)
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+
+# Other settings
+# Dynamic title in urxvt
+case $TERM in
+  (*xterm* | *rxvt*)
+    # Write some info to terminal title.
+    # This is seen when the shell prompts for input.
+    function precmd {
+      print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
     }
- zle -N zle-keymap-select
+    # Write command and args to terminal title.
+    # This is seen while the shell waits for a command to complete.
+    function preexec {
+      printf "\033]0;%s\a" "$1"
+    }
+  ;;
+esac
 
-# Aliases
-alias tree='tree -a -I .git'
-#alias ncp='ncmpcpp' 
-alias ncp='$XDG_CONFIG_HOME/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
-alias e='nvim'
-alias nv='neovide'
-alias startx='startx "$XDG_CONFIG_HOME/X11/xinitrc" --"$XDG_CONFIG_HOME/X11/xserverrc" --keeptty >~/.cache/xorg.log 2>&1'
-#alias rm="rm -i"
-#alias ls='ptls'
-#alias cwd='ptpwd'
-#alias yy='ptcp'
-alias lf='rider'
-alias rt='trash'
-alias c='clear'
-alias tar='tar xvf'
-alias nrf='neofetch --sixel $HOME/Pictures/Artworks/bouquet.png'
-alias weeb="weebsay"
-alias temproot='xhost si:localuser:root'
-alias temproot!='xhost -si:localuser:root'
-alias wprop='swaymsg -t get_tree | grep -i app_id'
-alias clip-clear='rm -f ~/.cache/cliphist/db'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@'
-#alias gitlab-push="gitlab push origin main"
-alias ..='cd ..'
-alias image='img2sixel'
-alias farge='farge --image-viewer sxiv'
-alias wev='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'''
-alias zzup='uguush -s -o fiery -F "https://zz.ht" -a 5379 -t "bdUVgjTkZMJXk2K1YyIdZU4v2TDKu7EPLX41lcdKhzRdtmexEOQtOwHkwCUFyKuj" -n'
-#alias hx='helix'
+# get nvm
+# if [[ -d /usr/share/nvm ]] then 
+#     source /usr/share/nvm/init-nvm.sh
+# fi
 
-# ===> Sourcing addons <===
-# Autojump
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-# Zsh-Completions
-#fpath=($HOME/Github/zsh-completions/src $fpath)
-# Zsh-Autosuggestions
-#load-plugin ""
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-# Zsh-History-Substring-Search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
-# Zsh-Syntax-Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# Fzf-Keybinds
-source "/usr/share/fzf/key-bindings.zsh"
-# Fzf-Tab
-source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
-# Prompt
-#PROMPT="  %B%F{14}%n%f %b  %F{14}%m%f   %~%    "
-#RPROMPT="%T"
-#PROMPT='%B%F{15}%f%b %~ '
-#PROMPT="%F{4}%n%f %F{4}~%f%F{4}>%f "
-#RPROMPT="%~"
-#PROMPT="  %1d ~ "
-#PROMPT="(─‿‿─)  %1d ~ "
-#PROMPT="｡◕‿‿◕ ｡ " 
-#PROMPT="《=^ェ^=》"
-PROMPT=" %1d ~ "
-#function currentDir {
-#  if [[ ${%1d} == "rider" ]] 
-#  then
-#    return "~"
-#  else
-#    exit
-#  fi
-#}
-#PROMPT=" % ~ "
-#PROMPT="%F{4}%f%K{4}%F{0} %f%k%F{4}%f %F{4}%f%K{4}%F{0}   %1d %f%k%F{4}%f > "
-#!/bin/sh
-#f [ "$TERM" = "linux" ]; then
-# /bin/echo -e "
-# \e]P0403c58
-# \e]P1ea6f91
-# \e]P29bced7
-# \e]P3f1ca93
-# \e]P434738e
-# \e]P5c3a5e6
-# \e]P6eabbb9
-# \e]P7faebd7
-# \e]P86f6e85
-# \e]P9ea6f91
-# \e]PA9bced7
-# \e]PBf1ca93
-# \e]PC34738e
-# \e]PDc3a5e6
-# \e]PEeabbb9
-# \e]PFffffff
-# "
-# # get rid of artifacts
-# clear
-#
-# zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-# zstyle ':completion:*' list-colors ''
-# zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' '+r:|[._-]=** r:|=** l:|=*'
-# zstyle ':completion:*' original true
-# zstyle ':completion:*' menu select
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
+# prints colors
+palette() {
+    local -a colors
+    for i in {000..255}; do
+        colors+=("%F{$i}$i%f")
+    done
+    print -cP $colors
+}
+palette2() {
+  for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
+# change command not found message
+# command_not_found_handler() { printf "fuck you, \e[31;1;1m'%s'\e[m try again.\n" "$1"; }
+command_not_found_handler() { printf "fuck you, try again.\n" "$1"; }
+# stupid welcome command
+# welcome() {
+#  ~/.scripts/welcome/welcome.sh
+# }
+
+# custom alias for installing and removing programs on arch linux :3
+# for removing
+remove () {
+  if [ $# -eq 0 ]
+  then
+    pacman -Qqe | fzf --multi --preview "pacman -Qi {1}" | xargs -ro sudo pacman -Rns
+  else
+    sudo pacman -Rns $@
+  fi
+}
+
+# for installing
+pacinstall () {
+  if [ $# -eq 0 ]
+  then
+    pacman -Slq | fzf --multi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S
+  else
+    sudo pacman -S $@
+  fi
+}
+
+#lazy? load nvm
+loadnvm() {
+    if [[ -d /usr/share/nvm ]]
+        then source /usr/share/nvm/init-nvm.sh
+    fi
+}
+
+lf() {
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+source ~/.config/awesome/icon_customizer/dynamictitles.zsh

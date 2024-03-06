@@ -1,9 +1,0 @@
-[Default]
-save_dir=$HOME/Pictures/Screenshots
-save_filename_format=%H_%M_%S.png
-show_panel=false
-line_size=4
-text_size=20
-text_font=Victor Mono SemiBold 
-
- 
