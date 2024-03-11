@@ -17,6 +17,7 @@ client.connect_signal("request::default_keybindings", function()
 			c:kill()
 		end, { description = "close", group = "client" }),
 		awful.key({ modkey }, "s", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),
+		awful.key({ modkey, shift  }, "s", function (c) c.sticky = not c.sticky end),
 		awful.key({ modkey, ctrl }, "Return", function(c)
 			c:swap(awful.client.getmaster())
 		end, { description = "move to master", group = "client" }),
