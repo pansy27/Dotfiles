@@ -7,7 +7,7 @@
 . moved cinnamonroll dots to cinnamonroll branch<br>
 . moved moon dots to old-moon branch<br>
 . moved gruvbox dots to gruvbox branch<br>
-<br>
+
 special thanks to:<br>
 - [Gwynsav](https://github.com/Gwynsav/gwileful), for the gwileful config<br>
 - [Stardust](https://github.com/Stardust-kyun/dotfiles), used their config as reference for  some stuff<br>
