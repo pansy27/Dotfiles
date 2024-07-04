@@ -9,10 +9,12 @@ local myawesomemenu = {{"hotkeys", function()
 end}, {"manual", apps.terminal .. " -e man awesome"}, {"edit config", apps.editor_cmd .. " " .. awesome.conffile},
                        {"restart", awesome.restart}, {"quit", function()
     awesome.quit()
+end}, {"lock screen", function()
+    awful.spawn.with_shell("loginctl lock-session")
 end}, {"poweroff", function()
-    awful.spawn.with_shell("poweroff")
+    awful.spawn.with_shell("systemctl poweroff")
 end}, {"reboot", function()
-    awful.spawn.with_shell("reboot")
+    awful.spawn.with_shell("systemctl reboot")
 end}}
 
 mymainmenu = awful.menu({

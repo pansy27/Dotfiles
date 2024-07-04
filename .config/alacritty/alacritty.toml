@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/dark/lily.toml"]
+import = ["/home/pansy/.config/alacritty/dark/ashes_dark.toml"]
 
 [bell]
 animation = "Linear"
@@ -9,21 +9,21 @@ TERM = "xterm-256color"
 [window]
 dynamic_padding = true
 dynamic_title = true
-opacity = 0.87
+# opacity = 0.90
 
 [window.padding]
 x = 15
 y = 15
 
 [font]
-size = 10.5
+size = 10
 
 [font.normal]
 family = "monospace"
 style = "Regular"
 
 # [font.bold]
-# family = "Comic Mono"
+# family = "Spleen"
 # style = "Regular"
 
 [[keyboard.bindings]]

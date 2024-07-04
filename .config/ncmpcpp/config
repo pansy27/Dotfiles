@@ -14,20 +14,22 @@ visualizer_data_source = "/tmp/mpd.fifo"
 visualizer_output_name = "my_fifo"
 visualizer_in_stereo = "yes"
 visualizer_type = "ellipse"
+visualizer_look = "●▮"
 # visualizer_look = "▌▌"
 # attempt #1
 user_interface = "alternative"
-song_list_format = "$6{  %a	 >>    %t}|{  %f}$9"
+song_list_format = "$6{  %a	 >>    %t}|{ 󰎇 %f}$9"
 now_playing_prefix = "$b$8$7 "
 current_item_prefix = "$b$7$/b$3 "
 # song_columns_list_format = "(30)[white]{a} >> (45)[blue]{t} (5)[white]{l}"
-song_columns_list_format = "(25)[6]{a} (35)[4]{t} (5)[2]{l}
-#song_columns_list_format = "(53)[white]{ar} >>  (45)[blue]{t}"
-song_library_format = "$6{  %t}|{  %f}$9"
+# song_columns_list_format = "(25)[6]{a} (35)[4]{t} (5)[2]{l}
+# song_columns_list_format = "(50)[white]{ar} >>  (40)[blue]{t} (10)[red]{l}"
+song_columns_list_format = "(50)[white]{ar} >>  (50)[blue]{t}"
+song_library_format = "$6{  %t}|{ 󰎇 %f}$9"
 
 # ncmpcpp ueberzug tweaks
 # visualizer_look = "  "
 startup_screen = visualizer
 startup_slave_screen = playlist
 startup_slave_screen_focus = yes
-locked_screen_width_part = 30
+locked_screen_width_part = 35

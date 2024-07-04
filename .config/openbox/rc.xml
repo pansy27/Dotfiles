@@ -244,14 +244,24 @@
     </keybind>
 
     <!-- has a timeout of 750ms (non-configurable) -->
-    <keybind key="A-Tab">
+    <keybind key="W-Tab">
       <action name="GoToDesktop">
         <to>last</to>
       </action>
     </keybind>
 
-  <!-- Keybindings for window switching -->
-  <keybind key="W-Tab">
+    <!-- keep above others -->
+    <keybind key="W-t">
+      <action name="ToggleAlwaysOnTop"/>
+    </keybind>
+
+    <!-- sticky windows -->
+    <keybind key="W-S-s">
+      <action name="ToggleOmnipresent"/>
+    </keybind>
+
+    <!-- Keybindings for window switching -->
+  <keybind key="A-Tab">
     <action name="NextWindow">
         <allDesktops>yes</allDesktops>
       <finalactions>
@@ -302,30 +312,30 @@
     </keybind>
     <!-- Custom Keybinds -->
     <!-- Volume Keybinds -->
-    <keybind key="F3">
+    <keybind key="W-F3">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ +5%</command>
       </action>
     </keybind>
-    <keybind key="F2">
+    <keybind key="W-F2">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ -5%</command>
       </action>
     </keybind>
-    <keybind key="F4">
+    <keybind key="W-F4">
       <action name="Execute">
         <command>pactl set-sink-mute @DEFAULT_SINK@ toggle</command>
       </action>
     </keybind>
     <!-- Light keybinds -->
-    <keybind key="F9">
+    <keybind key="W-F9">
       <action name="Execute">
-        <command>light -A 3</command>
+        <command>xbacklight -inc 10</command>
       </action>
     </keybind>
-    <keybind key="F6">
+    <keybind key="W-F6">
       <action name="Execute">
-        <command>light -U 3</command>
+        <command>xbacklight -dec 10</command>
       </action>
     </keybind>
     <!-- Media Keybinds -->
@@ -376,10 +386,10 @@
     </keybind>
     <keybind key="W-space">
       <action name="Execute">
-        <command>chromium</command>
+        <command>microsoft-edge-stable</command>
       </action>
     </keybind>
-    <keybind key="W-v">
+    <keybind key="W-l">
       <action name="execute">
         <command>lock.sh</command>
       </action>
@@ -397,7 +407,7 @@
     <!-- screenshot keybinds -->
     <keybind key="Print">
       <action name="execute">
-        <command>flameshot gui</command>
+        <command>bash -c "maim -s -l -b 3 -c 0.3,0,0.5,0.7 | xclip -selection clipboard -t image/png"</command>
       </action>
     </keybind>
     <!-- Openbox reconfigure comamnd -->
@@ -614,7 +624,7 @@
       </mousebind>
     </context>
 
-    <context name="Desktop">
+    <!-- <context name="Desktop">
       <mousebind button="Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
@@ -653,7 +663,7 @@
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
-    </context>
+    </context> -->
     <context name="Root">
       <!-- Menus -->
       <mousebind button="Middle" action="Press">
@@ -716,6 +726,7 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
+       <application class="*"> <decor>no</decor> </application>
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.

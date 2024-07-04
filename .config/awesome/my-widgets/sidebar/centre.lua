@@ -325,7 +325,7 @@ local centerPart = wibox.widget {
 -- making brightness slider useful
 local slider = brightSlider:get_children_by_id("brightSlider")[1]
 slider:connect_signal("property::value", function(obj, value)
-    awful.spawn.with_shell("light -S " .. value)
+    awful.spawn.with_shell("xbacklight -set " .. value)
 end)
 
 -- night mode button

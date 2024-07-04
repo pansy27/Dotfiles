@@ -1,14 +1,6 @@
-# rose-pine colorscheme
-# include rose-pine.config
+# cloud colorscheme
+include light.conf
 
-#rose pine
-set $base #26233a
-set $focus #908caa
-set $alt-focus #403d52
-set $rose #ebbcba
-set $love #eb6f92
-set $text #e0def4
-set $gold #f6c177
 # settings variables
 set $mod Mod4
 set $alt Mod1
@@ -16,12 +8,12 @@ set $terminal alacritty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
-gaps outer -5
+font pango:Rubik 10
+gaps outer 5
 gaps inner 5
 # disables window titlebars ⬇️
 # new_window pixel 10
-# default_border pixel 2
+default_border pixel 1
 # default_floating_border pixel  2
 smart_gaps on
 smart_borders on
@@ -35,6 +27,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [title="sxiv"] floating enable
 for_window [title="mpv"] floating enable
+for_window [class="vlc"] floating enable
 for_window [title="Kvantum Manager"] floating enable
 for_window [title="KvantumViewer"] floating enable
 for_window [class="ark"] floating enable
@@ -44,71 +37,63 @@ for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable
 #, resize set width 730 height 450, move position 300 120
 for_window [window_role="(pop-up|bubble|dialog)"] floating enable
 # for_window [class=".*"] title_format  "<span background='#FDF2F0' foreground='#484461'>  %instance </span><span background='#5A5576' foreground='#FDF2F0'> %title </span>
-for_window [class=".*"] title_format  "<span background='$text' foreground='$base'>  %instance </span> %title", hide_edge_borders horizontal
-
-######### COLORS ##########
-
-# colors                title-brdr   title-bg    text  indicator  border
-client.focused           $focused    $base       $text   $rose    $focused
-client.focused_inactive  $alt-focus  $base       $text   $rose    $alt-focus #floating inactive
-client.unfocused         $base       $base       $text   $rose    $base
-client.urgent            $love       $alt-focus  $text   $rose    $love
-client.placeholder       $base       $base       $text   $rose    $base
-client.background        $base 
+# for_window [class=".*"] title_format  "<span background='$text' foreground='$base'>  %instance </span> %title", hide_edge_borders horizontal
 
 ######### KEYBINDS #############
 #### CUSTOM KEYBINDS ######
 
 ###### VOLUME ####
-bindsym F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym F4 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F3 exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+
+bindsym $mod+F2 exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%-
+bindsym $mod+F4 exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle
 
 #### BRIGHTNESS
-bindsym F9 exec --no-startup-id light -A 3
-bindsym F6 exec --no-startup-id light -U 3
+bindsym $mod+F9 exec --no-startup-id xbacklight -inc 10
+bindsym $mod+F6 exec --no-startup-id xbacklight -dec 10
 
 #### MEDIA ####
 bindsym $alt+a exec --no-startup-id playerctl play-pause
-bindsym F7  exec mpc toggle
+bindsym $mod+F7  exec mpc toggle
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioStop exec mpc stop
 
 
 ###### DUNST ###########
-bindsym ctrl+space exec dunstctl close
-bindsym ctrl+shift+space exec dunstctl close-all
-bindsym ctrl+grave exec dunstctl history-pop
+# bindsym ctrl+space exec dunstctl history-pop
+# bindsym ctrl+shift+space exec dunstctl close-all
+# bindsym ctrl+grave exec dunstctl history-pop
 bindsym ctrl+F1 exec dunstctl context
 
 
 #### ROFI ####
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $alt+Tab exec rofi -show window
-bindsym $alt+g exec --no-startup-id rofi -modi emoji -show emoji
+# bindsym $alt+Tab exec rofi -show window
+bindsym $alt+g exec --no-startup-id rofimoji
 bindsym $alt+n exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+n exec --no-startup-id rofi -show notes -modi notes:~/.scripts/rofi/notes.py
 
 
 #### OTHERS #####
 bindsym $alt+e exec --no-startup-id thunar
-bindsym $mod+v exec --no-startup-id i3lock
+bindsym $mod+v exec --no-startup-id lock.sh
 # bindsym $mod+$alt+t  exec wpg -m
 bindsym Ctrl+Shift+Escape exec --no-startup-id $terminal -e btm
 bindsym $alt+Ctrl+Delete exec --no-startup-id xkill 
-bindsym $mod+g exec --no-startup-id gtk3-widget-factory 
-bindsym Print exec --no-startup-id flameshot gui
-bindsym $mod+space exec --no-startup-id chromium
-bindsym $alt+Shift+space exec --no-startup-id chromium --incognito
+bindsym Print exec --no-startup-id "maim -s -l -b 3 -c 0.3,0,0.5,0.7 | xclip -selection clipboard -t image/png"
+bindsym Shift+Print exec --no-startup-id "maim -s -l -b 3 -c 0.3,0,0.5,0.7 | swappy -f -"
+bindsym $mod+space exec --no-startup-id vivaldi
+bindsym $alt+Shift+space exec --no-startup-id vivaldi --incognito
 # bindsym $mod+Shift+e exec --no-startup-id emacsclient -c -a 'emacs'
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
+bindsym $mod+b exec --no-startup-id polybar-msg cmd toggle
 tiling_drag modifier titlebar
 
 
 ######### I3 KEYBINDS ##########
-floating_modifier $mod
+bindsym $mod+m exec ~/.config/i3/toggle-gaps.sh
+floating_modifier $alt
 # start a terminal
 bindsym $mod+Return exec $terminal
 
@@ -175,7 +160,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -187,7 +171,6 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -199,10 +182,9 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # workspaces
-bindsym $mod+Tab  workspace back_and_forth
+bindsym $alt+Tab  workspace back_and_forth
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 
@@ -212,7 +194,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -254,8 +236,13 @@ bindsym $mod+r mode "resize"
     bindsym $mod+z scratchpad show
 
 # bar {
-#         status_command i3status
+#   status_command i3status-rs
+#   # i3bar_command i3bar -t
+#   position bottom
+#   colors {
+#     background #00000066
+#     focused_workspace #ffffff #ffffff #000000
+#     urgent_workspace #000000 #000000 #f8929a
+#     }
 # }
-
-# Autostart
-exec_always "~/.config/awesome/autostart.sh"
+exec --no-startup-id ~/.config/polybar/start.sh

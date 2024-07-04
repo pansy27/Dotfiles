@@ -98,7 +98,9 @@ theme.notification_position = "top_right"
 theme.notification_bg = theme.colors.cinnamon_white
 theme.notification_fg = theme.colors.silly_fg
 theme.notification_border_width = 0
+-- theme.notification_border_color = ""
 theme.notification_font = theme.font_med .. "10"
+theme.notification_margin = 400
 
 theme.notification_action_underline_normal = false
 

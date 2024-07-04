@@ -1,7 +1,7 @@
-gtk-theme-name="Materia-light"
-gtk-icon-theme-name="breeze"
-gtk-font-name="IBM Plex Sans,  10"
-gtk-cursor-theme-name="capitaine-cursors"
+gtk-theme-name="Materia-light-compact"
+gtk-icon-theme-name="Papirus-Light"
+gtk-font-name="SF Pro Display,  10"
+gtk-cursor-theme-name="miku-cursor"
 gtk-cursor-theme-size=24
 gtk-enable-animations=1
 gtk-primary-button-warps-slider=0

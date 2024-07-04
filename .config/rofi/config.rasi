@@ -1,14 +1,8 @@
-configuration {
-    display-drun: " ";
-    modi: "drun,run,filebrowser";
+configuration{
     show-icons: true;
-    icon-theme: "Nordzy";
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
 }
-/* Dark theme. */
-/* @theme "~/.cache/wal/rofi-dark" */
 
-/* Light theme. */
-/* @import "~/.cache/wal/colors-rofi-light" */
- @theme "koko" 
-/* vim:ft=css
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+@theme "koko-dark.rasi"

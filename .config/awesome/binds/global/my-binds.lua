@@ -24,14 +24,14 @@ end
 
 -- volume
 awful.keyboard.append_global_keybindings({
-	awful.key({}, "F3", function()
-		awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")
+	awful.key({ modkey }, "F3", function()
+		awful.spawn("wpctl set-volume @DEFAULT_SINK@ 5%+")
 	end),
-	awful.key({}, "F2", function()
-		awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")
+	awful.key({ modkey }, "F2", function()
+		awful.spawn("wpctl set-volume @DEFAULT_SINK@ 5%-")
 	end),
-	awful.key({}, "F4", function()
-		awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+	awful.key({ modkey }, "F4", function()
+		awful.spawn("wpctl set-mute @DEFAULT_SINK@ toggle")
 	end),
 
 	--rofi
@@ -46,10 +46,10 @@ awful.keyboard.append_global_keybindings({
 	end),
 	-- brightness
 	awful.key({}, "F9", function()
-		awful.spawn("light -A 5")
+		awful.spawn("xbacklight -inc 10%")
 	end),
 	awful.key({}, "F6", function()
-		awful.spawn("light -U 5")
+		awful.spawn("xbacklight -dec 10%")
 	end),
 
 	-- others
@@ -63,18 +63,24 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn.with_shell("playerctl play-pause")
 	end),
 	awful.key({ modkey }, "v", function()
-		awful.spawn.with_shell("lock.sh")
+		awful.spawn.with_shell("loginctl lock-session")
 	end, { description = "lock the screen" }),
 	awful.key({}, "Print", function()
-		awful.spawn.with_shell("flameshot gui")
+		awful.spawn.with_shell("maim -s -l -b 3 -c 0.3,0,0.5,0.7 | xclip -selection clipboard -t image/png")
+	end, { description = "screenshot utility" }),
+	awful.key({ shift }, "Print", function()
+		awful.spawn.with_shell("maim -s -l -b 3 -c 0.3,0,0.5,0.7 | swappy -f -")
 	end, { description = "screenshot utility" }),
 	awful.key({ alt, ctrl }, "Delete", function()
 		awful.spawn.with_shell("xkill")
 	end, { description = "kill client" }),
 
 	awful.key({ modkey }, "space", function()
-		awful.spawn("chromium")
+		awful.spawn("vivaldi")
 	end),
+	awful.key({ alt }, "e", function()
+		awful.spawn.with_shell("neovide")
+	end, { description = "neovide" }),
 
 	-- garbage collector popup 
 	awful.key({"Mod4","Control" }, "b", function()
@@ -87,5 +93,3 @@ awful.keyboard.append_global_keybindings({
     end)
 	end, {description = "print awesome wm memory statistics", group="awesome"})
 })
-
-

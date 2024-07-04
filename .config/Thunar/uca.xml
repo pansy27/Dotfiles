@@ -12,4 +12,15 @@
 	<startup-notify/>
 	<directories/>
 </action>
+<action>
+	<icon></icon>
+	<name>Nitrogen</name>
+	<submenu></submenu>
+	<unique-id>1719930503109999-1</unique-id>
+	<command>rm ~/.cache/wallpaper &amp;&amp; ln -s %f ~/.cache/wallpaper &amp;&amp; nitrogen --restore</command>
+	<description>set wall with nitrogen</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

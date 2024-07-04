@@ -36,9 +36,6 @@ require("my-widgets.music_player")
 require("icon_customizer"){
    	delay = 0.2	 }
 
--- Autostart script
-awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
-
 -- Run garbage collector regularly to prevent memory leaks
 gears.timer {
 	timeout = 30,

@@ -9,7 +9,7 @@ local shift = mod.shift
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-	awful.key({ modkey, ctrl }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+	awful.key({ modkey, shift }, "c", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, ctrl, shift }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(apps.terminal)
@@ -19,8 +19,12 @@ awful.keyboard.append_global_keybindings({
 -- Tags related keybindings
 awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "bracketleft", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "comma", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
-	awful.key({ alt }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
+	awful.key({ modkey }, "bracketright", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey }, "period", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ alt    }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
 })
 
 -- Focus related keybindings
@@ -79,9 +83,9 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, ctrl }, "l", function()
 		awful.tag.incncol(-1, nil, true)
 	end, { description = "decrease the number of columns", group = "layout" }),
-	-- awful.key({ modkey }, "space", function()
-	-- 	awful.layout.inc(1)
-	-- end, { description = "select next", group = "layout" }),
+	awful.key({ modkey }, "grave", function()
+		awful.layout.inc(1)
+	end, { description = "select next", group = "layout" }),
 	-- awful.key({ modkey, shift }, "space", function()
 	-- 	awful.layout.inc(-1)
 	-- end, { description = "select previous", group = "layout" }),

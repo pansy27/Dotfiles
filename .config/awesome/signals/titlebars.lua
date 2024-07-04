@@ -29,7 +29,7 @@ client.connect_signal("request::titlebars", function(c)
     }
 
     local myTitlebar = awful.titlebar(c, {
-        size = dpi(33)
+        size = dpi(30)
     })
 
     myTitlebar.widget = {

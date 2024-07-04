@@ -12,15 +12,15 @@ XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
 UXTerm*decTerminalID: vt340
 UXTerm*numColorRegisters: 256
-XTerm*faceName: xft: Monospace:style=Regular:size=11, xft: BlexMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
-UXTerm*faceName: xft: Monospace:style=Regular:size=11, xft: BlexMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+XTerm*faceName: xft: Monospace:style=Regular:size=11, xft: Liga SFMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+UXTerm*faceName: xft: Monospace:style=Regular:size=11, xft: Liga SFMono Nerd Font Mono:style=Regular:size=11, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
 ! XTerm*faceSize: 11
 ! UXTerm*faceSize: 11
 
 ! URxvt Settings
 ! urxvt.boldFont:
 URxvt.scrollBar: false
-URxvt.font: xft: Monospace:style=Regular:size=11.5, xft: BlexMono Nerd Font Mono:style=Regular:size=10, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
+URxvt.font: xft: Monospace:style=Regular:size=10, xft: Liga SFMono Nerd Font Mono:style=Regular:size=10, xft:LXGW WenKai:style-Regular:size=10, xft:Noto Color Emoji:size=10, xft: Dejavu Sans:size=10
 ! URxvt.boldFont:
 URxvt.internalBorder: 20
 ! URxvt.letterSpace: 1.0

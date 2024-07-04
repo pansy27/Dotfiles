@@ -1,1 +1,1 @@
-/home/anon/.config/awesome/themes/cinnamonroll/theme_dark.lua
+/home/pansy/.config/awesome/themes/cinnamonroll/theme_dark.lua

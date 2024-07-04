@@ -1,9 +1,11 @@
-;; Basic settings
+; Basic settings
 (setq inhibit-startup-screen t)
-(set-frame-font "SF Mono-10.5" nil t)
+(set-frame-font "Liga SFMono Nerd Font-11" nil t)
 (global-display-line-numbers-mode t)
 (column-number-mode t)
 (scroll-bar-mode -1)
+(menu-bar-mode -1)
+
 (tool-bar-mode -1)
 
 ;; Visual bell
@@ -24,7 +26,7 @@
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
+       "straight/repos/straight.el/bootstrap.el"
         (or (bound-and-true-p straight-base-dir)
             user-emacs-directory)))
       (bootstrap-version 7))
@@ -43,12 +45,7 @@
 (setq use-package-always-ensure t)
 
 ;; Install Packages ;;
-;; Evil mode(emacs binds sucks dick)
-(use-package evil
-  :config
-  (evil-mode -1))
-
-;; Completion stuff
+;; Completion stuffs
 (use-package vertico
   :init
   (vertico-mode t)
@@ -92,10 +89,9 @@
   :init (doom-modeline-mode 1))
 
 ;; Nerd icons(..why?)
-
 (use-package nerd-icons
   :custom
-  (nerd-icons-font-family "Symbols Nerd Font Mono"))
+  (nerd-icons-font-family "Liga SFMono Nerd Font"))
 
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
@@ -116,7 +112,7 @@
 (load-theme 'doom-one-light t)
 ;; Transparency
 ;; (add-to-list 'default-frame-alist '(alpha-background . 97))
-;; (set-frame-parameter nil 'alpha-background 97)
+(set-frame-parameter nil 'alpha-background 90)
 
 ;; Recent file mode
 (recentf-mode 1)
@@ -215,5 +211,5 @@
 (use-package meow
   :config
   (meow-setup)
-  (meow-global-mode 1))
-
+  (meow-global-mode 1)
+  (setf meow-expand-hint-remove-delay 0))
