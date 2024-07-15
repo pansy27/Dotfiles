@@ -21,5 +21,4 @@ run picom
 run nm-applet
 run xautocfg
 run xsettingsd -c ~/.config/xsettingsd/xsettingsd.conf
-run xss-lock lock.sh
-run /usr/bin/dunst
+run xss-lock awesome-client 'lockScreen_visibility()'

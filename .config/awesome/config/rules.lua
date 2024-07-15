@@ -51,16 +51,6 @@ ruled.client.connect_signal("request::rules", function()
 
     ruled.client.append_rule {
         rule = {
-            class = "Xfdesktop"
-        },
-        properties = {
-            skip_taskbar = true,
-            sticky = true
-        }
-        -- tags = "1", "2", "3", "4", "5", "6", "7", "8", "9"}
-    }
-    ruled.client.append_rule {
-        rule = {
             class = "Vivaldi-stable"
         },
         properties = {
@@ -83,7 +73,7 @@ ruled.client.connect_signal("request::rules", function()
         },
         properties = {
             floating = true,
-            titlebars_enabled = true
+            -- titlebars_enabled = true
         }
     })
     ruled.client.append_rule({
@@ -92,23 +82,6 @@ ruled.client.connect_signal("request::rules", function()
         },
         properties = {
             floating = true
-        }
-    })
-    ruled.client.append_rule({
-        rule = {
-            class = "Chromium"
-        },
-        properties = {
-            titlebars_enabled = false
-        }
-    })
-    ruled.client.append_rule({
-        rule = {
-            instance = "Navigator"
-        },
-        properties = {
-            maximized_vertical = true,
-            titlebars_enabled = false
         }
     })
 
@@ -123,13 +96,11 @@ ruled.client.connect_signal("request::rules", function()
         }
     })
 
-    -- firefox pip window 
-    ruled.client.append_rule({
-        rule = {
-            instance = "Toolkit"
-        },
-        properties = {
-            sticky = true
-        }
-    })
 end)
+
+-- make floating windows stay on top
+--[[ client.connect_signal("property::floating", function(c)
+    if not c.floating then
+      c.ontop = true
+    end
+end) ]]

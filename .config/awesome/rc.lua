@@ -5,6 +5,7 @@ local awful = require("awful")
 
 local gears = require("gears")
 
+local common = require("my-widgets.common")
 -- required for sending error messages( can't figure out how to theme them wihtout breaking functionality)
 require("signals.errors")
 
@@ -31,6 +32,9 @@ require("my-widgets.sidebar")
 
 -- Music widget
 require("my-widgets.music_player")
+
+-- LockScreen
+require("my-widgets.lockscreen.lockscreen")
 
 -- Custom Icons
 require("icon_customizer"){

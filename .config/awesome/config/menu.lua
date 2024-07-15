@@ -15,6 +15,8 @@ end}, {"poweroff", function()
     awful.spawn.with_shell("systemctl poweroff")
 end}, {"reboot", function()
     awful.spawn.with_shell("systemctl reboot")
+end}, {"hibernate", function()
+    awful.spawn.with_shell("sleep 2 && loginctl lock-session | systemctl hibernate")
 end}}
 
 mymainmenu = awful.menu({

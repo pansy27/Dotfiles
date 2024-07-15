@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+MimeType=image/*;
+Actions=setAsWallpaper
+
+[Desktop Action setAsWallpaper]
+Name=Use As Wallpaper
+Icon=background
+Exec=rm ~/.cache/wallpaper && ln -s "%u" ~/.cache/wallpaper && nitrogen --restore

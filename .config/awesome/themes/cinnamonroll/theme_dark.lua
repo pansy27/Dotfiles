@@ -53,6 +53,15 @@ theme.player_bg = theme.colors.cinnamon_white
 theme.player_fg = theme.colors.silly_bg
 theme.player_button = theme.colors.cinnamon_white
 
+-- Lockscreen
+theme.lockscreen_bg = themes_path .. "widgets/lockscreen/dark/background.jpg"
+theme.lockscreen_bg_alt = themes_path .. "widgets/lockscreen/dark/background_alt.jpg"
+theme.lockscreen_lock = themes_path .. "widgets/lockscreen/dark/lock.png"
+theme.lockscreen_lock_alt = themes_path .. "widgets/lockscreen/dark/lock_alt.png"
+theme.lockscreen_greeter_icon = themes_path .. "widgets/lockscreen/dark/greeting.jpg"
+-- theme.lockscreen_popup = themes_path .. "widgets/lockscreen/light/cloud.svg"
+-- theme.lockscreen_frame = themes_path .. "widgets/lockscreen/light/frame.svg"
+
 -- Rest
 theme.bg_normal     = theme.colors.dark_blue
 theme.bg_focus      = theme.colors.dark_blue
@@ -66,7 +75,7 @@ theme.fg_urgent     =  theme.colors.dark_blue
 theme.fg_minimize   = "grey"
 
 theme.useless_gap         = dpi(0)
-theme.border_width        = dpi(2)
+theme.border_width        = dpi(1)
 theme.border_color_active = theme.colors.slider.inactive
 theme.border_color_normal = theme.colors.silly_fg
 theme.border_color_marked = theme.colors.purple

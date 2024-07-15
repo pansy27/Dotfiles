@@ -4,7 +4,9 @@ local dpi = beautiful.xresources.apply_dpi
 local wibox = require("wibox")
 local gears = require("gears")
 
+-- User modules
 local common = require("my-widgets.common")
+local musicInfo = require("my-widgets.music")
 
 -- widgets
 local albumArt = require("my-widgets.music_player.album_art")
@@ -19,116 +21,24 @@ local lengthWidget = mediaInfo:get_children_by_id("totalLen")[1]
 
 local artWidget = albumArt:get_children_by_id("myArt")[1]
 
--- widget data
-local widgetInfo = {
-    title = nil,
-    artist = nil,
-    position = nil,
-    length = nil,
-    art = nil
-}
 
-local updateInfo = function(widget, widgetType, info) -- used to distinguish b/w title and album icon
-    local cases = {
-        ["art"] = function()
-            widget:set_image(gears.surface.load_uncached(info))
-        end,
-        ["artist"] = function()
-            widget:set_text("󰠃 " .. info)
-        end,
-        ["title"] = function()
-            widget:set_text("󰽱 " .. info)
-        end,
-        ["position"] = function()
-            widget:set_text(info)
-        end,
-        ["length"] = function()
-            widget:set_text(info)
-        end
-    }
-    local update = cases[widgetType]
-    update()
+-- Updating music widget
+local updateInfo = function()
+	titleWidget:set_text("󰎇  " .. musicInfo.title)
+	artistWidget:set_text("󰠃  " .. musicInfo.artist)
+	lengthWidget:set_text(musicInfo.length)
+	artWidget:set_image(gears.surface.load_uncached(musicInfo.art))
 end
 
-local getInfo = function()
-    local playerctlStr =
-        [[ playerctl -i "chromium" metadata --format "length_{{ duration(mpris:length)}}^title_{{ title }}^artist_{{ artist }}^art_{{ mpris:artUrl }}" -F]]
-
-    -- some stolen func that un-escapes special characters
-    local hex_to_char = function(x)
-        return string.char(tonumber(x, 16))
-    end
-
-    local unescape = function(url)
-        return url:gsub("%%(%x%x)", hex_to_char)
-    end
-
-    -- awful.spawn.easy_async_with_shell("pkill playerctl", function()
-    local pid = awful.spawn.with_line_callback(playerctlStr, {
-        stdout = function(line)
-            -- metadata
-            widgetInfo.title = line:match("title_(.-)^") or "Nothing's playing"
-            widgetInfo.artist = line:match("artist_(.-)^") or "Nothing's playing"
-
-            -- length
-            widgetInfo.length = line:match("length_(.-)^") or "XX"
-
-            if widgetInfo.title and widgetInfo.artist ~= "Nothing's playing" then
-                widgetInfo.title = string.sub(widgetInfo.title, 1, 20)
-                widgetInfo.artist = string.sub(widgetInfo.artist, 1, 20)
-            end
-            -- album art (cause some songs don't have album art)
-            widgetInfo.art = line:match("art_file:%/%/(.-)$") or "No album art available"
-            if widgetInfo.art ~= "No album art available" then
-                widgetInfo.art = unescape(widgetInfo.art)
-            else
-                widgetInfo.art = beautiful.player_icons .. "music_player.png"
-            end
-
-            -- time to update
-            updateInfo(titleWidget, "title", widgetInfo.title)
-            updateInfo(artistWidget, "artist", widgetInfo.artist)
-            updateInfo(lengthWidget, "length", widgetInfo.length)
-            updateInfo(artWidget, "art", widgetInfo.art)
-
-            collectgarbage()
-        end,
-        stderr = function(line)
-            common.testNotif(line)
-        end
-    })
-    -- awful.spawn.with_shell("killall playerctl")
-    -- end)
+local updateInfo2 = function()
+	positionWidget:set_text(" " .. musicInfo.position)
 end
 
--- separate function for position cause it needs to be updated every second
-local getPosition = function()
-    local playerctlStr = [[ playerctl -i "chromium" metadata --format "pos_{{ duration(position) }}" -F]]
+collectgarbage()
 
-    local pid = awful.spawn.with_line_callback(playerctlStr, {
-        stdout = function(line)
-            -- position and length`
-            widgetInfo.position = line:match("pos_(.-)$") or "XX"
-
-            -- time to update
-            updateInfo(positionWidget, "position", widgetInfo.position)
-
-        end,
-        stderr = function(line)
-            common.testNotif(line)
-        end
-    })
-    -- awesome.register_xproperty("playerctlPid2", pid)
-end
-
--- fetch info
-getInfo()
-getPosition()
-
--- kill playerctl processes after restart
-awesome.connect_signal("exit", function(_, reason)
-    awful.spawn.with_shell("killall playerctl")
-end)
+-- Connecting to update signals
+awesome.connect_signal("update_music_info", updateInfo)
+awesome.connect_signal("update_position", updateInfo2)
 
 -- Final widget
 local player = wibox {

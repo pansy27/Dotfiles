@@ -45,16 +45,16 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn("rofimoji")
 	end),
 	-- brightness
-	awful.key({}, "F9", function()
+	awful.key({ modkey }, "F9", function()
 		awful.spawn("xbacklight -inc 10%")
 	end),
-	awful.key({}, "F6", function()
+	awful.key({ modkey }, "F6", function()
 		awful.spawn("xbacklight -dec 10%")
 	end),
 
 	-- others
 	awful.key({ modkey }, "e", function()
-		awful.spawn("thunar")
+		awful.spawn("dolphin")
 	end),
 	awful.key({ ctrl, shift }, "Escape", function()
 		awful.spawn.with_shell(apps.terminal .. " -e btm")
@@ -62,7 +62,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ alt }, "a", function()
 		awful.spawn.with_shell("playerctl play-pause")
 	end),
-	awful.key({ modkey }, "v", function()
+	awful.key({ modkey }, "l", function()
 		awful.spawn.with_shell("loginctl lock-session")
 	end, { description = "lock the screen" }),
 	awful.key({}, "Print", function()
@@ -71,16 +71,13 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ shift }, "Print", function()
 		awful.spawn.with_shell("maim -s -l -b 3 -c 0.3,0,0.5,0.7 | swappy -f -")
 	end, { description = "screenshot utility" }),
-	awful.key({ alt, ctrl }, "Delete", function()
+	awful.key({ modkey, shift }, "w", function()
 		awful.spawn.with_shell("xkill")
 	end, { description = "kill client" }),
 
 	awful.key({ modkey }, "space", function()
-		awful.spawn("vivaldi")
+		awful.spawn("firefox-developer-edition")
 	end),
-	awful.key({ alt }, "e", function()
-		awful.spawn.with_shell("neovide")
-	end, { description = "neovide" }),
 
 	-- garbage collector popup 
 	awful.key({"Mod4","Control" }, "b", function()
