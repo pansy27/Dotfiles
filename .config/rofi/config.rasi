@@ -1,8 +1,10 @@
 configuration{
+    modi: "drun,filebrowser";
+    icon-theme: "Papirus";
     show-icons: true;
-    terminal: "alacritty";
-    drun-display-format: "{icon} {name}";
-    location: 0;
+    terminal: "konsole";
+    drun-display-format: "{icon} {name} ";
 }
 
-@theme "koko-dark.rasi"
+@theme "configs/dishwasher1910"
+

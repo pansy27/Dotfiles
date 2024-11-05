@@ -1,0 +1,11 @@
+window {
+   background-image: url("../../.cache/lockscreen");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: black;
+}
+
+#window-box {
+  /* padding-left: 200px; */
+}

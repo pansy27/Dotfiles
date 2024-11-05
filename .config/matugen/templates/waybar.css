@@ -1,0 +1,7 @@
+@define-color bg {{colors.surface.default.hex}};
+@define-color fg {{colors.on_surface.default.hex}};
+@define-color urgent-bg {{colors.error_container.default.hex}};
+@define-color urgent-fg {{colors.on_error_container.default.hex}};
+@define-color highlight-bg {{colors.primary.default.hex}};
+@define-color highlight-fg {{colors.on_primary.default.hex}};
+

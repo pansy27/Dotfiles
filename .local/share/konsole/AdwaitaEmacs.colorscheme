@@ -1,0 +1,120 @@
+#########################################################
+#########################################################
+## -*- mode: conf -*-                                  ##
+## ________________                __________          ##
+## ___    |_____  /__      _______ ___(_)_  /______ _  ##
+## __  /| |  __  /__ | /| / /  __ `/_  /_  __/  __ `/  ##
+## _  ___ / /_/ / __ |/ |/ // /_/ /_  / / /_ / /_/ /   ##
+## /_/  |_\__,_/  ____/|__/ \__,_/ /_/  \__/ \__,_/    ##
+##                                                     ##
+## __________                               	       ##
+## ___  ____/______ _________ ______________	       ##
+## __  __/  __  __ `__ \  __ `/  ___/_  ___/	       ##
+## _  /___  _  / / / / / /_/ // /__ _(__  ) 	       ##
+## /_____/  /_/ /_/ /_/\__,_/ \___/ /____/  	       ##
+##                                                     ##
+## Based on Adwaita Emacs theme by William Stevenson   ##
+##     Created by Zinjanthr0pus                        ##
+##     License: GPLv3				       ##
+#########################################################
+#########################################################
+
+[Background]					      
+Color=237,237,237
+
+[BackgroundFaint]
+Color=255,255,255
+
+[BackgroundIntense]
+Color=255,255,255
+
+[Color0]
+Color=46,52,54
+
+[Color0Faint]
+Color=0,0,0
+
+[Color0Intense]
+Color=0,0,0
+
+[Color1]
+Color=165,42,42
+
+[Color1Faint]
+Color=245,102,109
+
+[Color1Intense]
+Color=245,102,109
+
+[Color2]
+Color=78,154,6
+
+[Color2Faint]
+Color=156,187,67
+
+[Color2Intense]
+Color=156,187,67
+
+[Color3]
+Color=206,92,0
+
+[Color3Faint]
+Color=206,175,0
+
+[Color3Intense]
+Color=206,175,0
+
+[Color4]
+Color=32,74,135
+
+[Color4Faint]
+Color=0,132,200
+
+[Color4Intense]
+Color=0,132,200
+
+[Color5]
+Color=160,32,240
+
+[Color5Faint]
+Color=168,121,156
+
+[Color5Intense]
+Color=168,121,156
+
+[Color6]
+Color=47,139,88
+
+[Color6Faint]
+Color=0,187,255
+
+[Color6Intense]
+Color=0,187,255
+
+[Color7]
+Color=237,237,237
+
+[Color7Faint]
+Color=255,255,255
+
+[Color7Intense]
+Color=255,255,255
+
+[Foreground]
+Color=46,52,54
+
+[ForegroundFaint]
+Color=0,0,0
+
+[ForegroundIntense]
+Color=0,0,0
+
+[General]
+Anchor=0.5,0.5
+Blur=true
+ColorRandomization=false
+Description=AdwaitaEmacs
+FillStyle=Tile
+Opacity=1
+Wallpaper=
+WallpaperOpacity=1

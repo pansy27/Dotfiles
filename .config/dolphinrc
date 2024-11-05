@@ -1,0 +1,32 @@
+MenuBar=Disabled
+
+[ContextMenu]
+ShowAddToPlaces=false
+
+[General]
+BrowseThroughArchives=true
+CloseActiveSplitView=false
+GlobalViewProps=false
+OpenExternallyCalledFolderInNewTab=true
+ShowSpaceInfo=false
+Version=202
+ViewPropsTimestamp=2024,10,26,18,47,40.436
+
+[IconsMode]
+IconSize=64
+PreviewSize=80
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[PreviewSettings]
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gdk-pixbuf-thumbnailer,svgthumbnail,ffmpegthumbs,webp-pixbuf
+
+[ViewPropertiesDialog]
+1366x768 screen: Height=484
+1366x768 screen: Width=372

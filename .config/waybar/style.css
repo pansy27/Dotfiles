@@ -1,0 +1,60 @@
+@import url('matugen.css');
+
+* {
+    font-family: "Cantarell";
+    font-weight: 600;
+    font-size: 13.5px;
+}
+
+button {
+	border-radius: 0px;
+}
+
+window#waybar { 
+    background-color: @bg;
+    color: @fg;
+}
+
+
+.modules-left {
+	padding: 0px 0px 0px 0px;
+}
+
+
+.modules-right {
+	background-color: @highlight-bg;
+  color: @highlight-fg;
+	padding: 0px 5px 0px 0px;
+}
+
+#workspaces button {
+	padding: 0px 11px 0px 11px; 
+ 	min-width: 1px;
+	color: #888888;
+}
+
+#workspaces button.focused { 
+	background-color: @highlight-bg;
+  color: @highlight-fg;
+}
+
+#workspaces button.urgent { 
+	background-color: @urgent-bg;
+	color: @urgent-fg;
+}
+
+#mode { 
+	background-color: @urgent-bg;
+	color: @urgent-fg;
+     	padding: 0px 5px 0px 5px;
+     /*border: 1px solid #2f343a;*/
+}
+
+#clock {
+	margin: 0px 15px 0px 10px;
+}
+
+#tray{
+   	padding: 0px 5px 0px 0px;
+   /*margin: 0px 5px 0px 0px;*/
+}

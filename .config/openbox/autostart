@@ -1,1 +1,0 @@
-sleep 0.4 && XDG_SESSION_TYPE=x11 plank &

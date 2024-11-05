@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Service
+MimeType=image/*;
+X-KDE-Submenu=Set as Wallpaper
+Icon=tab-new-background
+Actions=normal;blur;top;lockscreen
+
+[Desktop Action normal]
+Name=Normal
+Icon=backgroundtool
+Exec=wallpaper.sh "%u" normal
+
+[Desktop Action blur]
+Name=Blur
+Icon=blurimage
+Exec=wallpaper.sh "%u" blur
+
+[Desktop Action top]
+Name=Top
+Icon=autocorrection
+Exec=wallpaper.sh "%u" top
+
+[Desktop Action lockscreen]
+Name=Lockscreen
+Icon=lock
+Exec=wallpaper.sh "%u" lockscreen

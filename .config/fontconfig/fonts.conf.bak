@@ -1,0 +1,102 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <alias>
+  <family>serif</family>
+  <prefer>
+   <family>IBM Plex Serif</family>
+   <family>Gentium Book Plus</family>
+   <family>Sarasa Gothic J</family>
+   <family>Zen Kurenaido</family>
+   <family>Noto Sans CJK SC</family>
+   <family>Noto Color Emoji</family>
+   <family>DejaVu Serif</family>
+   <family>Symbols Nerd Font</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>sans-serif</family>
+  <prefer>
+   <family>Roboto</family>
+   <family>SF Pro Text</family>
+   <family>Zen Kurenaido</family>
+   <family>Noto Color Emoji</family>
+   <family>DejaVu Sans</family>
+   <family>Symbols Nerd Font</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>monospace</family>
+  <prefer>
+   <family>SF Mono</family>
+   <family>Roboto Mono</family>
+   <family>iA Writer Mono V</family>
+   <family>IBM Plex Mono</family>
+   <family>Victor Mono</family>
+   <family>LXGW WenKai Mono</family>
+   <family>Zen Kurenaido</family>
+   <family>Noto Color Emoji</family>
+   <family>DejaVu Sans Mono</family>
+   <family>Symbols Nerd Font Mono</family>
+  </prefer>
+ </alias>
+ <!--Chinese font-->
+ <match>
+  <test compare="contains" name="lang">
+   <string>zh</string>
+  </test>
+  <edit mode="prepend" name="family">
+   <string>Sarasa Gothic SC</string>
+  </edit>
+ </match>
+ <!-- Japanese font-->
+ <match>
+  <test compare="contains" name="lang">
+   <string>ja</string>
+  </test>
+  <edit mode="prepend" name="family">
+   <string>Sarasa Gothic J</string>
+  </edit>
+ </match>
+ <!-- Korean font-->
+ <!-- "lang=ko" or "lang=ko-*" -->
+ <match target="pattern">
+  <test compare="contains" name="lang">
+   <string>ko</string>
+  </test>
+  <edit binding="strong" mode="append" name="family">
+   <string>Sarasa Gothic K</string>
+  </edit>
+ </match>
+ <!-- <match target="pattern">
+  <test name="family">
+    <string>Dina</string>
+  </test>
+  <edit name="antialias" mode="assign">
+    <bool>false</bool>
+  </edit>
+</match> -->
+ <!-- Hinting-->
+ <match target="font">
+  <edit mode="assign" name="antialias">
+   <bool>true</bool>
+  </edit>
+  <edit mode="assign" name="hinting">
+   <bool>true</bool>
+  </edit>
+  <edit mode="assign" name="hintstyle">
+   <const>hintslight</const>
+  </edit>
+ </match>
+ <dir>~/.fonts</dir>
+ <match target="font">
+  <edit mode="assign" name="rgba">
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font">
+  <edit mode="assign" name="antialias">
+   <bool>true</bool>
+  </edit>
+ </match>
+</fontconfig>

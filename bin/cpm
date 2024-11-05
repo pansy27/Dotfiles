@@ -1,0 +1,570 @@
+#!/bin/sh
+# vim: set ai ts=2 et sw=2 tw=80:
+# MIT License
+#
+# Copyright (c) 2022 Will Eccles
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+phi() {
+  >&2 printf "\033[33;1m-> \033[35;1m%s | %s\033[m %s\n" "$1" "$2" "$3"
+}
+
+usage() {
+  >&2 echo "cpm [i|r|l|C|u|U|s|S|I|F|f|c|h] [pkg]..."
+  phi i  "install" "install one or more packages"
+  phi r  "remove " "remove one or more packages"
+  phi l  "list   " "list installed packages"
+  phi C  "count  " "count installed packages"
+  phi u  "update " "update package lists"
+  phi U  "upgrade" "update package lists and upgrade all packages"
+  phi s  "search " "search for a package"
+  phi S  "show   " "show information about a package"
+  phi I  "info   " "same as show"
+  phi F  "files  " "show file list of package"
+  phi f  "from   " "show package which owns a file"
+  phi c  "clean  " "clean up leftover files/caches/orphans"
+  phi h  "help   " "show this message"
+}
+
+pem() {
+  >&2 printf "\033[31;1merror:\033[m %s\n" "$1"
+}
+
+case "$1" in
+  i|install)
+    OP='install'
+    if [ $# -lt 2 ]; then
+      pem "$OP: no package(s) specified"
+      exit 1
+    fi
+    ;;
+  r|remove)
+    OP='remove'
+    if [ $# -lt 2 ]; then
+      pem "$OP: no package(s) specified"
+      exit 1
+    fi
+    ;;
+  l|list)
+    OP='list'
+    ;;
+  C|count)
+    OP='count'
+    ;;
+  u|update)
+    OP='update'
+    ;;
+  U|upgrade)
+    OP='upgrade'
+    ;;
+  s|search)
+    OP='search'
+    if [ $# -lt 2 ]; then
+      pem "$OP: please specify a package"
+      exit 1
+    fi
+    ;;
+  S|show|I|info)
+    OP='show'
+    if [ $# -lt 2 ]; then
+      pem "$OP: please specify a package"
+      exit 1
+    fi
+    ;;
+  F|files)
+    OP='files'
+    ;;
+  f|from)
+    OP='from'
+    ;;
+  c|clean)
+    OP='clean'
+    ;;
+  h|help)
+    usage
+    exit 0
+    ;;
+  "")
+    usage
+    exit 1
+    ;;
+  *)
+    pem "Unrecognized operation: $1"
+    usage
+    exit 1
+    ;;
+esac
+shift
+
+# pipe to this to get a count instead of relying on wc -l
+tot() {
+  i=0
+  while read -r line; do
+    i=$((i + 1))
+  done
+  printf '%s\n' "$i"
+}
+
+# count the files in a directory (similar to ls -l | wc -l) or something
+# usage: fcount /path/to/dir/*
+fcount() {
+  if [ -e "$1" ]; then
+    printf '%s\n' "$#"
+  else
+    printf '%s\n' 0
+  fi
+}
+
+# list files in a directory (similar to ls -l)
+flist() {
+  if [ -d "$1" ]; then
+    cd "$1" && printf '%s\n' *
+  fi
+}
+
+# replacement for command -v which ignores aliases
+# this is useful for me, don't ask why
+has() {
+  case "$(command -v "$1" 2>/dev/null)" in
+    alias*|"") return 1
+  esac
+}
+
+# resolve symlinks in path to file (may or may not work for a directory, but
+# I doubt there's a need for that anyway)
+resolve() {
+  p="${1%/*}"
+  [ "$p" = "$1" ] && p="."
+  cd -P "$p" 2>/dev/null || PWD="$p"
+  printf '%s\n' "${PWD}/${1##*/}"
+}
+
+# elevate permissions and execute a command
+su_do() {
+  if [ "$(id -u)" != 0 ]; then
+    if command -v sudo >/dev/null; then
+      sudo "$@"
+    elif command -v doas >/dev/null && \
+      ([ -f /etc/doas.conf ] || [ -f /usr/local/etc/doas.conf ]); then
+      doas "$@"
+    else
+      su root -c '"$@"' -- sh "$@"
+    fi
+  else
+    "$@"
+  fi
+}
+
+# mainly for slackware: list lines after string $3 in directory $2, file $1
+# usage: filelistftr pkgname /directory/example "String to look for"
+# usage: filelistftr FILE [DIR] [STR]
+
+filelistftr() {
+  file="${1}"
+  dir="${2:-/var/log/packages}"
+  str="${3:-"FILE LIST:"}"
+  pkginfo="$dir/$file"
+  if [ -f "$pkginfo" ]; then
+    unset found
+    while IFS= read -r line; do
+      [ "$line" = "$str" ] && found=1
+      [ "$found" ] && printf "%s\n" "$line"
+    done <"$pkginfo"
+  elif [ -d "$dir" ]; then
+    pem "Not in $dir, check input or try updating."
+  else
+    pem "$dir does not exist, are you using the right PM?"
+  fi
+}
+
+
+_apk() {
+  case "$OP" in
+    install) su_do apk add "$@";;
+    remove)  su_do apk del "$@";;
+    list)    apk -vv info;;
+    count)   apk -vv info | tot;;
+    update)  su_do apk update;;
+    upgrade) su_do apk update && su_do apk upgrade;;
+    search)  apk search -v "$@";;
+    show)    apk search "$@";;
+    from)    apk info --who-owns "$@";;
+    files)   apk info -L "$@";;
+    clean)   su_do apk cache clean;;
+  esac
+}
+
+_apt() {
+  case "$OP" in
+    install) su_do apt install "$@";;
+    remove)  su_do apt remove "$@";;
+    list)    apt list --installed;;
+    count)   dpkg-query -f '.\n' -W | tot;;
+    update)  su_do apt update;;
+    upgrade) su_do apt update && su_do apt dist-upgrade;;
+    search)  apt search "$@";;
+    show)    apt show "$@";;
+    files)   dpkg -L "$@";;
+    from)    dpkg -S "$@";;
+    clean)   su_do apt autoremove;;
+  esac
+}
+
+_portage() {
+  case "$OP" in
+    install) su_do emerge -atv "$@";;
+    remove)  su_do emerge -avc "$@";;
+    list)    qlist -IRv;;
+    count)   eix --world | tot;;
+    update)  su_do emerge --sync;;
+    upgrade)
+      su_do emerge --sync && \
+        su_do emerge -uDU --keep-going --with-bdeps=y @world
+      ;;
+    search)  emerge -s "$@";;
+    show)    emerge -s "$@";;
+    files)   qlist "$@";;
+    from)    qfile "$@";;
+    clean)   su_do emerge --depclean -v;;
+  esac
+}
+
+_dnf() {
+  case "$OP" in
+    install) su_do dnf install "$@";;
+    remove)  su_do dnf remove "$@";;
+    list)    dnf list --installed;;
+    count)   rpm -qa | tot;;
+    update)  su_do dnf check-update;;
+    upgrade) su_do dnf upgrade;;
+    search)  dnf search "$@";;
+    show)    dnf info "$@";;
+    files)   dnf repoquery -l "$@";;
+    from)    dnf provides "$@";;
+    clean)   su_do dnf autoremove && su_do dnf clean all;;
+  esac
+}
+
+_rpm_ostree() {
+  case "$OP" in
+    install) rpm-ostree install "$@";;
+    remove)  rpm-ostree uninstall "$@";;
+    list)    rpm -qa;;
+    count)   rpm -qa | tot;;
+    update)  rpm-ostree update;;
+    upgrade) rpm-ostree upgrade;;
+    search)  pem "unsupported: this feature is currently unavailable in this PM";;
+    show)    rpm -qi "$@";;
+    files)   rpm -ql "$@";;
+    from)    rpm -q --whatprovides "$@";;
+    clean)   rpm-ostree cleanup --rollback;;
+  esac
+}
+
+_pacman() {
+  case "$OP" in
+    install) su_do pacman -S "$@";;
+    remove)  su_do pacman -Rs "$@";;
+    list)    pacman -Q;;
+    count)   pacman -Q | tot;;
+    update)  su_do pacman -Sy;;
+    upgrade) su_do pacman -Syu;;
+    search)  pacman -Ss "$@";;
+    show)    pacman -Si "$@";;
+    files)   pacman -Ql "$@";;
+    from)    pacman -Qo "$@";;
+    clean)   su_do pacman -Rns $(pacman -Qtdq) && su_do pacman -Sc;;
+  esac
+}
+
+_urpmi() {
+  case "$OP" in
+    install) su_do urpmi "$@";;
+    remove)  su_do urpme "$@";;
+    list)    rpm -qa;;
+    count)   rpm -qa | tot;;
+    update)  su_do urpmi.update -a;;
+    upgrade) su_do urpmi.update -a && su_do urpmi --auto-update;;
+    search)  urpmq -Y "$@";;
+    show)    urpmq --summary "$@";;
+    files)   rpm -ql "$@";;
+    from)    rpm -qf "$@";;
+    clean)   su_do urpme --auto-orphans;;
+  esac
+}
+
+_macports() {
+  case "$OP" in
+    install) su_do port install -c "$@";;
+    remove)  su_do port uninstall --follow-dependencies "$@";;
+    list)    port installed;;
+    count)   port installed | tot;;
+    update)  su_do port sync;;
+    upgrade)
+      su_do port sync && su_do port selfupdate && su_do port upgrade outdated
+      ;;
+    search)  port search "$@";;
+    show)    port info "$@";;
+    files)   port contents "$@";;
+    from)    port provides "$@";;
+    clean)   su_do port reclaim;;
+  esac
+}
+
+_brew() {
+  case "$OP" in
+    install) brew install "$@";;
+    remove)  brew uninstall "$@";;
+    list)    brew list;;
+    count)   brew list | tot;;
+    update)  brew update;;
+    upgrade) brew update && brew upgrade;;
+    search)  brew search "$@";;
+    show)    brew info "$@";;
+    files)   pem "unsupported operation";;
+    from)    pem "unsupported operation";;
+    clean)   brew cleanup;;
+  esac
+}
+
+_xbps() {
+  case "$OP" in
+    install) su_do xbps-install "$@";;
+    remove)  su_do xbps-remove -R "$@";;
+    list)    xbps-query -l;;
+    count)   xbps-query -l | tot;;
+    update)  su_do xbps-install -S;;
+    upgrade) su_do xbps-install -Su;;
+    search)  xbps-query -s "$@" --repository;;
+    show)    xbps-query -S "$@" --repository;;
+    files)   xbps-query -f "$1" --repository;;
+    from)    xbps-query -o "$(resolve "$1")";;
+    clean)   su_do xbps-remove -ROo;;
+  esac
+}
+
+_slackpkg() {
+  case "$OP" in
+    install) su_do slackpkg install "$@";;
+    remove)  su_do slackpkg remove "$@";;
+    list)    flist /var/log/packages;;
+    count)   fcount /var/log/packages/*;;
+    update)  su_do slackpkg update gpg && su_do slackpkg update;;
+    upgrade)
+      su_do slackpkg update gpg && su_do slackpkg update && \
+        su_do slackpkg upgrade-all
+      ;;
+    search)  slackpkg search "$@";;
+    show)    slackpkg info "$@";;
+    from)    slackpkg file-search "$@";;
+    files)   filelistftr "$1";;
+    clean)   su_do slackpkg clean-system;;
+  esac
+}
+
+_zypper() {
+  case "$OP" in
+    install) su_do zypper install "$@";;
+    remove)  su_do zypper remove -u "$@";;
+    list)    rpm -qa;;
+    count)   rpm -qa | tot;;
+    update)  su_do zypper refresh;;
+    upgrade) su_do zypper refresh && su_do zypper update;;
+    search)  zypper search "$@";;
+    show)    zypper info "$@";;
+    files)   rpm -ql "$@";;
+    from)    zypper search -f "$@";;
+    clean)
+      pem "unsupported: this feature is functionally useless in this PM"
+      ;;
+  esac
+}
+
+_sorcery() {
+  case "$OP" in
+    install) su_do cast "$@";;
+    remove)  su_do dispell "$@";;
+    list)    gaze installed;;
+    count)   gaze installed | tot;;
+    update)  su_do sorcery -u;;
+    upgrade) su_do sorcery -ug;;
+    search)  gaze search "$@";;
+    show)    gaze what "$@";;
+    files)   gaze tablet spell-files "$@";;
+    from)    gaze from "$@";;
+    clean)
+      pem "unsupported: this feature is functionally useless in this PM"
+      ;;
+  esac
+}
+
+_lunar() {
+  case "$OP" in
+    install) su_do lunar install "$@";;
+    remove)  su_do lunar remove "$@";;
+    list)    lvu installed;;
+    count)   lvu installed | tot;;
+    update)  su_do lunar renew;;
+    upgrade) su_do lunar renew && su_do lunar update;;
+    search)  lvu search "$@";;
+    show)    lvu what "$@";;
+    files)   lvu where "$@";;
+    from)    lvu from "$@";;
+    clean)   su_do lunar prune;;
+  esac
+}
+
+_prt_get() {
+  case "$OP" in
+    install) su_do prt-get install "$@";;
+    remove)  su_do prt-get remove "$@";;
+    list)    prt-get listinst;;
+    count)   prt-get listinst | tot;;
+    update)  su_do ports -u;;
+    upgrade) su_do ports -u && su_do prt-get sysup;;
+    search)  prt-get search "$@";;
+    show)    prt-get info "$@";;
+    files)   prt-get ls "$@";;
+    from)    prt-get fsearch "$@";;
+    clean)   su_do prt-get cache && pkgfoster;;
+  esac
+}
+
+_guix() {
+  case "$OP" in
+    install) guix package --install "$@";;
+    remove)  guix package --remove "$@";;
+    list)    guix package --list-installed;;
+    count)   guix package --list-installed | tot;;
+    update)  guix pull;;
+    upgrade) guix pull && guix upgrade --keep-going;;
+    search)  guix search "$@";;
+    show)    guix show "$@";;
+    f*)
+      pem "unsupported: this feature is functionally useless in this PM"
+      ;;
+    clean)   guix gc --delete-generations;;
+  esac
+}
+
+_pkg_() {
+  case "$OP" in
+    install) su_do pkg_add "$@";;
+    remove) su_do pkg_delete "$@";;
+    list) pkg_info -v;;
+    count) pkg_info -v | tot;;
+    update)
+      pem "unsupported: repo list only changes when user performs sys upgrade"
+      ;;
+    upgrade) su_do pkg_add -u;;
+    search) pkg_info "$@";;
+    show) pkg_info "$@";;
+    files) pkg_info -L "$@";;
+    from) pkg_info -qE "$@";;
+    clean) pem "unsupported: PM already does this";;
+  esac
+}
+
+_pkg() {
+  case "$OP" in
+    install) su_do pkg install "$@";;
+    remove) su_do pkg delete "$@";;
+    list) pkg info;;
+    count) pkg info | tot;;
+    update) su_do pkg update;;
+    upgrade) su_do pkg upgrade;;
+    search) pkg search "$@";;
+    show) pkg info "$@";;
+    files) pkg info -l "$@";;
+    from) pkg which "$@";;
+    clean) su_do pkg autoremove;;
+  esac
+}
+
+# Use pm=PKG_MANAGER cpm COMMAND to force a specific cpm function
+# ie.: pm=portage cpm list
+if [ "$pm" ] && has "_$pm"; then
+  "_$pm" "$@"
+elif ! [ "$(uname -s)" = "Darwin" ]; then
+  if has apk; then
+    # alpine/adelie
+    _apk "$@"
+  elif has apt; then
+    # debian/ubuntu
+    _apt "$@"
+  elif has emerge; then
+    # gentoo
+    _portage "$@"
+  elif has dnf; then
+    # fedora
+    _dnf "$@"
+  elif has rpm-ostree; then
+    # fedora silverblue
+    _rpm_ostree "$@"
+  elif has pacman-key; then
+    # arch/manjaro
+    _pacman "$@"
+  elif has urpmi; then
+    # mageia
+    _urpmi "$@"
+  elif has xbps-install; then
+    # void
+    _xbps "$@"
+  elif has slackpkg; then
+    # slackware
+    _slackpkg "$@"
+  elif has zypper; then
+    # opensuse
+    _zypper "$@"
+  elif has sorcery; then
+    # source mage
+    _sorcery "$@"
+  elif has lunar; then
+    # lunar
+    _lunar "$@"
+  elif has prt-get; then
+    # crux
+    _prt_get "$@"
+  elif has guix; then
+    # local (non-system-wide) guix
+    _guix "$@"
+  elif has pkg_info; then
+    # openbsd
+    _pkg_ "$@"
+  elif has pkg; then
+    # freebsd
+    _pkg "$@"
+  elif has snap; then
+    pem "Snapd is not supported [wontfix]"
+    exit 1
+  else
+    pem "No valid package manager detected."
+    exit 1
+  fi
+else
+  if has port; then
+    _macports "$@"
+  elif has brew; then
+    _brew "$@"
+  else
+    pem "No valid package manager detected."
+    exit 1
+  fi
+fi
